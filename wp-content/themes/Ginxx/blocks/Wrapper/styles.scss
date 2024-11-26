@@ -1,0 +1,105 @@
+
+.flexible, .flexible-content {
+  .wp-block-columns {
+    display: flex;
+    flex-flow: column;
+    margin-bottom: 0;
+
+    ////// Reset Gutemberg grid
+    .wp-block-column:nth-child(2n) {
+
+      @include breakpoint('desktop') {
+        margin-left: 0;
+      }
+    }
+
+    .wp-block-column:not(:first-child) {
+      margin-left: 0;
+
+      @include breakpoint('desktop') {
+        padding-left: 1rem;
+      }
+    }
+
+    @include breakpoint('desktop') {
+      flex-flow: row wrap;
+    }
+  }
+
+  .wp-block-column {
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  figure {
+    //max-width: 600px;
+    max-width: 100%;
+
+    @include breakpoint('desktop') {
+      margin: auto;
+    }
+
+    &.alignright, &.alignleft {
+      @include breakpoint('desktop', max) {
+        float: unset;
+        margin: auto;
+      }
+    }
+  }
+
+  .wp-block-column {
+    &.grid {
+      @include breakpoint('desktop') {
+        display: grid;
+        grid-template-rows: auto;
+        grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+        column-gap: 1rem;
+        row-gap: 1rem;
+      }
+    }
+  }
+}
+
+.PageWrapper {
+  &.-backgroundImage {
+    background-position: center;
+    background-size: cover;
+
+    &.fixed {
+      background-attachment: fixed;
+    }
+
+    &.-lighter {
+      z-index: -1;
+      position: relative;
+      color: $ds-color-white;
+
+      &:before {
+        position: absolute;
+        content: '';
+        inset: 0;
+        height: 100%;
+        background-color: rgba(0, 0, 0, .5);
+        z-index: -2;
+      }
+    }
+
+    &.-darker {
+      z-index: -1;
+      position: relative;
+      color: $ds-color-black;
+
+      &:before {
+        position: absolute;
+        content: '';
+        inset: 0;
+        height: 100%;
+        background-color: rgba(255, 255, 255, .35);
+        z-index: -2;
+      }
+    }
+  }
+}
+

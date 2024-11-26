@@ -1,0 +1,16 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	{% include 'partials/top-intro.twig' %}
+
+	<div class="full-width">
+		<div class="page-wrapper">
+			<div class="container">
+				<h1 class="error-404">{{ __('Erreur 404', 'gosselink') }}</h1>
+				<p>{{ __('Impossible de trouver le contenu demandé.', 'gosselink') }}</p>
+				<a href="{{ site.url }}" class="button underline green">{{ __('Retour à la page d\'accueil', 'gosselink') }}</a>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

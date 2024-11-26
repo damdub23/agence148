@@ -1,0 +1,71 @@
+{#
+Title: Chiffres clés ou valeurs
+Description: Permet de mettre en avant un chiffre ou une valeur.
+Category: Contenu du flexible
+Icon: star-empty
+Keywords: gosselink mise en lumière highlights
+#}
+
+{% set flexi_key_number = function('get_field', 'key_number') %}
+
+{% if block.className == '' %}
+<section class="HighLights {{ block.className }}">
+    {% for item in flexi_key_number %}
+        <div class="HighLights-keyNumber">
+            {% if item.icon %}
+                <div class="HighLights-picture">
+                    <img src="{{ TimberImage(item.icon).src }}" alt="{{ item.icon.alt }}"/>
+                </div>
+            {% endif %}
+            <div class="HighLights-content">
+                <div class="HighLights-count">
+                    <div data-count="{{ item.number }}">
+                        0
+                    </div>
+                </div>
+                {% if item.extension %}
+                    <div class="HighLights-extension">
+                        {{ item.extension }}
+                    </div>
+                {% endif %}
+            </div>
+            {% if item.detail %}
+                <div class="HighLights-description">
+                    {{ item.detail }}
+                </div>
+            {% endif %}
+        </div>
+    {% endfor %}
+</section>
+{% endif %}
+
+{% if block.className == '-keyStyle2' %}
+    <section class="HighLights {{ block.className }}">
+        {% for item in flexi_key_number %}
+            <div class="HighLights-keyNumber">
+                {% if item.icon %}
+                    <div class="HighLights-picture">
+                        <img src="{{ TimberImage(item.icon).src }}" alt="{{ item.icon.alt }}"/>
+                    </div>
+                {% endif %}
+                <div class="HighLights-content">
+                    <div class="HighLights-count">
+                        <div data-count="{{ item.number }}">
+                            0
+                        </div>
+                    </div>
+                    {% if item.extension %}
+                        <div class="HighLights-extension">
+                            {{ item.extension }}
+                        </div>
+                    {% endif %}
+                    {% if item.detail %}
+                        <div class="HighLights-description">
+                            {{ item.detail }}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+{% endif %}

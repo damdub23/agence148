@@ -1,0 +1,76 @@
+{% include 'partials/searchform.twig' %}
+
+{# Scroll Top #}
+{% if options.scroll_top_enabled %}
+    <a href="#{{ top_anchor }}" class="scrolltop">
+
+    </a>
+{% endif %}
+
+{# Popup container #}
+<div id="popup">
+    <div class="popup-content">
+    </div>
+</div>
+
+{# Footer Menu if enabled #}
+<div class="SiteFooter -themeDark">
+    <div class="SiteFooter-inner -columns">
+        <div class="SiteFooter-logo">
+            <img src="{{ assets }}/images/logo-vaguelette.svg" alt="">
+        </div>
+        <div class="SiteFooter-address">
+            {% if options.name %}
+                <h5>
+                    {{ options.name }}
+                </h5>
+            {% endif %}
+            <ul>
+                {% if options.client_address %}
+                    <li>
+                        {{ options.client_address|wpautop }}
+                    </li>
+                {% endif %}
+                {% if options.phone %}
+                    <li>
+                        {{ options.phone }}
+                    </li>
+                {% endif %}
+                {% if options.mail %}
+                    <li>
+                        <a href="mailto:{{ options.mail }}">
+                            Nous contacter par mail
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+
+        <div class="SiteFooter-social">
+            <h5>{{ __('Nous suivre', 'gosselink') }}</h5>
+            {% include 'partials/social-media.twig' %}
+        </div>
+        {#        <ul id="footer-menu-2" class="menu"> #}
+        {#            {% for item in footer_menu_2.items %} #}
+        {#                {% include "partials/menu-item.twig" with {'item': item} %} #}
+        {#            {% endfor %} #}
+        {#        </ul> #}
+    </div>
+
+    <div class="SiteFooter-inner -copyright">
+        <div class="SiteFooter-copyright">
+            Copyright {{ "now"|date('Y') }}
+        </div>
+
+        {% if options.footer_menu_enabled %}
+            <div class="SiteFooter-menus">
+                <ul id="footer-menu" class="menu">
+                    {% for item in footer_menu.items %}
+                        {% include "partials/menu-item.twig" with {'item': item} %}
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+    </div>
+</div>

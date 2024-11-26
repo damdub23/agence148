@@ -1,0 +1,74 @@
+.TopIntro {
+  margin-bottom: $ds-spacings--xxx-large;
+
+  &-picture {
+    position: relative;
+    background-color: $ds-color-tertiary-lighten;
+    min-height: size(100);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    img {
+      @include object-fit(cover, center);
+
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: .5;
+    }
+  }
+
+  &-wrapper {
+    @extend %PageWrapper;
+
+    position: relative;
+    height: 100%;
+  }
+
+  &-inner {
+    @extend %PageInner;
+
+    position: relative;
+    z-index: 2;
+    padding: $ds-spacings--standard;
+    margin-bottom: size(40);
+  }
+
+  &-breadcrumbs {
+    position: relative;
+    z-index: 3;
+    color: $ds-color-secondary;
+    align-self: flex-start;
+    margin-block-end: $ds-spacings--medium;
+
+    a {
+      color: $ds-color-secondary;
+    }
+  }
+
+  &-title,
+  &-meta,
+  &-excerpt {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+
+  &-meta {
+    .Meta {
+      display: flex;
+      flex-flow: row wrap;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      margin-block-end: $ds-spacings--standard;
+      margin-inline: auto;
+    }
+  }
+
+  &-excerpt {
+    color: $ds-color-info;
+  }
+}

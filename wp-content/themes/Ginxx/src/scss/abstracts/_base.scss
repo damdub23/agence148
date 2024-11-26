@@ -1,0 +1,92 @@
+:root {
+  --bg-theme-color: #{$ds-color-white};
+  --text-theme-color: #{$ds-color-primary};
+}
+
+html {
+  box-sizing: border-box;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+
+  &.no-scroll {
+    overflow-y: hidden;
+  }
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  @extend %TextStyle-body0;
+
+  color: var(--text-color-primary);
+  position: relative;
+  width: 100%;
+  background: $ds-color-white;
+  font-family: $body-font;
+  line-height: size(24);
+  font-weight: 200;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: underline;
+  color: $ds-color-secondary;
+
+  &:hover {
+    color: $ds-color-primary;
+  }
+}
+
+
+.breadcrumbs {
+  position: relative;
+  z-index: 10;
+  background: transparent;
+  display: block;
+  color: darken($ds-color-black, 15%);
+  margin: 0;
+  padding: 0;
+  font-size: .75rem;
+  text-align: left;
+
+  nav {
+    display: block;
+  }
+
+  span {
+    color: darken($ds-color-black, 15%);
+
+    &.breadcrumb_last {
+      font-weight: bold;
+    }
+  }
+
+  a {
+    color: darken($ds-color-black, 10%);
+  }
+}
+
+.flickity-button:disabled {
+  opacity: 0;
+}
+
+.PageWrapper {
+  @extend %PageWrapper;
+}
+
+.PageInner {
+  @extend %PageInner;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}

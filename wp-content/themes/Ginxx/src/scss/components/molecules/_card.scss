@@ -1,0 +1,1161 @@
+:root {
+  --bg-card-article: var(--ds-color-white);
+  --text-color-card-article: var(--ds-color-black);
+  --text-color-card-article-hover: var(--ds-color-white);
+  --bg-category-card-article: var(--ds-color-secondary);
+  --text-category-card-article: var(--ds-color-white);
+}
+
+.Card {
+  overflow: hidden;
+  text-decoration: none;
+  border-radius: $ds-radius-width-small;
+
+  &-inner {
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    //cursor: pointer;
+  }
+
+  .-teamStyle1 & {
+    &.-team {
+      .Card {
+        &-inner {
+          justify-content: center;
+          align-items: center;
+          height: size(400);
+
+          &::before {
+            @include transition;
+
+            position: absolute;
+            content: '';
+            background: $ds-color-primary;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+          }
+        }
+
+        &-title {
+          width: 100%;
+          text-align: center;
+          opacity: 0;
+
+          h4, span {
+            @include transition();
+
+            position: relative;
+            color: $ds-color-white;
+            margin-bottom: 0;
+          }
+
+          h4 {
+            @extend %TextStyle-heading5;
+
+            top: size(-20);
+          }
+
+          span {
+            font-family: $font-icons;
+            font-size: size(42);
+            font-weight: 900;
+            bottom: size(-20);
+          }
+        }
+
+        &-picture {
+          @include transition;
+
+          position: absolute;
+          opacity: 1;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transform: scale(1);
+
+          img {
+            @include ImageCover;
+            @include transition;
+
+            transform: scale(1);
+          }
+        }
+      }
+
+      &:hover {
+        .Card {
+          &-picture {
+            img {
+              @include transition;
+
+              opacity: .1;
+              transform: scale(1.1);
+            }
+          }
+
+          &-title {
+            opacity: 1;
+
+            h3 {
+              @include transition();
+
+              top: size(-8);
+            }
+
+            span {
+              @include transition();
+
+              bottom: size(-8);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .-teamStyle2 & {
+    &.-team {
+      background-color: $ds-color-white;
+
+      .Card {
+        &-inner {
+          display: grid;
+          align-items: center;
+          gap: $ds-spacings--standard;
+        }
+
+        &-picture {
+          overflow: hidden;
+          height: size(400);
+
+          img {
+            @include ImageCover;
+            @include transition;
+          }
+        }
+
+        &-title {
+          @extend %TextStyle-heading6;
+
+          padding-inline: $ds-spacings--standard;
+          color: $ds-color-black;
+        }
+
+        &-content {
+          padding-inline: $ds-spacings--standard;
+        }
+
+        &-desc {
+          padding-inline: $ds-spacings--standard;
+
+          p {
+            @extend %Teaser;
+
+            color: $ds-color-info;
+          }
+        }
+
+        &-actions {
+          padding-inline: $ds-spacings--standard;
+
+          span {
+            @extend %Button--secondary;
+          }
+        }
+      }
+
+      &:hover {
+        .Card {
+          &-picture {
+            img {
+              @include transition;
+
+              transform: scale(1.1);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .-teamStyle3 & {
+    &.-team {
+      background-color: $ds-color-white;
+
+      .Card {
+        &-inner {
+          display: grid;
+          align-items: flex-end;
+        }
+
+        &-picture {
+          overflow: hidden;
+          height: size(400);
+
+          img {
+            @include ImageCover;
+            @include transition;
+          }
+        }
+
+        &-title {
+          @extend %TextStyle-heading6;
+
+          color: $ds-color-black;
+          margin: 0;
+          padding: 0;
+        }
+
+        &-content {
+          @include transition;
+
+          display: grid;
+          position: absolute;
+          z-index: 1;
+          width: calc(100% - #{$ds-spacings--standard});
+          padding: $ds-spacings--standard $ds-spacings--small;
+          background-color: $ds-color-white;
+          left: 50%;
+          bottom: $ds-spacings--small;
+          transform: translate(-50%, 0);
+          overflow: hidden;
+        }
+
+        &-social {
+          @include transition;
+
+          padding: 0;
+          margin: 0 0 size(-60);
+          position: relative;
+          min-height: size(32);
+          display: flex;
+
+          ul {
+            @include networks;
+
+            li {
+              @include transition;
+
+              position: relative;
+              top: $ds-spacings--standard;
+              opacity: 0;
+            }
+          }
+        }
+      }
+
+      &:hover {
+        .Card {
+          &-picture {
+            img {
+              @include transition;
+
+              transform: scale(1.1);
+            }
+          }
+
+          &-content {
+            @include transition;
+          }
+
+          &-social {
+            @include transition;
+
+            margin: $ds-spacings--standard 0 0;
+
+            ul {
+              li {
+                @include transition;
+
+                opacity: 1;
+                top: 0;
+
+                &:nth-child(1) {
+                  transition-delay: .1s;
+                }
+
+                &:nth-child(2) {
+                  transition-delay: .2s;
+                }
+
+                &:nth-child(3) {
+                  transition-delay: .3s;
+                }
+
+                &:nth-child(4) {
+                  transition-delay: .4s;
+                }
+
+                &:nth-child(5) {
+                  transition-delay: .5s;
+                }
+
+                &:nth-child(6) {
+                  transition-delay: .6s;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  //Slider version
+  .-teamStyle4 & {
+    &.-team {
+      background-color: $ds-color-white;
+
+      .Card {
+        &-inner {
+          display: grid;
+          align-items: flex-end;
+        }
+
+        &-picture {
+          overflow: hidden;
+          height: size(400);
+
+          img {
+            @include ImageCover;
+            @include transition;
+          }
+        }
+
+        &-title {
+          @extend %TextStyle-heading6;
+
+          color: $ds-color-black;
+          margin: 0;
+          padding: 0;
+        }
+
+        &-content {
+          @include transition;
+
+          display: grid;
+          position: absolute;
+          z-index: 1;
+          width: calc(100% - #{$ds-spacings--standard});
+          padding: $ds-spacings--standard $ds-spacings--small;
+          background-color: $ds-color-white;
+          left: 50%;
+          bottom: $ds-spacings--small;
+          transform: translate(-50%, 0);
+          overflow: hidden;
+        }
+
+        &-social {
+          @include transition;
+
+          padding: 0;
+          margin: 0;
+          position: relative;
+          min-height: size(32);
+          display: flex;
+
+          ul {
+            @include networks;
+
+            li {
+              @include transition;
+
+              position: relative;
+              top: $ds-spacings--standard;
+              opacity: 0;
+            }
+          }
+        }
+      }
+
+      &:hover {
+        .Card {
+          &-picture {
+            img {
+              @include transition;
+
+              transform: scale(1.1);
+            }
+          }
+
+          &-content {
+            @include transition;
+          }
+
+          &-social {
+            @include transition;
+
+            margin: $ds-spacings--standard 0 0;
+
+            ul {
+              li {
+                @include transition;
+
+                opacity: 1;
+                top: 0;
+
+                &:nth-child(1) {
+                  transition-delay: .1s;
+                }
+
+                &:nth-child(2) {
+                  transition-delay: .2s;
+                }
+
+                &:nth-child(3) {
+                  transition-delay: .3s;
+                }
+
+                &:nth-child(4) {
+                  transition-delay: .4s;
+                }
+
+                &:nth-child(5) {
+                  transition-delay: .5s;
+                }
+
+                &:nth-child(6) {
+                  transition-delay: .6s;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.-spot {
+    @include transition();
+
+    display: flex;
+    flex-direction: column;
+    background-color: lighten($ds-color-tertiary, 35%);
+    text-align: center;
+    padding: 0 0 $ds-spacings--standard;
+
+    @include breakpoint('tablet', max) {
+      margin-inline: auto;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+    }
+
+    .Card {
+
+      &-picture {
+        width: 100%;
+        height: size(250);
+        margin-bottom: $ds-spacings--standard;
+
+        img {
+          object-fit: cover;
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      &-title {
+        font-size: $ds-font-size-600;
+        color: $ds-color-primary;
+        font-weight: 500;
+        margin: 0;
+
+        span {
+          display: block;
+          font-size: size(32);
+          margin-bottom: $ds-spacings--medium;
+        }
+      }
+
+      &-actions {
+        margin-inline: auto;
+        margin-top: $ds-spacings--medium;
+
+        a {
+          @extend %Button--primary;
+        }
+      }
+
+      &-desc {
+        color: $ds-color-white;
+        font-weight: 200;
+      }
+    }
+
+    &:hover {
+      background-color: $ds-color-secondary;
+
+      .Card {
+        &-title, &-desc {
+          color: $ds-color-white;
+        }
+
+        &-actions {
+          span {
+            background-color: $ds-color-secondary;
+          }
+        }
+      }
+    }
+  }
+
+  &.-promote {
+    @include transition();
+
+    gap: $ds-spacings--medium;
+    margin: 0;
+    padding: 0;
+    background-color: #eaf1f3;
+    text-align: center;
+
+    @include breakpoint('tablet', max) {
+      margin-inline: auto;
+      align-items: center;
+      text-align: center;
+    }
+
+    .Card {
+      &-inner {
+        padding: $ds-spacings--large 0 0;
+        height: 100%;
+      }
+
+      &-title {
+        font-size: $ds-font-size-600;
+        color: $ds-color-primary;
+        font-weight: 500;
+        padding-inline: $ds-spacings--standard;
+
+        span {
+          display: block;
+          font-size: size(32);
+          margin-bottom: $ds-spacings--medium;
+        }
+      }
+
+      &-picture {
+        position: relative;
+        width: 100%;
+        height: size(400);
+        margin: 0;
+        align-self: flex-end;
+
+        img {
+          position: absolute;
+          object-fit: contain;
+          height: 100%;
+          width: 100%;
+          margin: auto;
+          inset: 0;
+        }
+      }
+
+      &-actions {
+        a {
+          @extend %Button--secondary;
+        }
+      }
+
+      &-desc {
+        color: $ds-color-white;
+        font-weight: 200;
+      }
+    }
+
+    /*&:hover {
+      background-color: $ds-color-secondary;
+
+      .Card {
+        &-title, &-desc {
+          color: $ds-color-primary;
+        }
+
+        &-actions {
+          span {
+            background-color: $ds-color-secondary;
+          }
+        }
+      }
+    }*/
+  }
+
+  &.-training {
+    @include transition();
+
+    background-color: $ds-color-white;
+
+    .Card {
+      &-inner {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-start;
+      }
+
+      &-picture {
+        position: relative;
+        width: 100%;
+        height: 286px;
+        overflow: hidden;
+
+        img {
+          @include transition;
+          @include ImageCover;
+        }
+      }
+
+      &-content {
+        @include transition();
+
+        color: $ds-color-black;
+        padding: $ds-spacings--medium $ds-spacings--standard;
+
+        @include breakpoint('tablet') {
+          padding: $ds-spacings--medium;
+        }
+      }
+
+      &-actions {
+        span {
+          @extend %Button;
+
+          color: $ds-color-white;
+          background-color: $ds-color-primary;
+        }
+      }
+    }
+
+    &:hover {
+      background-color: $ds-color-primary;
+
+      .Card {
+        &-picture {
+          img {
+            transform: scale(1.1);
+          }
+        }
+
+        &-title {
+          color: $ds-color-white;
+        }
+
+        &-actions {
+          span {
+            @extend %Button;
+
+            color: $ds-color-black;
+            background-color: $ds-color-secondary;
+          }
+        }
+      }
+    }
+  }
+
+  &.-client {
+    display: grid;
+    justify-content: center;
+    align-items: flex-start;
+    border-radius: unset;
+    background-color: $ds-color-white;
+    padding: $ds-spacings--medium;
+
+    .Card {
+      &-inner {
+        cursor: unset;
+      }
+
+      &-picture {
+        display: flex;
+        width: 100%;
+        height: size(75);
+
+        img {
+          @include transition;
+
+          filter: grayscale(100%);
+          opacity: .3;
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+        }
+      }
+
+      &-title {
+        @extend %TextStyle-heading6;
+      }
+    }
+
+    &:hover {
+      .Card {
+        &-picture {
+          img {
+            @include transition;
+
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+
+  .-ClientsStyle2 & {
+    &.-client {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      border-radius: unset;
+      background-color: $ds-color-white;
+      padding: $ds-spacings--medium;
+
+      .Card {
+        &-inner {
+          cursor: unset;
+        }
+
+        &-picture {
+          display: flex;
+          width: 100%;
+          height: size(70);
+          margin-bottom: $ds-spacings--standard;
+
+          img {
+            @include transition;
+
+            filter: grayscale(0%);
+            opacity: 1;
+            width: auto;
+            background-size: contain;
+          }
+        }
+
+        &-title {
+          @extend %TextStyle-heading6;
+
+          margin-bottom: $ds-spacings--standard;
+        }
+
+        &-description {
+          @include Teaser;
+
+          p {
+            line-height: 1.4;
+            color: $ds-color-black-lighten;
+            font-size: size(14);
+            font-weight: 100;
+          }
+        }
+
+        &-actions {
+          margin-top: $ds-spacings--standard;
+
+          a {
+            @extend %Button--arrow;
+          }
+        }
+      }
+    }
+  }
+
+  .-ClientsStyle3 & {
+    &.-client {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: unset;
+      background-color: $ds-color-white;
+      padding: $ds-spacings--medium;
+
+      .Card {
+        &-inner {
+          cursor: unset;
+        }
+
+        &-picture {
+          display: flex;
+          width: 100%;
+          height: size(70);
+          margin-bottom: $ds-spacings--standard;
+
+          img {
+            @include transition;
+
+            filter: grayscale(0%);
+            opacity: 1;
+            width: auto;
+            background-size: contain;
+          }
+        }
+
+        &-title {
+          @extend %TextStyle-heading6;
+
+          margin-bottom: $ds-spacings--standard;
+        }
+
+        &-description {
+          @include Teaser;
+
+          p {
+            line-height: 1.4;
+            color: $ds-color-black-lighten;
+            font-size: size(14);
+            font-weight: 100;
+          }
+        }
+
+        &-actions {
+          margin-top: $ds-spacings--standard;
+
+          a {
+            @extend %Button--arrow;
+          }
+        }
+      }
+    }
+  }
+
+  &.-slider {
+    background-color: $ds-color-white;
+    width: 100%;
+
+    .Card {
+      height: auto;
+
+      &-picture {
+        position: relative;
+        margin: auto;
+        width: 100%;
+        height: size(500);
+        overflow: hidden;
+
+        @include breakpoint('tablet') {
+          height: size(250);
+        }
+
+        img {
+          @include object-fit(cover, center);
+
+          object-fit: cover;
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      &-description {
+        padding: $ds-spacings--standard;
+
+        p {
+          @include Teaser;
+
+          color: var(--ds-color-gray);
+          font-weight: 100;
+        }
+      }
+
+      &-title {
+        @extend %TextStyle-heading6;
+
+        font-family: $body-font;
+        font-weight: 400;
+      }
+
+
+      &-button {
+        @extend %Button;
+      }
+    }
+  }
+
+  .-sliderStyle2 & {
+    &.-slider {
+      display: grid;
+
+      .Card {
+        &-inner {
+          display: grid;
+          grid-template-columns: 1fr;
+          grid-template-areas: "picture"
+                               "description";
+          justify-content: center;
+
+          @include breakpoint('tablet') {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-areas: "description" "picture";
+          }
+        }
+
+        &-description {
+          grid-area: description;
+          display: flex;
+          flex-direction: column;
+          margin: auto;
+          padding-inline: $ds-spacings--x-large;
+
+          @include breakpoint('tablet') {
+            grid-row: 1/3;
+            grid-column: 1/2;
+          }
+        }
+
+        &-picture {
+          grid-area: picture;
+          min-height: size(450);
+
+          @include breakpoint('tablet') {
+            grid-row: 1/3;
+            grid-column: 2/4;
+          }
+        }
+      }
+    }
+  }
+
+  &.-article {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    align-content: flex-start;
+    padding: $ds-spacings--standard;
+    transition: all .3s ease-in-out;
+    background-color: var(--bg-card-article);
+    color: var(--text-color-card-article);
+    box-shadow: 0 3px 20px rgba(56, 69, 207, .1);
+
+    .Card {
+      &-header {
+        width: 100%;
+      }
+
+      &-picture {
+        position: relative;
+        width: 100%;
+        height: size(300);
+        margin: 0 0 $ds-spacings--small;
+        padding: 0;
+        overflow: hidden;
+
+        img {
+          position: relative;
+          @include object-fit(cover, center);
+          width: 100%;
+          height: 100%;
+          transform: scale(1);
+          transition: all .3s ease-in-out;
+        }
+      }
+
+      &-content {
+        display: grid;
+        width: 100%;
+      }
+
+      &-title {
+        font-size: size(20);
+        margin-block-end: $ds-spacings--standard;
+        padding: 0;
+
+        a {
+          color: var(--text-color-card-article);
+          text-decoration: none;
+        }
+      }
+    }
+
+    &:hover {
+      @include transition;
+
+      --bg-card-article: var(--ds-color-secondary);
+      --text-color-card-article: var(--ds-color-white);
+
+      .Card {
+        &-picture {
+          img {
+            @include transition;
+
+            transform: scale(1.1);
+          }
+        }
+      }
+
+      .Meta {
+        a {
+          --bg-category-card-article: var(--ds-text-color-white);
+          --text-category-card-article: var(--ds-color-secondary);
+        }
+      }
+    }
+  }
+
+  &.-download {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: $ds-spacings--standard;
+    background-color: #f4f3f3;
+
+    .Card {
+      background-color: $ds-color-white;
+
+      &-title {
+        position: relative;
+        display: flex;
+        align-items: center;
+        color: $ds-color-black;
+        line-height: 1.2;
+        font-weight: 400;
+        transition: color .3s ease-in;
+        font-size: $ds-font-size-300;
+      }
+
+      &-description {
+        margin-top: $ds-spacings--small;
+        color: lighten($ds-color-black, 65%);
+        font-size: $ds-font-size-300;
+      }
+    }
+
+    svg {
+      fill: $ds-color-black;
+      transition: fill .3s ease-in;
+      width: size(24);
+      height: size(24);
+      margin-right: $ds-spacings--small;
+    }
+
+    &:hover {
+      box-shadow: 0 3px 26px rgba(0, 0, 0, 0.09);
+
+      .Card {
+        &-title {
+          color: $ds-color-secondary;
+        }
+      }
+
+      svg {
+        fill: $ds-color-secondary;
+      }
+    }
+  }
+
+  &.-links {
+    --bgcolor-links-card: var(--ds-color-white);
+
+    .Card {
+      background-color: var(--bgcolor-links-card);
+
+      &-picture {
+        height: size(350);
+        margin-bottom: $ds-spacings--standard;
+
+        img {
+          @include ImageCover;
+        }
+      }
+
+      &-link {
+        @extend %Button--download;
+        display: flex;
+        justify-content: space-around;
+
+        span {
+          display: flex;
+          width: max-content;
+          padding-left: calc(#{$ds-spacings--xxx-large} + #{$ds-spacings--xx-small});
+          padding-right: $ds-spacings--standard;
+        }
+      }
+    }
+  }
+
+  &.-testimonials {
+    --bgcolor-testimonial-card: var(--ds-color-black);
+    --color-testimonial-card: var(--ds-color-black);
+
+    .Card {
+      overflow: hidden;
+      border-radius: $ds-radius-width-medium;
+      text-decoration: none;
+      position: relative;
+      width: clamp(300px, 33%, 50%);
+      margin-inline-end: size(16);
+      background-color: var(--bgcolor-testimonial-card);
+
+      &-inner {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        padding: $ds-spacings--large $ds-spacings--medium;
+      }
+
+      &-title {
+        @extend %TextStyle-heading6;
+
+        font-family: $title-font;
+        color: var(--color-testimonial-card);
+        margin-bottom: $ds-spacings--medium;
+
+        span {
+          margin-top: $ds-spacings--xx-small;
+          font-family: $body-font;
+          display: block;
+          font-weight: 100;
+          font-size: size(13);
+        }
+      }
+
+      &-picture {
+        width: size(90);
+        height: size(90);
+        overflow: hidden;
+        position: relative;
+        margin-bottom: $ds-spacings--standard;
+
+        &:before {
+          position: absolute;
+          content: '';
+          z-index: 1;
+          width: 100%;
+          height: 100%;
+          background: transparent;
+          border-width: 8px;
+          border-style: inset;
+          border-color: rgba(255, 255, 255, .15);
+          inset: 0;
+          border-radius: 50%;
+        }
+
+        img {
+          position: absolute;
+          object-fit: cover;
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          filter: grayscale(50%);
+        }
+      }
+
+      &-content {
+        @extend %Teaser;
+
+        color: var(--color-testimonial-card);
+      }
+    }
+  }
+
+  .-themeDark & {
+    &.-testimonials {
+      .Card {
+        &-content,
+        &-title {
+          --color-testimonial-card: var(--ds-color-white);
+        }
+      }
+    }
+  }
+}

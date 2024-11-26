@@ -1,0 +1,38 @@
+.ContactPage {
+  @extend %PageWrapper;
+
+  &-inner {
+    @extend %PageInner;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $ds-spacings--x-large;
+
+    @include breakpoint('tablet') {
+      grid-template-columns: 7fr 3fr;
+    }
+  }
+
+  &-aside {
+    background-color: $ds-color-white;
+    margin-block-end: $ds-spacings--medium;
+    padding: $ds-spacings--medium $ds-spacings--standard;
+
+    h3 {
+      margin-bottom: $ds-spacings--medium;
+    }
+
+    ul {
+      padding-left: 0;
+
+      li {
+        list-style-type: none;
+        margin-block-end: $ds-spacings--standard;
+
+        &:before {
+          display: none;
+        }
+      }
+    }
+  }
+}

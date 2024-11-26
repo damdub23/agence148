@@ -1,0 +1,106 @@
+//@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700&display=swap');
+@import url('https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+//@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@700&display=swap');
+
+//IMG
+$path-img: '../img/';
+$path-icon: $path-img + 'icons/';
+//  propriety: url($path-img + 'imgName/');
+
+//FONTS
+$body-font: "Poppins", sans-serif;
+$title-font: "DM Sans", sans-serif;
+//$body-font: "Manrope", sans-serif;
+//$title-font: "Manrope", sans-serif;
+
+$font-icons: 'Line Awesome Free'; // or Brands instead of Free
+$font-icons-brands: 'Line Awesome Brands'; // or Brands instead of Free
+
+//RADIUS
+$ds-radius-width-small: .25rem; // 4px
+$ds-radius-width-medium: .75rem; // 12px
+$ds-radius-width-large: 1.5rem; // 24px
+$ds-radius-round: 50%;
+
+//FONT-SIZE
+$ds-font-size-900: 5rem; // 80px
+$ds-font-size-850: 4rem; // 64px
+$ds-font-size-800: 3rem; // 48px
+$ds-font-size-750: 2.5rem; // 40px
+$ds-font-size-730: 2.1875rem; // 35px
+$ds-font-size-700: 1.875rem; // 30px
+$ds-font-size-650: 1.625rem; // 26px
+$ds-font-size-600: 1.5rem; // 24px
+$ds-font-size-550: 1.375rem; // 22px
+$ds-font-size-500: 1.25rem; // 20px
+$ds-font-size-450: 1.125rem; // 18px
+$ds-font-size-400: 1rem; // 16px
+$ds-font-size-350: .9375rem; // 15px
+$ds-font-size-300: .875rem; // 14px
+$ds-font-size-200: .8125rem; // 13px
+$ds-font-size-100: .75rem; // 12px
+$ds-font-size-50: .625rem; // 10px
+
+//BREAKPOINTS
+// TODO: REFACTOR BREAKPOINTS use breakpoint() and breakpoint-between() instead of media() and md(),
+// we use https://www.freecodecamp.org/news/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862/ breakpoints logic
+// by default use min width => breakpoint('desktop')
+// to use max : breakpoint('desktop', max) => /!\ min size of device corresponding to the max size we want
+// to use min and max : breakpoint-between('tablet', 'desktop') corresponding to tablet only
+// for phone only you can use breakpoint('phone', max) or breakpoint-between('phone', 'phone-large')
+// TODO: upgrade mixin to be able to use type only with map $ds-breakpoints()
+$ds-breakpoints: (
+        "mobile": 280px,
+        "mobile-large": 375px,
+        "tablet": 768px,
+        "desktop": 1024px,
+        "desktop-large": 1200px,
+        "desktop-x-large": 1440px,
+);
+
+/// General colors
+// $ds-color-primary-darken: scale-color($ds-color-primary, $lightness: -10%);
+$ds-color-primary: #000000;
+$ds-color-secondary: #FA544D;
+$ds-color-tertiary: #4D4D4D;
+$ds-color-tertiary-lighten: #E6E6E6;
+$ds-color-success: #54d52b;
+$ds-color-warning: #EA7204;
+$ds-color-error: #F00036;
+$ds-color-info: #2E2E2E;
+
+$ds-color-white: #fff;
+$ds-color-black: #000000;
+$ds-color-black-lighten: #2E2E2E;
+
+//// Height & width theme
+$header-height-mobile: 80px;
+$header-height: 80px;
+$height-top-intro: 500px;
+$width-container-header: 100%;
+$width-container: 1320px;
+
+//// Global spacings
+$ds-spacings--max-wide: 10rem; // 160px
+$ds-spacings--xxx-wide: 8rem; // 128px
+$ds-spacings--xx-wide: 7rem; // 112px
+$ds-spacings--x-wide: 6rem; // 96px
+$ds-spacings--wide: 5rem; // 80px
+$ds-spacings--xxx-large: 4rem; // 64px
+$ds-spacings--xx-large: 3rem; // 48px
+$ds-spacings--x-large: 2.5rem; // 40px
+$ds-spacings--large: 2rem; // 32px
+$ds-spacings--medium: 1.5rem; // 24px
+$ds-spacings--standard: 1rem; // 16px
+$ds-spacings--semi: .75rem; // 12px
+$ds-spacings--small: .5rem; // 8px
+$ds-spacings--x-small: .325rem; // 6px
+$ds-spacings--xx-small: .25rem; // 4px
+$ds-spacings--xxx-small: .125rem; // 2px
+
+//// Layout
+$ds-max-width-page-wrapper: 1920px;
+$ds-max-width-page-inner: 1200px;

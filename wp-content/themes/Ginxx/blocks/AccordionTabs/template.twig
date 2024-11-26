@@ -1,0 +1,48 @@
+{#
+Title: Onglet / Accordéon
+Description: Permet d'insérer des onglets ou accordéons.
+Category: Contenu du flexible
+Icon: excerpt-view
+Keywords: gosselink onglet accordéon tabs accordeon
+#}
+
+{% set flexi_accordion_tabs_block = function('get_field', 'accordion_tabs_block') %}
+{% set type = function('get_field', 'accordion_or_tabs') %}
+
+{% if type == "accordion" %}
+    <div class="AccordionBlock">
+        {% for item in flexi_accordion_tabs_block %}
+            <div class="AccordionBlock-accordion">
+                <div class="AccordionBlock-title" aria-expanded="false">
+                    {{ item.title }}
+                </div>
+                <div class="AccordionBlock-content" hidden>
+                    {{ item.content }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    {% set type = function('get_field', 'accordion_or_tabs') %}
+    {% set position = function('get_field', 'position') %}
+    {% set rand = random(1000, 10000) %}
+    <div class="TabsBlock {% if position == "vertical" %}-vertical{% endif %}">
+        <ul class="TabsBlock-tabs -{{ position }}" id="tabs-{{ rand }}">
+            {% for key, item in flexi_accordion_tabs_block %}
+                <li class="TabsBlock-title{% if loop.index == 1 %} is-active{% endif %}"><a
+                            href="{{ "#tab-" ~ key }}" aria-selected="true">{{ item.title }}</a></li>
+            {% endfor %}
+        </ul>
+
+        {% if position == "vertical" %}
+        <div class="TabsBlock -right">{% endif %}
+            <div class="{{ position }}" data-tabs-content="tabs-{{ rand }}">
+                {% for key, item in flexi_accordion_tabs_block %}
+                    <div class="TabsBlock-panel{% if loop.index == 1 %} is-active{% endif %}" id="tab-{{ key }}">
+                        {{ item.content }}
+                    </div>
+                {% endfor %}
+            </div>
+            {% if position == "vertical" %}</div>{% endif %}
+    </div>
+{% endif %}

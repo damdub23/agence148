@@ -1,0 +1,10 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+    {% include 'templates/partials/top-intro.twig' %}
+
+    <div class="container">
+        {{ post.content }}
+    </div>
+{% endblock %}

@@ -1,0 +1,143 @@
+:root {
+  --bgcolor-key-number: transparent;
+  --bgcolor-icon-key-number: transparent;
+  --color-key-number: var(--ds-color-black);
+  --color-key-number-desc: var(--ds-color-gray);
+  --color-key-number-extension: var(--ds-color-dark);
+}
+
+.HighLights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: size(32);
+
+  &-keyNumber {
+    position: relative;
+    background-color: var(--bgcolor-key-number);
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    padding: $ds-spacings--standard;
+    text-align: center;
+  }
+
+  &-picture {
+    height: size(100);
+    text-align: center;
+    margin-bottom: $ds-spacings--standard;
+    padding: $ds-spacings--medium;
+    background-color: var(--bgcolor-icon-key-number);
+
+    img {
+      @include object-fit(contain, center);
+
+      display: flex;
+      margin: auto;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: $ds-spacings--large;
+  }
+
+  &-count {
+    @extend %TextStyle-heading1;
+
+    font-family: $body-font;
+    color: var(--color-key-number);
+    font-weight: 600;
+    vertical-align: middle;
+  }
+
+  &-extension {
+    font-size: size(18);
+    color: var(--color-key-number-extension);
+    margin-left: $ds-spacings--standard;
+  }
+
+  &-description {
+    position: relative;
+    font-size: size(16);
+    width: 100%;
+    color: var(--color-key-number-desc);
+    font-weight: 300;
+  }
+
+  .-themeDark & {
+    .HighLights {
+      &-picture {
+        --bgcolor-icon-key-number: var(--ds-color-white);
+      }
+
+      &-count {
+        --color-key-number: var(--ds-color-white);
+      }
+
+      &-extension {
+        --color-key-number-extension: var(--ds-color-white);
+      }
+
+      &-description {
+        --color-key-number-desc: var(--ds-color-white);
+      }
+    }
+  }
+}
+
+.-keyStyle2 {
+  .HighLights {
+    &-keyNumber {
+      position: relative;
+      --bgcolor-key-number: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: size(300);
+
+      &::after {
+        @include breakpoint('desktop') {
+        position: absolute;
+        content: '';
+        right: 0;
+        background-color: $ds-color-info;
+        width: size(1);
+        height: 50%;
+        transform: translate(-50%, 0);
+        }
+      }
+
+      &:last-child {
+        &::after {
+          display: none;
+        }
+      }
+    }
+
+    &-content {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    &-extension {
+      font-weight: 400;
+      font-size: size(24);
+    }
+
+    &-count {
+      position: absolute;
+      z-index: -1;
+      font-size: size(195);
+      --color-key-number: var(--ds-color-light-gray);
+    }
+  }
+}

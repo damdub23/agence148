@@ -1,0 +1,117 @@
+{#
+Title: Slider
+Description: Permet d'insérer un diaporama de photo dans la page.
+Category: Contenu du flexible
+Icon: format-gallery
+Keywords: gosselink slider
+#}
+
+{% set slides = function('get_field', 'field_gk_slider_slider') %}
+{% set nbSlides = function('get_field', 'field_gk_slides_to_show') %}
+
+{# On ne peut pas afficher + de slides qu'il n'y en a ... #}
+{% if nbSlides >= slides|length %}
+    {% set nbSlides = slides|length - 1 %}
+{% endif %}
+
+{% set options = {
+    "prevNextButtons": false,
+    "pageDots": true,
+    "wrapAround": false,
+    "lazyLoad": true,
+    "cellAlign": left,
+    "contain": true,
+    "groupCells": true,
+    "setGallerySize": true,
+    "adaptiveHeight": true,
+} %}
+{% set optionsStyle2 = {
+    "prevNextButtons": true,
+    "pageDots": false,
+    "wrapAround": false,
+    "lazyLoad": true,
+    "cellAlign": left,
+    "contain": true,
+    "groupCells": true,
+    "setGallerySize": true,
+    "adaptiveHeight": true,
+} %}
+
+{% if block.className == '' %}
+    <div class="SliderBlock -nbSlides-{{ nbSlides }} {{ block.className }}" id='{{ block['id'] }}'
+         data-flickity='{{ options|json_encode }}'>
+        {% for item in slides %}
+            <div {% if nbSlides >= 1 %} class="SliderBlock-slide" {% endif %}>
+                <div class="Card -slider">
+                    <div class="Card-inner">
+                        {% if item.image %}
+                            <div class="Card-picture">
+                                <img src="{{ TimberImage(item.image).src }}" alt="{{ item.image.alt }}">
+                            </div>
+                        {% endif %}
+
+                        {% if item.title or item.description or item.link %}
+                            <div class="Card-description">
+                                <h2 class="Card-title">
+                                    {{ item.title }}
+                                </h2>
+                                {{ item.description|wpautop }}
+                                {% if item.link %}
+                                    <div class="link">
+                                        <a href="{{ item.link['url'] }}"
+                                           target="{{ item.link['target'] }}" class="button">
+                                            {% if item.link['title'] %}
+                                                {{ item.link['title'] }}
+                                            {% else %}
+                                                {{ __('En savoir +', 'gosselink') }}
+                                            {% endif %}
+                                        </a>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+{% if block.className == '-sliderStyle2' %}
+    <div class="SliderBlock -nbSlides-{{ nbSlides }} {{ block.className }}" id='{{ block['id'] }}'
+         data-flickity='{{ optionsStyle2|json_encode }}'>
+        {% for item in slides %}
+            <div {% if nbSlides >= 1 %} class="SliderBlock-slide" {% endif %}>
+                <div class="Card -slider">
+                    <div class="Card-inner">
+                        {% if item.title or item.description or item.link %}
+                            <div class="Card-description">
+                                <h2 class="Card-title">
+                                    {{ item.title }}
+                                </h2>
+                                {{ item.description|wpautop }}
+
+                                {% if item.link %}
+                                    <a href="{{ item.link['url'] }}"
+                                       target="{{ item.link['target'] }}" class="Card-button">
+                                        {% if item.link['title'] %}
+                                            {{ item.link['title'] }}
+                                        {% else %}
+                                            {{ __('En savoir +', 'gosselink') }}
+                                        {% endif %}
+                                    </a>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+
+                        {% if item.image %}
+                            <div class="Card-picture">
+                                <img src="{{ TimberImage(item.image).src }}" alt="{{ item.image.alt }}">
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}

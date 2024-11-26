@@ -1,0 +1,32 @@
+{
+    "name": "gosselink/wordpress-starter-theme",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Gosselink",
+            "email": "manager@gosselink.fr"
+        }
+    ],
+    "require": {
+        "timber/timber": "^1.15",
+        "tgmpa/tgm-plugin-activation": "2.6.1",
+        "mindkomm/timber-integration-woocommerce": "0.5.3.1",
+        "hellonico/timber-dump-extension": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Gosselink\\": "inc/Gosselink/",
+            "Gosselink\\Blocks\\": "blocks/"
+        }
+    },
+    "require-dev": {
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true
+        },
+        "platform": {
+            "php": "7.2.22"
+        }
+    }
+}

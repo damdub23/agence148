@@ -1,0 +1,47 @@
+/* Curseur personnalisé */
+.custom-cursor {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: size(64);
+  height: size(64);
+  background-color: $ds-color-secondary;
+  border-radius: 50%;
+  position: absolute;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0;
+  cursor: none; /* Masquer le curseur natif */
+  transition: opacity 0.3s, transform 0.3s; /* Transition pour l'effet d'apparition et de disparition */
+  transform: scale(0); /* Initialiser à une échelle de 0 */
+}
+
+.custom-cursor {
+  &:before,
+  &:after {
+    position: relative;
+    font-family: $font-icons;
+    font-weight: 900;
+    color: #fff;
+    font-size: $ds-font-size-50;
+  }
+
+  &:before {
+    content: "\f104";
+  }
+
+  &:after {
+    content: "\f105";
+  }
+
+  /* Effet d'apparition */
+  &.show {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Masquer le curseur natif dans la section */
+.flickity-slider {
+  cursor: none;
+}

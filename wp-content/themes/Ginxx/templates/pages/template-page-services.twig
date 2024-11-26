@@ -1,0 +1,42 @@
+{% extends one_page_section ? "one_page_section.twig" : "base.twig" %}
+
+{% block content %}
+    {% include "templates/partials/top-intro.twig" %}
+
+    {{ post.content }}
+
+    <div class="grid grid-services">
+        {% for services in service %}
+            <a href="{{ services.link }}" class="card-link">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="{{ services.thumbnail.src }}" alt=" {{ services.post_title }}">
+                    </div>
+                    <div class="card-inner">
+                        <div class="card-heading">
+                            <h3 class="card-title">
+                                {{ services.post_title }}
+                            </h3>
+                        </div>
+                        <div class="card-content">
+                            {{ services.post_excerpt }}
+                        </div>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+
+    <div class="contact-bottom">
+        <div class="container">
+            <h2 class="centered">
+                {{ __('Vous avez un projet ? Contactez-nous...', 'gosselink') }}
+            </h2>
+
+            <p class="centered">
+                {{ function('do_shortcode', options.contact_form) }}
+            </p>
+        </div>
+    </div>
+
+{% endblock %}

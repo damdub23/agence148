@@ -1,0 +1,15 @@
+@mixin Theme--dark {
+  background-color: var(--ds-color-secondary);
+}
+
+@mixin Theme--light {
+  background-color: var(--ds-color-white);
+}
+
+@mixin Teaser {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}

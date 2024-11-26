@@ -1,0 +1,259 @@
+.SiteFooter {
+  @extend %PageWrapper;
+
+  position: relative;
+  background: $ds-color-primary;
+  color: $ds-color-white;
+  margin-block-start: $ds-spacings--large;
+  padding-block: $ds-spacings--xxx-wide $ds-spacings--medium;
+
+  &-inner {
+    @extend %PageInner;
+
+    display: flex;
+    flex-flow: row wrap;
+    flex: 1 0 0;
+    gap: $ds-spacings--medium;
+
+    @include breakpoint('tablet') {
+      gap: $ds-spacings--x-large;
+    }
+
+    &.-columns {
+      display: grid;
+      grid-template-columns: 1fr;
+
+      @include breakpoint('tablet') {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    &.-copyright {
+      justify-content: space-between;
+
+      @include breakpoint('desktop', max) {
+        flex-direction: column;
+      }
+    }
+  }
+
+  h5 {
+    @extend %TextStyle-heading6;
+
+    color: $ds-color-white;
+  }
+
+  &-logo {
+    margin-block-end: $ds-spacings--medium;
+
+    img {
+      width: size(140);
+      height: auto;
+    }
+  }
+
+  &-address {
+    margin-block-end: $ds-spacings--medium;
+
+    ul {
+      li {
+        margin-bottom: $ds-spacings--standard;
+      }
+    }
+
+    a {
+      @extend %Button--secondary;
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  &-menus {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    a {
+      @include transition();
+
+      position: relative;
+      width: 100%;
+      padding: 0;
+      color: $ds-color-white;
+      text-decoration: none;
+
+      &:hover {
+        @include transition();
+
+        color: $ds-color-secondary;
+      }
+    }
+
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: $ds-spacings--standard;
+
+      @include breakpoint('desktop', max) {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  }
+
+  &-social {
+    ul {
+      @include networks;
+
+      li {
+        position: relative;
+      }
+    }
+
+    .-themeDark & {
+      li {
+        a {
+          &::before {
+            --color-social-network: var(--ds-color-white);
+          }
+        }
+
+        &:hover {
+          --bgcolor-social-network: var(--ds-color-white);
+
+          a {
+            &::before {
+              --color-social-network: var(--ds-color-secondary);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &-copyright {
+    position: relative;
+    padding-block: $ds-spacings--medium;
+
+    /*&:before {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: size(1);
+      background: $ds-color-white;
+      opacity: .1;
+    }*/
+
+    a {
+      @include transition();
+
+      color: $ds-color-white;
+
+      &:hover {
+        color: $ds-color-primary;
+      }
+    }
+  }
+
+  ul {
+    padding-left: 0;
+    list-style-type: none;
+
+    li {
+      list-style-type: none;
+
+      &:before {
+        display: none;
+      }
+    }
+  }
+}
+
+.scrolltop {
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  width: size(64);
+  height: size(64);
+  padding: $ds-spacings--standard;
+  right: size(15);
+  bottom: size(5);
+  border-radius: $ds-radius-round;
+  display: none;
+  opacity: 0;
+  z-index: 10;
+  transition: all 1s ease-in-out;
+  background-color: $ds-color-secondary;
+
+  &.is-visible {
+    @include transition();
+
+    display: flex;
+  }
+
+  &.fade-out {
+    opacity: 1;
+  }
+
+  &:after {
+    position: relative;
+    content: url($path-icon + 'icon-arrow.svg');
+    inset: 0;
+    width: $ds-spacings--medium;
+    height: $ds-spacings--medium;
+    transform: rotate(-90deg);
+  }
+}
+
+/* Popup */
+#popup {
+  @include transition();
+
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+
+  &:target, &.open {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    overflow-y: scroll;
+    height: 100%;
+  }
+
+  & > div.popup-content {
+    width: 100%;
+    padding: $ds-spacings--x-large $ds-spacings--medium;
+    background: $ds-color-white;
+  }
+
+  .close-button {
+    position: absolute;
+    z-index: 10;
+    right: $ds-spacings--semi;
+    top: $ds-spacings--semi;
+    width: auto;
+    background: $ds-color-black;
+    color: $ds-color-white;
+    text-align: center;
+    padding: $ds-spacings--semi;
+    cursor: pointer;
+    display: block;
+    border: none;
+  }
+}
+
+//body {
+//  &:not(.home) {
+//    .SiteFooter {
+//      margin-top: size(48);
+//    }
+//  }
+//}

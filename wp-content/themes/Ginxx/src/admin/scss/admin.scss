@@ -1,0 +1,48 @@
+@import '../../scss/abstracts/variables';
+
+$base-color: #23282d;
+$text-color: #EEE;
+$icon-color: #AAA;
+$highlight-color: $ds-color-primary;
+$notification-color: darken($highlight-color, 10%);
+
+@import 'admin/admin';
+
+/* LOGIN */
+body{
+  &.login{
+
+    h1{
+      a{
+        background-image: url('../../img/logo-client.svg');
+        background-size: contain;
+        width: 320px;
+        height: 117px;
+      }
+    }
+
+    #login_error,
+    .message,
+    .success {
+      border-left: 4px solid $highlight-color;
+    }
+
+    #backtoblog a:hover,
+    #nav a:hover,
+    h1 a:hover {
+      color: $highlight-color;
+    }
+  }
+}
+
+/* WRAPPER PREVIEW */
+.gk-wrapper{
+  border: 3px solid $highlight-color;
+  border-radius: 1rem;
+  padding:2rem;
+
+  &.block-disabled {
+    border: 3px solid darken($highlight-color, 10%);
+    background: #c5c5c5;
+  }
+}

@@ -1,0 +1,37 @@
+.grid-courses {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: size(16);
+  margin-bottom: $ds-spacings--medium;
+
+  @include breakpoint('phone-large') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.SingleCourses {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: size(32);
+
+  @include breakpoint('tablet') {
+    grid-template-columns: .7fr .3fr;
+  }
+
+  &-detail {
+    > div {
+      margin-bottom: $ds-spacings--medium;
+    }
+  }
+
+  &-moreInfos {
+
+    h3 {
+      margin-bottom: $ds-spacings--standard;
+    }
+
+    .desc {
+      margin-bottom: $ds-spacings--medium;
+    }
+  }
+}

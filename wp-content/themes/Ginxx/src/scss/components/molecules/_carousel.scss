@@ -1,0 +1,147 @@
+:root {
+  --bg-color-dots: var(--ds-color-black);
+  --bg-color-dots-selected: var(--ds-color-secondary);
+  --bg-color-button: transparent;
+  --bg-color-button-hover: var(--ds-color-secondary);
+  --color-arrow-button: var(--ds-color-secondary);
+  --color-arrow-button-hover: var(--ds-color-white);
+}
+
+.flickity-page-dots {
+  position: relative;
+  bottom: unset;
+  margin: unset;
+  padding: unset;
+  line-height: normal;
+
+  .dot {
+    @include transition;
+
+    display: inline-block;
+    width: size(12);
+    height: size(12);
+    margin: 0 $ds-spacings--xx-small;
+    border-radius: 50%;
+    opacity: 1;
+    cursor: pointer;
+    background-color: var(--bg-color-dots);
+    vertical-align: middle;
+
+    &.is-selected {
+      @include transition;
+
+      background-color: var(--bg-color-dots-selected);
+      width: size(8);
+      height: size(8);
+    }
+  }
+}
+
+.flickity-prev-next-button {
+  @include transition;
+
+  position: absolute;
+  z-index: 10;
+  border-radius: 0;
+  width: size(32);
+  height: size(32);
+  background-color: var(--bg-color-button);
+
+  .flickity-button-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: 40%;
+    fill: var(--color-arrow-button);
+  }
+
+  &:before {
+    position: absolute;
+    content: url('$path-icon/arrow.svg');
+    width: size(24);
+    top: 50%;
+  }
+
+  &.previous {
+    left: 0;
+    right: size(64);
+
+    &:before {
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(180deg);
+    }
+  }
+
+  &.next {
+    right: 0;
+
+    &:before {
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+  }
+
+  &:hover {
+    @include transition;
+
+    background-color: var(--bg-color-button-hover);
+
+    .flickity-button-icon {
+      fill: var(--color-arrow-button-hover);
+    }
+  }
+}
+
+.flickity-viewport {
+  margin-bottom: $ds-spacings--xxx-large;
+}
+
+.-themeDark {
+  .flickity-page-dots {
+    .dot {
+      --bg-color-dots: var(--ds-color-white);
+
+      &.is-selected {
+        --bg-color-dots-selected: var(--ds-color-black);
+      }
+    }
+  }
+
+  .flickity-prev-next-button {
+    background-color: var(--bg-color-button);
+
+    .flickity-button-icon {
+      fill: var(--ds-color-white);
+    }
+
+    &:hover {
+      background-color: var(--ds-color-white);
+
+      .flickity-button-icon {
+        fill: var(--ds-color-secondary);
+      }
+    }
+  }
+}
+
+.-sliderStyle2 {
+  .flickity-prev-next-button {
+    inset: 0;
+
+    &.previous,
+    &.next {
+      top: unset;
+      bottom: 0;
+    }
+
+    &.previous {
+      left: size(16);
+    }
+
+    &.next {
+      left: size(64);
+    }
+  }
+}

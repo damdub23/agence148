@@ -1,0 +1,155 @@
+{#
+Title: Mise en avant
+Description: Permet de mettre en avant du contenu sous forme de colonne.
+Category: Contenu du flexible
+Icon: excerpt-view
+Keywords: gosselink Mis en avant et prommotion
+#}
+
+{% set flexi_special = function('get_field', 'promote_block') %}
+{% set nbSlides = function('get_field', 'field_gk_column_to_show') %}
+{% set typeRender = function('get_field', 'field_column_slider_or_grid') %}
+{% set css_class = function('get_field', 'css_class') %}
+
+{% if nbSlides >= flexi_special|length %}
+    {% set nbSlides = flexi_special|length %}
+{% endif %}
+
+{% set options = {
+    "prevNextButtons": true,
+    "pageDots": true,
+    "wrapAround": false,
+    "lazyLoad": true,
+    "cellAlign": 'center',
+    "contain": true,
+    "freeScroll": true,
+    "groupCells": true,
+} %}
+
+
+{% if css_class == '-teamStyle1' %}
+    <div class="PromoteBlock {{ css_class }} {% if typeRender == "true" %} -nbSlides-{{ nbSlides }}{% endif %}"
+            {% if typeRender == "true" %} id='{{ block['id'] }}'
+        data-flickity='{{ options|json_encode }}' {% endif %}>
+        {% if typeRender != "true" %}
+        <div class="PromoteBlock-inner">{% endif %}
+            {% for columns in flexi_special %}
+                {% if typeRender == "true" %}<div class="PromoteBlock-slide">{% endif %}
+                <a class="Card -team js-btn-modal" data-id="{{ columns.title }}">
+                    <div class="Card-inner">
+                        <div class="Card-picture">
+                            <img src="{{ TimberImage(columns.image).src }}" alt="{{ columns.title }}">
+                        </div>
+                        <div class="Card-title">
+                            <h4>
+                                {{ columns.title }}
+                            </h4>
+                            <span class="la-plus-circle"></span>
+                        </div>
+                    </div>
+                </a>
+                <div class="modal js-modal" data-id="modal{{ columns.title }}">
+                    <button class="modal-close-btn js-close-btn">
+                        <i class="las la-times"></i>
+                    </button>
+                    <div class="modal-inner">
+                        <div>
+                            <h3>{{ columns.title }} </h3>
+                            {{ columns.description }}
+                        </div>
+                        <div>
+                            <img src="{{ TimberImage(columns.image).src }}" alt="{{ columns.title }}">
+                        </div>
+                    </div>
+                </div>
+                {% if typeRender == "true" %}</div>{% endif %}
+            {% endfor %}
+            {% if typeRender != "true" %}</div>{% endif %}
+    </div>
+{% endif %}
+
+{% if css_class == '-teamStyle2' %}
+    <div class="PromoteBlock {{ css_class }} {% if typeRender == "true" %} -nbSlides-{{ nbSlides }}{% endif %}"
+            {% if typeRender == "true" %} id='{{ block['id'] }}'
+        data-flickity='{{ options|json_encode }}' {% endif %}>
+        {% if typeRender != "true" %}
+        <div class="PromoteBlock-inner">{% endif %}
+            {% for columns in flexi_special %}
+                {% if typeRender == "true" %}<div class="PromoteBlock-slide">{% endif %}
+                <a class="Card -team" href="{{ columns.link }}">
+                    <div class="Card-inner">
+                        <div class="Card-picture">
+                            <img src="{{ TimberImage(columns.image).src }}" alt="{{ columns.title }}">
+                        </div>
+                        <div class="Card-title">
+                            {{ columns.title }}
+                        </div>
+                        <div class="Card-desc">
+                            {{ columns.description }}
+                        </div>
+                        <div class="Card-actions">
+                            <span>
+                             {{ __('En savoir plus', 'gosselink') }}
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                {% if typeRender == "true" %}</div>{% endif %}
+
+            {% endfor %}
+            {% if typeRender != "true" %}</div>{% endif %}
+    </div>
+{% endif %}
+
+{% if css_class == '-teamStyle3' %}
+    <div class="PromoteBlock {{ css_class }} {% if typeRender == "true" %} -nbSlides-{{ nbSlides }}{% endif %}"
+            {% if typeRender == "true" %} id='{{ block['id'] }}'
+        data-flickity='{{ options|json_encode }}' {% endif %}>
+        {% if typeRender != "true" %}
+        <div class="PromoteBlock-inner">{% endif %}
+            {% for columns in flexi_special %}
+                {% if typeRender == "true" %}<div class="PromoteBlock-slide">{% endif %}
+                <div class="Card -team">
+                <div class="Card-inner">
+                    <div class="Card-picture">
+                        <img src="{{ TimberImage(columns.image).src }}" alt="{{ columns.title }}">
+                    </div>
+                    <div class="Card-content">
+                        <h4 class="Card-title">
+                            {{ columns.title }}
+                        </h4>
+                    </div>
+                </div>
+                {% if typeRender == "true" %}</div>{% endif %}
+                </div>
+            {% endfor %}
+            {% if typeRender != "true" %}</div>{% endif %}
+    </div>
+{% endif %}
+
+{# Slider version #}
+{% if css_class == '-teamStyle4' %}
+    <div class="PromoteBlock {{ css_class }} {% if typeRender == "true" %} -nbSlides-{{ nbSlides }}{% endif %}"
+            {% if typeRender == "true" %} id='{{ block['id'] }}'
+        data-flickity='{{ options|json_encode }}' {% endif %}>
+        {% if typeRender != "true" %}
+        <div class="PromoteBlock-inner">{% endif %}
+            {% for columns in flexi_special %}
+                {% if typeRender == "true" %}<div class="PromoteBlock-slide">{% endif %}
+                <div class="Card -team">
+                <div class="Card-inner">
+                    <div class="Card-picture">
+                        <img src="{{ TimberImage(columns.image).src }}" alt="{{ columns.title }}">
+                    </div>
+                    <div class="Card-content">
+                        <h4 class="Card-title">
+                            {{ columns.title }}
+                        </h4>
+                    </div>
+                </div>
+                {% if typeRender == "true" %}</div>{% endif %}
+                </div>
+            {% endfor %}
+            {% if typeRender != "true" %}</div>{% endif %}
+    </div>
+{% endif %}

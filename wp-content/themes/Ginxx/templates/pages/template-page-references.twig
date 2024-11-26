@@ -1,0 +1,64 @@
+{% extends one_page_section ? "one_page_section.twig" : "base.twig" %}
+
+{% block content %}
+    {% include "templates/partials/top-intro.twig" %}
+
+    <div class="PageWrapper">
+        <div class="PageInner">
+
+
+            {#    <div class="grid-references grid-references--overlay"> #}
+            {#        {% for item in reference %} #}
+            {#            <a href="{{ item.link }}"> #}
+            {#                <div class="card card__portfolio"> #}
+            {#                    {% if item.thumbnail %} #}
+            {#                        <img src="{{ item.thumbnail }}" alt="{{ item.title }}"> #}
+            {#                    {% else %} #}
+            {#                        <img src="{{ assets }}/images/no-picture.jpg " #}
+            {#                             alt="{{ __('Image indisponible', 'gosselink') }}"> #}
+            {#                    {% endif %} #}
+            {#                    <div class="card-inner"> #}
+            {#                        <div class="card-title"> #}
+            {#                            <h3>{{ item.client }}</h3> #}
+            {#                            {% set cats = item.terms( {query:{taxonomy:'cat-reference'}} ) %} #}
+            {#                            {% for cat in cats %} #}
+            {#                                <span> #}
+            {#                                    {{ cat.name }} #}
+            {#                                   </span> #}
+            {#                            {% endfor %} #}
+            {#                        </div> #}
+            {#                    </div> #}
+            {#                </div> #}
+            {#            </a> #}
+            {#        {% endfor %} #}
+            {#    </div> #}
+
+            <div class="ReferencesPage -metro">
+                {% for item in reference %}
+                    <div class="Card">
+                        <a href="{{ item.link }}">
+                            {% if item.thumbnail %}
+                                <img src="{{ item.thumbnail }}" alt="{{ item.title }}">
+                            {% else %}
+                                <img src="{{ assets }}/images/no-picture.jpg "
+                                     alt="{{ __('Image indisponible', 'gosselink') }}">
+                            {% endif %}
+                            <div class="Card-inner">
+                                <div class="Card-title">
+                                    {% set cats = item.terms( {query:{taxonomy:'cat-reference'}} ) %}
+                                    {% for cat in cats %}
+                                        <span>
+                                        {{ cat.name }}
+                                        </span>
+                                    {% endfor %}
+                                    <h3>{{ item.client }}</h3>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

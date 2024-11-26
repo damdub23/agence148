@@ -1,0 +1,125 @@
+.homepageSlider {
+  position: relative;
+  background-color: $ds-color-secondary;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto size(75);
+
+  --image-cover-aspect-ratio: 343/714;
+
+  &-title {
+    color: $ds-color-white;
+    margin-bottom: size(20);
+  }
+
+  &-subtitle {
+    color: $ds-color-white;
+    margin-bottom: size(20);
+  }
+
+  &-inner {
+    @extend %PageInner;
+    display: grid;
+    isolation: isolate;
+    grid-template-columns: repeat(12, 1fr);
+    gap: size(32);
+    max-width: $width-container;
+    position: relative;
+    margin-inline: auto;
+    min-height: 75vh;
+  }
+
+  &__bottom {
+    position: relative;
+    display: flex;
+    background-image: url($path-img + 'background.jpg');
+    background-position: bottom center;
+    background-size: cover;
+  }
+
+  &-left {
+    grid-column: 1/8;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  &-desc {
+    color: $ds-color-white;
+  }
+
+  &-leftContent {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+  }
+
+  &-right {
+    grid-column: 8/13;
+    position: relative;
+
+    img {
+      @include object-fit(cover, center);
+      width: 100%;
+      height: 100%;
+    }
+
+    @include breakpoint('tablet', max) {
+      display: none;
+    }
+  }
+}
+/*
+.testimonials-slider {
+  padding-block-end: size(48);
+
+  .card {
+
+    &--testimonials {
+      position: relative;
+      width: clamp(300px, 33%, 50%);
+      margin-inline-end: size(16);
+
+      h3 {
+        span {
+          display: block;
+          font-weight: 200;
+          font-size: size(12);
+        }
+      }
+    }
+
+    &-img {
+      width: size(90);
+      height: size(90);
+      overflow: hidden;
+      position: relative;
+
+      &:before {
+        position: absolute;
+        content: '';
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        border-width: 8px;
+        border-style: inset;
+        border-color: rgba(255, 255, 255, .15);
+        inset: 0;
+        border-radius: 50%;
+      }
+
+      img {
+        position: absolute;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        filter: grayscale(50%);
+      }
+    }
+  }
+}
+*/

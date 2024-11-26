@@ -1,0 +1,176 @@
+.HomeSlider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: $ds-color-white;
+  margin-bottom: $ds-spacings--xxx-large;
+
+  &-content {
+    position: relative;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    min-height: size(450);
+    padding: 0;
+    justify-content: flex-end;
+    background-color: $ds-color-primary;
+
+    @include breakpoint('desktop') {
+      //min-height: calc(100vh - #{$header-height / 0.5});
+      min-height: size(450);
+      background-color: $ds-color-white;
+      padding: 0;
+    }
+  }
+
+  &-desc {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    z-index: 2;
+    padding-right: 10%;
+    padding-left: size(24);
+    top: 50%;
+    left: 0;
+    transform: translate(0%, -50%);
+
+    @include breakpoint('desktop') {
+      width: 75%;
+    }
+  }
+
+  &-details {
+    color: $ds-color-white;
+
+    @include breakpoint('desktop') {
+      color: $ds-color-tertiary;
+    }
+  }
+
+  h1 {
+    line-height: 80%;
+    color: $ds-color-primary;
+  }
+
+  &-details {
+    position: relative;
+    font-size: size(16);
+  }
+
+  &-contentDesc {
+    display: inline-block;
+    margin-bottom: $ds-spacings--standard;
+  }
+
+  &-actions {
+    margin-top: 1rem;
+  }
+
+  &-picture {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+
+    /*@include breakpoint('desktop') {
+      width: 50%;
+    }*/
+
+    &:after {
+      @include breakpoint-between('mobile', 'desktop') {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: .35;
+        background-color: $ds-color-black;
+      }
+    }
+
+    @media screen and (max-width: 64em) {
+      position: absolute;
+    }
+
+    &.bottom {
+      align-items: flex-end;
+    }
+
+    &.top {
+      align-items: flex-start;
+    }
+
+    img {
+      top: 0;
+      z-index: 1;
+      @include object-fit(cover, center);
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+      display: flex;
+    }
+
+    &.contain {
+      img {
+        position: relative;
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  .button {
+    @extend %Button--secondary;
+  }
+
+  //// Slider video
+  .vimeo-wrapper {
+    //position: fixed;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .vimeo-wrapper iframe {
+    width: 100vw;
+    height: 56.25vw; /* Given a 16:9 aspect ratio, 9/16*100 = 56.25 */
+    min-height: 100vh;
+    min-width: 177.77vh; /* Given a 16:9 aspect ratio, 16/9*100 = 177.77 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .vimeo-wrapper {
+    .img-content {
+      position: relative;
+      z-index: 5;
+      margin-bottom: 30px;
+      background-size: cover;
+      background-position: center;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .flickity-viewport {
+    margin-bottom: unset;
+  }
+}

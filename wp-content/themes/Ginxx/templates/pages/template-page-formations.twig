@@ -1,0 +1,36 @@
+{% extends one_page_section ? "one_page_section.twig" : "base.twig" %}
+
+
+{% block content %}
+
+    {% include "templates/partials/top-intro.twig" %}
+
+    <div class="container">
+        {{ post.content }}
+        <div class="grid-courses">
+            {% for item in formation %}
+                <a class="Card -training" href="{{ item.link }}">
+                    <div class="Card-inner">
+                        <div class="Card-picture">
+                            {% if item.thumbnail %}
+                                <img src="{{ item.thumbnail }}" alt="{{ item.title }}">
+                            {% else %}
+                                <img src="{{ assets }}/images/no-picture.jpg "
+                                     alt="{{ __('Image indisponible', 'gosselink') }}">
+                            {% endif %}
+                        </div>
+                        <div class="Card-content">
+                            <h3 class="Card-title">{{ item.title }}</h3>
+                            <div class="Card-actions">
+                                <span>{{ __('En savoir +', 'gosselink') }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+
+    {% include 'partials/bottom-blocks.twig' %}
+
+{% endblock %}

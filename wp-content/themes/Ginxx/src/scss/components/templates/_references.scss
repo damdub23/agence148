@@ -1,0 +1,389 @@
+.ReferencesPage {
+
+  &.-metro {
+    width: 100%;
+    gap: 0;
+
+    @include breakpoint('tablet') {
+      column-count: 2;
+    }
+
+    @include breakpoint('desktop') {
+      column-count: 3;
+    }
+
+    //@include breakpoint('desktop-large') {
+    //  column-count: 4;
+    //}
+
+    > div {
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      height: 100%;
+      display: flex;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      margin: 0;
+      padding: 0;
+      opacity: 1;
+    }
+
+    .Card {
+      position: relative;
+      border-radius: 0;
+
+      img {
+        transform: scale(1);
+        @include transition();
+      }
+
+      &-inner {
+        position: absolute;
+        z-index: 3;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include transition();
+      }
+
+      &-title {
+        width: 100%;
+        text-align: center;
+        opacity: 0;
+
+        h3 {
+          @extend %TextStyle-heading6;
+        }
+
+        h3, span {
+          position: relative;
+          color: $ds-color-white;
+          @include transition();
+          margin-bottom: 0;
+        }
+
+        span {
+          position: relative;
+          font-size: size(12);
+          padding: 0 size(4);
+
+          &:after {
+            position: absolute;
+            content: ',';
+            left: 0;
+          }
+
+          &:first-child {
+            padding: 0;
+
+            &:after {
+              display: none;
+            }
+          }
+        }
+      }
+
+      &:before {
+        position: absolute;
+        content: '';
+        background: $ds-color-black;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        @include transition();
+      }
+
+      &:hover {
+        cursor: pointer;
+
+        .Card {
+          &-inner {
+            opacity: 1;
+            @include transition();
+          }
+
+          &-title {
+            opacity: 1;
+
+            h3 {
+              top: 0;
+              @include transition();
+            }
+
+            span {
+              bottom: 0;
+              @include transition();
+            }
+          }
+        }
+
+        img {
+          opacity: .1;
+          transform: scale(1.1);
+          @include transition();
+        }
+      }
+    }
+
+    //  //&--overlay {
+    //  //  display: grid;
+    //  //  grid-template-columns: 1fr;
+    //  //
+    //  //  @include breakpoint('tablet') {
+    //  //    grid-template-columns: repeat(2, 1fr);
+    //  //  }
+    //  //
+    //  //  @include breakpoint('desktop') {
+    //  //    grid-template-columns: repeat(3, 1fr);
+    //  //  }
+    //  //  @include breakpoint('desktop-large') {
+    //  //    grid-template-columns: repeat(4, 1fr);
+    //  //  }
+    //  //}
+    //  //
+    //  //.card {
+    //  //  position: relative;
+    //  //  height: 400px;
+    //  //  margin-bottom: unset;
+    //  //
+    //  //  img {
+    //  //    transform: scale(1);
+    //  //    @include transition();
+    //  //  }
+    //  //
+    //  //  &-inner {
+    //  //    position: absolute;
+    //  //    z-index: 3;
+    //  //    width: 100%;
+    //  //    height: 100%;
+    //  //    display: flex;
+    //  //    opacity: 0;
+    //  //    justify-content: center;
+    //  //    align-items: center;
+    //  //    @include transition();
+    //  //  }
+    //  //
+    //  //  &-title {
+    //  //    width: 100%;
+    //  //    text-align: center;
+    //  //
+    //  //    h3, span {
+    //  //      position: relative;
+    //  //      color: $ds-color-white;
+    //  //      @include transition();
+    //  //      margin-bottom: 0;
+    //  //    }
+    //  //
+    //  //    h3 {
+    //  //      top: -10px;
+    //  //    }
+    //  //
+    //  //    span {
+    //  //      bottom: -10px;
+    //  //    }
+    //  //  }
+    //  //
+    //  //  &:before {
+    //  //    position: absolute;
+    //  //    content: '';
+    //  //    background: $ds-color-black;
+    //  //    width: 100%;
+    //  //    height: 100%;
+    //  //    top: 0;
+    //  //    right: 0;
+    //  //    bottom: 0;
+    //  //    left: 0;
+    //  //    z-index: -1;
+    //  //    @include transition();
+    //  //  }
+    //  //
+    //  //  &:hover {
+    //  //    cursor: pointer;
+    //  //
+    //  //    .card {
+    //  //
+    //  //      &-inner {
+    //  //        opacity: 1;
+    //  //        @include transition();
+    //  //      }
+    //  //
+    //  //      &-title {
+    //  //        h3 {
+    //  //          top: 0;
+    //  //          @include transition();
+    //  //        }
+    //  //
+    //  //        span {
+    //  //          bottom: 0;
+    //  //          @include transition();
+    //  //        }
+    //  //      }
+    //  //    }
+    //  //
+    //  //    img {
+    //  //      opacity: .1;
+    //  //      transform: scale(1.1);
+    //  //      @include transition();
+    //  //    }
+    //  //  }
+    //  //}
+    //}
+  }
+
+
+  // Overlay Grid
+
+  &--overlay {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @include breakpoint('tablet') {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include breakpoint('desktop') {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @include breakpoint('desktop-large') {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  //.card {
+  //  position: relative;
+  //  height: 400px;
+  //  margin-bottom: unset;
+  //
+  //  img {
+  //    position: absolute;
+  //    width: 100%;
+  //    height: 100%;
+  //    object-fit: cover;
+  //    transform: scale(1);
+  //    @include transition();
+  //  }
+  //
+  //  &-inner {
+  //    position: absolute;
+  //    z-index: 3;
+  //    width: 100%;
+  //    height: 100%;
+  //    display: flex;
+  //    opacity: 0;
+  //    justify-content: center;
+  //    align-items: center;
+  //    @include transition();
+  //  }
+  //
+  //  &-title {
+  //    width: 100%;
+  //    text-align: center;
+  //
+  //    h3, span {
+  //      position: relative;
+  //      color: $ds-color-white;
+  //      @include transition();
+  //      margin-bottom: 0;
+  //    }
+  //
+  //    h3 {
+  //      top: -10px;
+  //    }
+  //
+  //    span {
+  //      bottom: -10px;
+  //    }
+  //  }
+  //
+  //  &:before {
+  //    position: absolute;
+  //    content: '';
+  //    background: $ds-color-black;
+  //    width: 100%;
+  //    height: 100%;
+  //    top: 0;
+  //    right: 0;
+  //    bottom: 0;
+  //    left: 0;
+  //    z-index: -1;
+  //    @include transition();
+  //  }
+  //
+  //  &:hover {
+  //    cursor: pointer;
+  //
+  //    .card {
+  //
+  //      &-inner {
+  //        opacity: 1;
+  //        @include transition();
+  //      }
+  //
+  //      &-title {
+  //        h3 {
+  //          top: 0;
+  //          @include transition();
+  //        }
+  //
+  //        span {
+  //          bottom: 0;
+  //          @include transition();
+  //        }
+  //      }
+  //    }
+  //
+  //    img {
+  //      opacity: .1;
+  //      transform: scale(1.1);
+  //      @include transition();
+  //    }
+  //  }
+  //}
+}
+
+// Layout single page
+.singleReference {
+  @extend %PageWrapper;
+
+  &-inner {
+    @extend %PageInner;
+
+    @include breakpoint('desktop') {
+      display: grid;
+      gap: $ds-spacings--medium;
+      grid-template-columns: 25% 75%;
+      grid-template-areas:
+          "aside content";
+    }
+  }
+
+  &-content {
+    grid-area: content;
+  }
+
+  &-aside {
+    grid-area: aside;
+
+    ul {
+      margin: 0;
+      padding-left: 0;
+    }
+  }
+}
+
+
+
+
+

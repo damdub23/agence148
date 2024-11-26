@@ -1,0 +1,53 @@
+{% extends one_page_section ? "one_page_section.twig" : "base.twig" %}
+
+{% block content %}
+
+    {% include 'partials/top-intro.twig' %}
+
+    <section class="ContactPage">
+        <div class="ContactPage-inner">
+            <div class="form">
+                {% if options.contact_form %}
+                    {{ function('do_shortcode', options.contact_form) }}
+                {% endif %}
+            </div>
+            <div class="ContactPage-aside">
+                <h3>Nos coordonnées</h3>
+                <ul>
+                    {% if options.client_address %}
+                        <li>
+                            {{ options.client_address|wpautop }}
+                        </li>
+                    {% endif %}
+                    {% if options.phone %}
+                        <li>
+                            {{ options.phone }}
+                        </li>
+                    {% endif %}
+                    {% if options.fax %}
+                        <li>
+                            {{ options.fax }}
+                        </li>
+                    {% endif %}
+                    {% if options.mail %}
+                        <li>
+                            <a href="mailto:{{ options.mail }}">
+                                Nous contacter par mail
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+
+                {% for item in options.complementary_info %}
+                    <ul>
+                        <li>
+                            <h3>{{ item.title }}</h3>
+                        </li>
+                        <li> {{ item.detail_info }}</li>
+                    </ul>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+{% endblock %}

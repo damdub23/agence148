@@ -1,0 +1,49 @@
+@use "sass:math";
+
+:root {
+  --page-inner-padding-inline: #{$ds-spacings--medium};
+
+  @include breakpoint('desktop') {
+    --page-inner-padding-inline: #{$ds-spacings--large};
+  }
+}
+
+%PageWrapper {
+  margin-inline: auto;
+  width: calc(min(100%, #{$ds-max-width-page-wrapper}));
+}
+
+%PageInner {
+  margin-inline: auto;
+  width: calc(min(calc(100% - 2 * var(--page-inner-padding-inline)), #{$ds-max-width-page-inner}));
+  //padding-inline: var(--page-inner-padding-inline);
+
+  .PageInner,
+  .Page-content & { /// secure for nested .PageInner
+    width: 100%;
+  }
+}
+
+@mixin PageInner { // Mixin create specifically for Carousel elements
+  margin-inline: auto;
+  width: calc(min(calc(100% - 2 * var(--page-inner-padding-inline)), #{$ds-max-width-page-inner}));
+
+  .PageInner,
+  .Page-content & { /// secure for nested .PageInner
+    width: 100%;
+  }
+}
+
+%Theme {
+  &--dark {
+    @include Theme--dark;
+  }
+
+  &--light {
+    @include Theme--light;
+  }
+}
+
+%Teaser {
+  @include Teaser;
+}

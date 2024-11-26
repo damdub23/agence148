@@ -1,0 +1,26 @@
+{% extends one_page_section ? "one_page_section.twig" : "base.twig" %}
+
+{% block content %}
+
+	<section class="content-wrapper">
+
+		<div class="grid-container">
+
+			{% if one_page_section %}
+				<span class="h1">{{post.post_title}}</span>
+			{% else %}
+				<h1 class="h1">{{post.post_title}}</h1>
+			{% endif %}
+
+			<div class="page-content">
+				{{function('do_shortcode', post.post_content)}}
+
+				{% include "partials/sitemap-menu.twig" with {'menu': sitemap_menu.get_items} %}
+			</div>
+
+		</div>
+		<script type='text/javascript' src='https://www.planyo.com/as.js'></script>
+		<iframe id='calp_594309512' style='width:940px;height:279px;' class='calprev_iframe caltype_1' scrolling='no' frameborder='0' src='https://www.planyo.com/embed-calendar.php?calendar=68078&morning_icons=1&feedback_url=https%3A%2F%2Fnauticlib.live-website.com%2Freservation&custom-language=FR&ifr=calp_594309512&show_prep_time=1'></iframe>
+	</section>
+
+{% endblock %}

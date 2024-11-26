@@ -1,0 +1,109 @@
+:root {
+  --color-social-network: var(--ds-color-black);
+  --bgcolor-social-network: transparent;
+}
+
+@mixin networks {
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  width: max-content;
+  margin: 0;
+  padding: 0;
+  column-gap: $ds-spacings--small;
+
+  li {
+    @include transition;
+
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    width: size(32);
+    height: size(32);
+    background: var(--bgcolor-social-network);
+
+    &::before {
+      display: none;
+    }
+
+    a {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      text-decoration: none;
+
+      &::before {
+        @include transition;
+
+        position: relative;
+        content: '';
+        font-family: $font-icons-brands;
+        font-weight: 900;
+        font-size: size(16);
+        color: var(--color-social-network);
+      }
+
+      &.facebook {
+        &::before {
+          content: '\f39e';
+        }
+      }
+
+      &.x {
+        &::before {
+          content: '\f099';
+        }
+      }
+
+      &.youtube {
+        &::before {
+          content: '\f167';
+        }
+      }
+
+      &.instagram {
+        &::before {
+          content: '\f16d';
+        }
+      }
+
+      &.linkedin {
+        &::before {
+          content: '\f0e1';
+        }
+      }
+
+      &.tripadvisor {
+        &::before {
+          content: '\f262';
+        }
+      }
+
+      &.tiktok {
+        &::before {
+          content: '\f262';
+        }
+      }
+    }
+
+    &:hover {
+      background-color: var(--bgcolor-social-network);
+
+      a {
+        &::before {
+          --color-social-network: var(--ds-color-secondary);
+        }
+      }
+    }
+  }
+}

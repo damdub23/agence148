@@ -1,0 +1,67 @@
+:root {
+  --sliderblock-slider-margin-inline: #{$ds-spacings--small};
+}
+
+.SliderBlock {
+
+  &-slide {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    min-height: 100%;
+    margin-right: $ds-spacings--standard;
+    padding: 0;
+    background: transparent;
+  }
+
+  &.-nbSlides-1 {
+    .SliderBlock-slide {
+      width: 100%;
+    }
+  }
+
+  &.-nbSlides-2 {
+    .SliderBlock-slide {
+      @include breakpoint('tablet') {
+        width: calc(50% - var(--sliderblock-slider-margin-inline));
+      }
+    }
+  }
+
+  &.-nbSlides-3 {
+    .SliderBlock-slide {
+      @include breakpoint('tablet') {
+        width: calc(50% - var(--sliderblock-slider-margin-inline));
+      }
+
+      @include breakpoint('desktop') {
+        width: calc(33% - var(--sliderblock-slider-margin-inline));
+      }
+    }
+  }
+
+  &.-nbSlides-4 {
+    .SliderBlock-slide {
+      @include breakpoint('tablet') {
+        width: calc(50% - var(--sliderblock-slider-margin-inline));
+      }
+
+      @include breakpoint('desktop') {
+        width: calc(33% - var(--sliderblock-slider-margin-inline));
+      }
+
+      @include breakpoint('desktop-large') {
+        width: calc(25% - var(--sliderblock-slider-margin-inline));
+      }
+    }
+  }
+
+  //@for $i from 1 through 8 {
+  //  &.nb-slides-#{$i} {
+  //    .slide {
+  //      width: 100% / $i;
+  //    }
+  //  }
+  //}
+}

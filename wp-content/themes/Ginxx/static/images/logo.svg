@@ -1,0 +1,14 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 99 122" style="enable-background:new 0 0 99 122;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#3845CF;stroke-width:3;}
+	.st1{fill:none;stroke:#FAA93F;stroke-width:3;}
+</style>
+<g>
+	<ellipse transform="matrix(0.7071 -0.7071 0.7071 0.7071 -36.808 56.2635)" class="st0" cx="49.5" cy="72.6" rx="46.8" ry="46.8"/>
+	<circle class="st0" cx="49.5" cy="72.6" r="30.3"/>
+	<circle class="st0" cx="41.2" cy="75.9" r="38.6"/>
+	<path class="st0" d="M78.8,64.8C67.9,25.7,35.2,28,35.2,28"/>
+	<circle class="st1" cx="65.3" cy="10.9" r="8.3"/>
+</g>
+</svg>

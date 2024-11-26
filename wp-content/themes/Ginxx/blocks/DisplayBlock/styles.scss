@@ -1,0 +1,88 @@
+:root {
+  --PromoteBlock-slider-margin-inline: #{$ds-spacings--small};
+}
+
+.PromoteBlock {
+  @extend %PageWrapper;
+
+  position: relative;
+
+  &-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $ds-spacings--standard;
+
+    @include breakpoint('tablet') {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+  }
+
+  &-slide {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: size(450);
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    margin-inline: var(--PromoteBlock-slider-margin-inline);
+    padding: 0;
+
+    .Card {
+      width: 100%;
+    }
+
+    .modal {
+      position: fixed;
+    }
+  }
+
+  .flickity-slider {
+    &:has(.modal.active) {
+      transform: inherit !important;
+    }
+  }
+
+  &.-nbSlides-1 {
+    .PromoteBlock-slide {
+      width: 100%;
+    }
+  }
+
+  &.-nbSlides-2 {
+    .PromoteBlock-slide {
+      @include breakpoint('tablet') {
+        width: calc(50% - var(--PromoteBlock-slider-margin-inline));
+      }
+    }
+  }
+
+  &.-nbSlides-3 {
+    .PromoteBlock-slide {
+      @include breakpoint('tablet') {
+        width: calc(50% - var(--PromoteBlock-slider-margin-inline));
+      }
+
+      @include breakpoint('desktop') {
+        width: calc(33% - var(--PromoteBlock-slider-margin-inline));
+      }
+    }
+  }
+
+  &.-nbSlides-4 {
+    .PromoteBlock-slide {
+      @include breakpoint('tablet') {
+        width: calc(50% - var(--PromoteBlock-slider-margin-inline));
+      }
+
+      @include breakpoint('desktop') {
+        width: calc(33% - var(--PromoteBlock-slider-margin-inline));
+      }
+
+      @include breakpoint('desktop-large') {
+        width: calc(25% - var(--PromoteBlock-slider-margin-inline));
+      }
+    }
+  }
+}

@@ -1,0 +1,54 @@
+@import "abstracts/index";
+
+@import 'variables-css';
+
+/* Components */
+@import "../../blocks/**/styles.scss";
+
+
+/* Libs */
+@import '~cookieconsent/build/cookieconsent.min.css';
+@import '~leaflet/dist/leaflet.css';
+@import "~flickity/css/flickity.css";
+@import "~line-awesome/dist/font-awesome-line-awesome/css/all.css";
+@import "~jquery-bar-rating/dist/themes/fontawesome-stars.css";
+@import "~star-rating-svg/src/css/star-rating-svg.css";
+@import "~flatpickr/dist/flatpickr.css";
+@import "~select2/select2.css";
+@import "~@splidejs/splide/dist/css/themes/splide-default.min.css";
+
+/* YOUR OWN STYLESHEETS GO HERE */
+
+@import 'components/atoms/buttons';
+@import 'components/atoms/cursor';
+@import 'components/molecules/bottom-block';
+@import 'components/molecules/card';
+@import 'components/molecules/carousel';
+@import 'components/molecules/meta';
+@import 'components/molecules/pagination';
+@import 'components/molecules/wpml';
+
+@import 'components/organisms/header';
+@import 'components/organisms/footer';
+@import 'components/organisms/form';
+@import 'components/organisms/media-modal';
+@import 'components/organisms/search';
+@import 'components/organisms/module_planyo';
+
+@import 'components/molecules/navigation';
+@import 'layout/intro';
+@import 'layout/home-slider';
+@import 'layout/store-locator';
+@import 'components/templates/blog';
+@import 'components/templates/blocks';
+@import 'components/templates/woocommerce';
+@import 'components/templates/demo';
+@import 'components/templates/courses';
+@import 'components/templates/references';
+@import 'components/templates/services';
+@import 'components/templates/contact';
+@import 'components/templates/home';
+
+@import 'library/scroll';
+
+/* OPTIONNAL STYLES (disable if not needed) */

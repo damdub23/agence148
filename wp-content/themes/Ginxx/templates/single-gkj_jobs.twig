@@ -1,0 +1,79 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+    <div class="grid-container single-post-jobs">
+        <div class="grid-x grid-padding-x">
+            <div class="small-12 cell">
+                <h2><span>Détail de l’offre :</span> {{ post.title }}</h2>
+            </div>
+
+            <div class="small-12 padding-30 margin-bottom-50 cell">
+
+                {% if post.date %}
+                    <div class="small-12 medium-12 large-12 date">
+                        <span>Publiée le : </span>{{ post.date }}<br>
+                    </div>
+                {% endif %}
+
+                {% if post.contract %}
+                    <div class="small-12 medium-2 large-1 contract">
+                        Type de poste : {{ post.contract }}
+                    </div>
+                {% endif %}
+
+                {% if post.reference %}
+                    <div class="small-12 medium-10 large-11 reference">
+                        Réf. : {{ post.reference }}
+                    </div>
+                {% endif %}
+
+                {% if post.date_start %}
+                    <div class="small-12 medium-12 large-12 date_start">
+                        <span>Poste à pourvoir le : </span>
+                        {{ post.date_start|date('d.m.Y') }}
+                    </div>
+                {% endif %}
+
+                {% if post.region %}
+                    <div class="small-12 medium-12 large-12 region">
+                        <span>Région : </span>{{ post.region }}<br>
+                    </div>
+                {% endif %}
+
+                {% if post.area %}
+                    <div class="small-12 medium-12 large-12 area">
+                        <span>Departement : </span>{{ post.area }}<br>
+                    </div>
+                {% endif %}
+            </div>
+
+            {% if post.description %}
+                <div class="small-12 medium-12 large-12 cell description margin-bottom-50">
+                    <h3>La mission :</h3>
+                    <p>
+                        {{ post.description|wpautop }}
+                    </p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="brown-bg">
+        <div class="grid-container">
+            <div class="grid-x grid-padding-x">
+                <div class="cell small-12">
+
+                    <h2>
+                        {{ __('Postuler à cette offre :', 'gosselink') }}
+                    </h2>
+
+                    {{ function('do_shortcode', '[contact-form-7 id="399" title="Formulaire de réponse à une offre d\'emploi" titreoffre="'~post.post_title~'"]') }}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

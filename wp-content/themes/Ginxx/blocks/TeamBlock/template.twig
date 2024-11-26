@@ -1,0 +1,188 @@
+{#
+Title: Team block
+Description: Permet d'insérer un bloc de présentation de vos équipes.
+Category: Contenu du flexible
+Icon: image-flip-vertical
+Keywords: gosselink team block
+#}
+
+{% set flexi_special = function('get_field', 'teamblock') %}
+{% set nbSlides = function('get_field', 'field_gk_teams_to_show') %}
+{% set typeRender = function('get_field', 'field_team_slider_or_grid') %}
+{% set css_class = function('get_field', 'css_class') %}
+
+{% if nbSlides >= flexi_special|length %}
+    {% set nbSlides = flexi_special|length %}
+{% endif %}
+
+{% set options = {
+    "prevNextButtons": true,
+    "pageDots": true,
+    "wrapAround": false,
+    "lazyLoad": true,
+    "cellAlign": 'center',
+    "contain": true,
+    "freeScroll": true,
+    "groupCells": true,
+} %}
+
+{% if css_class == '-teamStyle1' %}
+    <div class="TeamBlock {{ css_class }} {% if typeRender == "true" %} -nbSlides-{{ nbSlides }}{% endif %}"
+            {% if typeRender == "true" %} id='{{ block['id'] }}'
+        data-flickity='{{ options|json_encode }}' {% endif %}>
+        {% if typeRender != "true" %}
+        <div class="TeamBlock-inner">{% endif %}
+            {% for teams in Post(flexi_special) %}
+                {% if typeRender == "true" %}<div class="TeamBlock-slide">{% endif %}
+                <a class="Card -team js-btn-modal" data-id="{{ teams.title }}">
+                    <div class="Card-inner">
+                        <div class="Card-picture">
+                            <img src="{{ TimberImage(teams.thumbnail).src }}" alt="{{ teams.title }}">
+                        </div>
+                        <div class="Card-title">
+                            <h4>
+                                {{ teams.title }}
+                            </h4>
+                            <span class="la-plus-circle"></span>
+                        </div>
+                    </div>
+                </a>
+                <div class="modal js-modal" data-id="modal{{ teams.title }}">
+                    <button class="modal-close-btn js-close-btn">
+                        <i class="las la-times"></i>
+                    </button>
+                    <div class="modal-inner">
+                        <div>
+                            <h3>{{ teams.title }} </h3>
+                            {{ teams.description }}
+                        </div>
+                        <div>
+                            <img src="{{ TimberImage(teams.thumbnail).src }}" alt="{{ teams.title }}">
+                        </div>
+                    </div>
+                </div>
+                {% if typeRender == "true" %}</div>{% endif %}
+            {% endfor %}
+            {% if typeRender != "true" %}</div>{% endif %}
+    </div>
+{% endif %}
+
+{% if css_class == '-teamStyle2' %}
+    <div class="TeamBlock {{ css_class }} {% if typeRender == "true" %} -nbSlides-{{ nbSlides }}{% endif %}"
+            {% if typeRender == "true" %} id='{{ block['id'] }}'
+        data-flickity='{{ options|json_encode }}' {% endif %}>
+        {% if typeRender != "true" %}
+        <div class="TeamBlock-inner">{% endif %}
+            {% for teams in Post(flexi_special) %}
+                {% if typeRender == "true" %}<div class="TeamBlock-slide">{% endif %}
+                <a class="Card -team" href="{{ teams.link }}">
+                    <div class="Card-inner">
+                        <div class="Card-picture">
+                            <img src="{{ TimberImage(teams.thumbnail).src }}" alt="{{ teams.post_title }}">
+                        </div>
+                        <div class="Card-title">
+                            {{ teams.post_title }}
+                        </div>
+                        <div class="Card-desc">
+                            {{ teams.description }}
+                        </div>
+                        <div class="Card-actions">
+                            <span>
+                             {{ __('En savoir plus', 'gosselink') }}
+                            </span>
+                        </div>
+                    </div>
+                </a>
+                {% if typeRender == "true" %}</div>{% endif %}
+
+            {% endfor %}
+            {% if typeRender != "true" %}</div>{% endif %}
+    </div>
+{% endif %}
+
+{% if css_class == '-teamStyle3' %}
+    <div class="TeamBlock {{ css_class }} {% if typeRender == "true" %} -nbSlides-{{ nbSlides }}{% endif %}"
+            {% if typeRender == "true" %} id='{{ block['id'] }}'
+        data-flickity='{{ options|json_encode }}' {% endif %}>
+        {% if typeRender != "true" %}
+        <div class="TeamBlock-inner">{% endif %}
+            {% for teams in Post(flexi_special) %}
+                {% if typeRender == "true" %}<div class="TeamBlock-slide">{% endif %}
+                <div class="Card -team">
+                <div class="Card-inner">
+                    <div class="Card-picture">
+                        <img src="{{ TimberImage(teams.thumbnail).src }}" alt="{{ teams.post_title }}">
+                    </div>
+                    <div class="Card-content">
+                        <h4 class="Card-title">
+                            {{ teams.post_title }}
+                        </h4>
+                    </div>
+                </div>
+                {% if typeRender == "true" %}</div>{% endif %}
+                </div>
+            {% endfor %}
+            {% if typeRender != "true" %}</div>{% endif %}
+    </div>
+{% endif %}
+
+{# Slider version #}
+{% if css_class == '-teamStyle4' %}
+    <div class="TeamBlock {{ css_class }} {% if typeRender == "true" %} -nbSlides-{{ nbSlides }}{% endif %}"
+            {% if typeRender == "true" %} id='{{ block['id'] }}'
+        data-flickity='{{ options|json_encode }}' {% endif %}>
+        {% if typeRender != "true" %}
+        <div class="TeamBlock-inner">{% endif %}
+            {% for teams in Post(flexi_special) %}
+                {% if typeRender == "true" %}<div class="TeamBlock-slide">{% endif %}
+                <div class="Card -team">
+                <div class="Card-inner">
+                    <div class="Card-picture">
+                        <img src="{{ teams.thumbnail.src }}" alt="{{ teams.post_title }}">
+                    </div>
+                    <div class="Card-content">
+                        <h4 class="Card-title">
+                            {{ teams.post_title }}
+                        </h4>
+                        <div class="Card-social">
+                            <ul>
+                                {% if teams.youtube %}
+                                    <li>
+                                        <a href="{{ teams.youtube }}" class="youtube"></a>
+                                    </li>
+                                {% endif %}
+                                {% if teams.x %}
+                                    <li>
+                                        <a href="{{ teams.x }}" class="x"></a>
+                                    </li>
+                                {% endif %}
+                                {% if teams.facebook %}
+                                    <li>
+                                        <a href="{{ teams.facebook }}" class="facebook"></a>
+                                    </li>
+                                {% endif %}
+                                {% if teams.instagram %}
+                                    <li>
+                                        <a href="{{ teams.instagram }}" class="instagram"></a>
+                                    </li>
+                                {% endif %}
+                                {% if teams.linkedin %}
+                                    <li>
+                                        <a href="{{ teams.linkedin }}" class="linkedin"></a>
+                                    </li>
+                                {% endif %}
+                                {% if teams.tiktok %}
+                                    <li>
+                                        <a href="{{ teams.tiktok }}" class="tiktok"></a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                {% if typeRender == "true" %}</div>{% endif %}
+                </div>
+            {% endfor %}
+            {% if typeRender != "true" %}</div>{% endif %}
+    </div>
+{% endif %}

@@ -1,0 +1,23 @@
+%Button {
+  @include Button;
+
+  &--primary {
+    @include Button--primary;
+  }
+
+  &--secondary {
+    @include Button--secondary;
+  }
+
+  &--simpleLink {
+    @include Button--simpleLink;
+  }
+
+  &--arrow {
+    @include Button--arrow;
+  }
+
+  &--download {
+    @include Button--download;
+  }
+}

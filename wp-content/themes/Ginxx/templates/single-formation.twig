@@ -1,0 +1,82 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+    {% include 'templates/partials/top-intro.twig' %}
+
+    <div class="Page">
+        <div class="Page-inner">
+            <div class="SingleCourses">
+                <div class="SingleCourses-detail">
+                    <div>
+                        {{ post.course_presentation }}
+                    </div>
+
+                    <div>
+                        <h3>{{ __('Contenu de la formation', 'gosselink') }}</h3>
+                        {{ post.presentation_content }}
+                    </div>
+
+                    <div>
+                        <h3>{{ __('Les + de cette formation', 'gosselink') }}</h3>
+                        {{ post.presentation_benefits }}
+                    </div>
+
+                    {% for flexi in post.get_field('program_detail') %}
+                        <h3>{{ flexi.step_title }}</h3>
+                        <div>{{ flexi.step_detail }}</div>
+                        <img src="{{ TimberImage(flexi.step_img).src }}" alt="">
+                        <div class="gk-accordion">
+                            <ul class="accordion" data-accordion data-allow-all-closed="true">
+                                {% for accordions in flexi.info_accordion %}
+                                    <li class="accordion-item" data-accordion-item>
+                                        <a href="#" class="accordion-title">
+                                            {{ accordions.accordion_title }}
+                                        </a>
+                                        <div class="accordion-content" data-tab-content>
+                                            {{ accordions.accordion_desc }}
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endfor %}
+
+                    {{ post.content }}
+
+                    {% include 'partials/bottom-blocks.twig' %}
+                </div>
+                <aside>
+                    {# Organismes de prise en charge #}
+                    {% set orgas = post.terms( {query:{taxonomy:'support-organization'}} ) %}
+                    {% if orgas and orgas|length > 0 %}
+                        <h3>
+                            {% if post.meta('orga_title') %}{{ post.meta('orga_title') }}{% else %}{{ __('Organismes financeurs', 'gosselink') }}{% endif %}
+                        </h3>
+                        <ul class="logos">
+                            {% for orga in orgas %}
+                                <li>
+                                    {% set logo = orga.meta('logo') %}
+                                    {% if logo %}
+                                        {{ gk_image(logo.url, orga.name, 'orga-img', true, "100px") }}
+                                    {% else %}
+                                        {{ orga.name }}
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+
+                    {% for item in post.get_field('more_info') %}
+                        <div class="SingleCourses-moreInfos">
+                            <h3>{{ item.title }}</h3>
+                            <div class="desc">
+                                {{ item.detail_info }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </aside>
+            </div>
+        </div>
+    </div>
+{% endblock %}

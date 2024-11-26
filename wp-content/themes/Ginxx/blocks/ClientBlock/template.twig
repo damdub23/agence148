@@ -1,0 +1,98 @@
+{#
+Title: Clients block
+Description: Permet d'insérer un bloc de présentation de vos clients.
+Category: Contenu du flexible
+Icon: image-flip-vertical
+Keywords: gosselink clients block
+#}
+
+{% set flexi_special = function('get_field', 'clientblock') %}
+{% set nbSlides = function('get_field', 'field_gk_client_to_show') %}
+{% set typeRender = function('get_field', 'field_client_slider_or_grid') %}
+
+{% if nbSlides >= flexi_special|length %}
+    {% set nbSlides = flexi_special|length %}
+{% endif %}
+
+{% set options = {
+    "prevNextButtons": false,
+    "pageDots": true,
+    "wrapAround": false,
+    "lazyLoad": true,
+    "cellAlign": left,
+    "contain": true,
+    "groupCells": true,
+    "setGallerySize": true,
+    "adaptiveHeight": true,
+} %}
+
+{% if block.className == '' %}
+    <div class="ClientBlock {{ block.className }}">
+        <div class="ClientBlock-inner">
+            {% for clients in Post(flexi_special) %}
+                <div class="Card -client">
+                    <div class="Card-inner">
+                        <div class="Card-picture">
+                            <img src="{{ clients.thumbnail.src }}" alt="{{ clients.post_title }}">
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+
+{% if block.className == '-ClientsStyle2' %}
+    <div class="ClientBlock {{ block.className }}">
+        <div class="ClientBlock-inner">
+            {% for clients in Post(flexi_special) %}
+                <div class="Card -client">
+                    <div class="Card-inner">
+                        <div class="Card-picture">
+                            <img src="{{ clients.thumbnail.src }}" alt="{{ clients.post_title }}">
+                        </div>
+
+                        <div class="Card-title">
+                            {{ clients.title }}
+                        </div>
+
+                        {% if clients.content %}
+                            <div class="Card-description">
+                                {{ clients.content }}
+                            </div>
+                        {% endif %}
+
+                        {% if clients.partners_link %}
+                            <div class="Card-actions">
+                                <a href="{{ clients.partners_link }}" target="_blank"></a>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+
+
+{# Slider version #}
+{% if block.className == '-ClientsStyle3' %}
+    <div class="ClientBlock {{ block.className }} {% if typeRender == "true" %} -nbSlides-{{ nbSlides }}{% endif %}"
+            {% if typeRender == "true" %} id='{{ block['id'] }}'
+        data-flickity='{{ options|json_encode }}' {% endif %}>
+        {% if typeRender != "true" %}
+        <div class="ClientBlock-inner">{% endif %}
+            {% for clients in Post(flexi_special) %}
+                {% if typeRender == "true" %}<div class="ClientBlock-slide">{% endif %}
+                <div class="Card -client">
+                <div class="Card-inner">
+                    <div class="Card-picture">
+                        <img src="{{ clients.thumbnail.src }}" alt="{{ clients.post_title }}">
+                    </div>
+                </div>
+                {% if typeRender == "true" %}</div>{% endif %}
+                </div>
+            {% endfor %}
+            {% if typeRender != "true" %}</div>{% endif %}
+    </div>
+{% endif %}

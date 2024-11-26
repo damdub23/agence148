@@ -1,0 +1,70 @@
+.bottomBlock {
+  position: relative;
+  margin: 0 auto;
+  padding-block: $ds-spacings--x-wide;
+  color: $ds-color-white;
+
+  &-picture {
+    position: absolute;
+    width: 100%;
+    inset: 0;
+    z-index: 0;
+    background: $ds-color-primary;
+
+    &::after {
+      position: absolute;
+      content: '';
+      width: 100%;
+      inset: 0;
+      z-index: 1;
+      background-color: rgba($ds-color-black, .4);
+    }
+
+    img {
+      @include ImageCover;
+    }
+  }
+
+  &:not(&--after) {
+    background-color: $ds-color-primary;
+
+    &:after {
+      display: none;
+    }
+  }
+
+  &-inner {
+    @extend %PageInner;
+  }
+
+  &-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+  }
+
+  &-title {
+    font-size: size(32);
+    line-height: 1.1;
+    color: $ds-color-white;
+
+    span {
+      display: block;
+      font-size: size(18);
+      color: $ds-color-white;
+    }
+  }
+
+  p {
+    margin-block-end: size(24);
+  }
+
+  &-actions {
+    margin-top: $ds-spacings--medium;
+    margin-inline: auto;
+
+    a {
+      margin-inline: auto;
+    }
+  }
+}

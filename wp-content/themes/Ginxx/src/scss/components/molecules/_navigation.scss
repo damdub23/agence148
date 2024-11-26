@@ -1,0 +1,322 @@
+nav {
+  ul {
+    &.MenuTop {
+      position: fixed;
+      right: -100%;
+      z-index: 20;
+      flex-direction: column;
+      background-color: $ds-color-primary;
+      width: 100%;
+      height: 100vh;
+      top: $header-height;
+      display: flex;
+      align-items: center;
+      margin: 0;
+      padding: $ds-spacings--medium;
+      will-change: right;
+
+      &.-mobileVersion {
+        @include transition();
+      }
+
+      &.animate {
+        @include transition();
+
+        right: 0;
+        width: 100%;
+        will-change: right;
+        transition: right .45s cubic-bezier(.5, 1, .89, 1);
+      }
+
+      @include breakpoint('desktop') {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        background-color: transparent;
+        top: 0;
+        right: 0;
+        height: $header-height;
+        padding-block: 0;
+      }
+
+      .menu-item-has-children {
+        > a {
+          position: relative;
+        }
+      }
+
+      li {
+        &.nav-link {
+          @include transition();
+
+          position: relative;
+          list-style-type: none;
+          width: 100%;
+          margin: 0;
+
+          &:before {
+            display: none;
+          }
+
+          a {
+            @include transition();
+
+            display: flex;
+            width: 100%;
+            font-size: size(20);
+            padding: $ds-spacings--standard;
+            line-height: 1;
+            cursor: pointer;
+            color: $ds-color-primary;
+            text-align: left;
+            text-decoration: none;
+
+            &:after {
+              @include transition();
+
+              position: absolute;
+              content: '';
+              bottom: 0;
+              left: 0;
+              width: 0;
+              height: size(1);
+              background-color: $ds-color-primary;
+            }
+
+            &:hover {
+              @include transition();
+
+              color: $ds-color-secondary;
+              background: $ds-color-white;
+            }
+          }
+        }
+      }
+
+      @include breakpoint('desktop') {
+        li {
+          position: relative;
+          list-style-type: none;
+          height: 100%;
+
+          &.nav-link {
+            position: relative;
+            list-style-type: none;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all .3s ease-in-out;
+            width: max-content;
+
+            &:before {
+              display: none;
+            }
+
+            a {
+              position: relative;
+              height: 100%;
+              display: flex;
+              align-items: center;
+              padding: 1rem;
+              line-height: 1;
+              color: $ds-color-primary;
+              transition: all .3s ease-in-out;
+              cursor: pointer;
+              text-align: left;
+              font-size: size(16);
+
+              &:after {
+                position: absolute;
+                content: '';
+                bottom: 0;
+                left: 0;
+                width: 0;
+                height: size(1);
+                background-color: $ds-color-primary;
+                transition: all .3s ease-in-out;
+              }
+            }
+
+            &:hover {
+              background: transparent;
+              color: $ds-color-primary;
+              transition: background-color .5s ease-in-out;
+
+              a {
+                background: transparent;
+
+                &:after {
+                  width: 100%;
+                }
+              }
+            }
+          }
+
+          &.menu-item-has-children {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+
+            &:after {
+              position: relative;
+              content: url($path-icon + 'black-arrow.svg');
+              transform: rotate(90deg);
+              width: size(16);
+              height: size(16);
+            }
+
+            ul {
+              position: absolute;
+              z-index: 150;
+              left: 0;
+              top: calc(100% - #{$ds-spacings--standard});
+              margin: 0 auto;
+              padding: 0;
+              width: auto;
+              min-width: size(220);
+              background: $ds-color-primary;
+              transform: translateY(10px );
+              display: flex;
+              flex-direction: column;
+              border-radius: 0;
+
+              li {
+                position: relative;
+                z-index: 9;
+                margin-bottom: 0;
+                padding: 0;
+                width: 100%;
+
+                &:after {
+                  display: none;
+                }
+
+                a {
+                  position: relative;
+                  font-size: $ds-spacings--semi;
+                  text-align: left;
+                  color: $ds-color-white;
+                  width: 100%;
+                  background-color: transparent;
+                  @include transition();
+
+                  &:after {
+                    position: absolute;
+                    content: '';
+                    bottom: 0;
+                    left: 0;
+                    width: 0;
+                    height: size(1);
+                    background-color: $ds-color-primary;
+                    transition: all .3s ease-in-out;
+                  }
+
+                  &:hover {
+                    color: $ds-color-primary;
+                  }
+
+                  &:before, &:after {
+                    display: none;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    /// Submenus class only on mobile version -> Change click comportment
+    @include breakpoint('desktop', max) {
+      .menu-item-has-children {
+        position: relative;
+
+        > a {
+          position: relative;
+
+          &:hover {
+            &:hover {
+              &:before {
+                background-color: $ds-color-secondary;
+              }
+            }
+          }
+        }
+
+        &:has(.submenu) {
+          > a {
+            position: relative;
+            display: flex;
+            flex-flow: row wrap;
+            align-items: center;
+
+            &:before {
+              @include transition();
+
+              position: absolute;
+              content: '';
+              right: $ds-spacings--standard;
+              width: size(12);
+              height: size(8);
+              mask-image: url($path-icon + "arrow.svg");
+              background-color: $ds-color-white;
+              background-repeat: no-repeat;
+            }
+          }
+
+          &:has(.submenu.active) {
+            > a {
+              color: $ds-color-secondary;
+              background-color: $ds-color-white;
+
+              &:before {
+                @include transition();
+
+                background-color: $ds-color-secondary;
+                transform: rotate(180deg);
+              }
+            }
+          }
+        }
+      }
+      .submenu {
+        visibility: hidden;
+        margin: 0;
+        padding-left: 0;
+        max-height: 0;
+        overflow: hidden;
+        background-color: $ds-color-secondary;
+        transition: max-height 500ms ease-in-out;
+
+        &.active {
+          visibility: visible;
+          max-height: size(480);
+          background-color: transparent;
+          transition: max-height 500ms ease-in-out;
+        }
+
+        li {
+          &.nav-link {
+            a {
+              padding-left: $ds-spacings--x-large;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  ul ul {
+    visibility: hidden;
+    opacity: 0;
+    transition: all .4s;
+  }
+
+  /* Afficher le sous-menu lorsque le parent est en état d'expansion */
+  ul > li > a[aria-expanded="true"] + ul {
+    visibility: visible;
+    opacity: 1;
+  }
+}

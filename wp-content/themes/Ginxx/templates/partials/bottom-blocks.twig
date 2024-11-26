@@ -1,0 +1,113 @@
+{% if post.multiples_options == 'first_bottom_block' and post.block_display == true %}
+    {% set block = options.first_bottom_block %}
+    {% if options.first_bottom_block %}
+        <div class="bottomBlock" {% if block.color %} style="background-color: {{ block.color }}" {% endif %}>
+            <div class="bottomBlock-inner">
+                {% if block.bg_image %}
+                    <div class="bottomBlock-picture">
+                        <img src="{{ TimberImage(block.bg_image).src }}" alt="{{ block.bg_image.alt }}">
+                    </div>
+                {% endif %}
+                <div class="bottomBlock-content">
+                    {% if block.title %}
+                        <h3 class="bottomBlock-title">
+                            {{ block.title }}
+                            <span>
+                                {{ block.subtitle }}
+                            </span>
+                        </h3>
+                    {% endif %}
+                    {% if block.description %}
+                        <div class="desc">
+                            {{ block.description|wpautop }}
+                        </div>
+                    {% endif %}
+                    {% if block.link %}
+                        <div class="bottomBlock-actions">
+                            <a href="{{ block.link.url }}" target="{{ block.link.target }}"
+                               class="btn btn--secondary">
+                                {{ block.link.title }}
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endif %}
+
+{% if post.multiples_options == 'second_bottom_block' and post.block_display == true %}
+    {% set block = options.second_bottom_block %}
+    {% if options.second_bottom_block %}
+        <div class="bottomBlock" {% if block.color %} style="background-color: {{ block.color }}" {% endif %}>
+            <div class="bottomBlock-inner">
+                {% if block.bg_image %}
+                    <div class="bottomBlock-picture">
+                        <img src="{{ TimberImage(block.bg_image).src }}" alt="{{ block.bg_image.alt }}">
+                    </div>
+                {% endif %}
+                <div class="bottomBlock-content">
+                    {% if block.title %}
+                        <h3 class="bottomBlock-title">
+                            {{ block.title }}
+                            <span>
+                                {{ block.subtitle }}
+                            </span>
+                        </h3>
+                    {% endif %}
+                    {% if block.description %}
+                        <div class="desc">
+                            {{ block.description|wpautop }}
+                        </div>
+                    {% endif %}
+                    {% if block.link %}
+                        <div class="bottomBlock-actions">
+                            <a href="{{ block.link.url }}" target="{{ block.link.target }}"
+                               class="btn btn--secondary">
+                                {{ block.link.title }}
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endif %}
+
+{% if post.multiples_options == 'third_bottom_block' and post.block_display == true %}
+    {% set block = options.third_bottom_block %}
+    {% if options.third_bottom_block %}
+        <div class="bottomBlock" {% if block.color %} style="background-color: {{ block.color }}" {% endif %}>
+            <div class="bottomBlock-inner">
+                {% if block.bg_image %}
+                    <div class="bottomBlock-picture">
+                        <img src="{{ TimberImage(block.bg_image).src }}" alt="{{ block.bg_image.alt }}">
+                    </div>
+                {% endif %}
+                <div class="bottomBlock-content">
+                    {% if block.title %}
+                        <h3 class="bottomBlock-title">
+                            {{ block.title }}
+                            <span>
+                                {{ block.subtitle }}
+                            </span>
+                        </h3>
+                    {% endif %}
+                    {% if block.description %}
+                        <div class="desc">
+                            {{ block.description|wpautop }}
+                        </div>
+                    {% endif %}
+                    {% if block.link %}
+                        <div class="bottomBlock-actions">
+                            <a href="{{ block.link.url }}" target="{{ block.link.target }}"
+                               class="btn btn--secondary">
+                                {{ block.link.title }}
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endif %}

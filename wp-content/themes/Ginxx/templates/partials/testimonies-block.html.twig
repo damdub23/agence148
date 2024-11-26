@@ -1,0 +1,38 @@
+<div class="bg-light-gray">
+    <div class="container">
+        <h2 class="centered">
+            {{ __('Témoignages', 'gosselink') }}
+        </h2>
+        <div class="testimonials-slider">
+            {% for testimonials in testimonial %}
+                <div class="card card--testimonials card__white">
+                    <div class="card-inner">
+                        {% if testimonials.thumbnail %}
+                            <div class="card-img">
+                                <img src="{{ testimonials.thumbnail.src }}"
+                                     alt="{{ testimonials.post_title }}">
+                            </div>
+                        {% endif %}
+                        <div class="card-heading">
+                            {% if testimonials.notation %}
+                                <div class="rated-notation"
+                                     data-rating="{{ testimonials.notation }}"></div>
+                            {% endif %}
+                            <div class="card-title">
+                                <h3>
+                                    {{ testimonials.post_title }}
+                                    <span>
+                                            {{ testimonials.function }}
+                                    </span>
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            {{ testimonials.testimonial_detail }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

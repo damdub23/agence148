@@ -1,0 +1,142 @@
+.Blog {
+  &-grid {
+    @extend %PageInner;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $ds-spacings--medium;
+    grid-template-areas:
+          "blog-content"
+          "aside";
+
+    @include breakpoint('desktop') {
+      grid-template-columns: .75fr .25fr;
+      grid-template-areas:
+          "blog-content aside";
+    }
+
+    .BlogContent {
+      grid-area: blog-content;
+    }
+
+    aside {
+      grid-area: aside;
+    }
+  }
+
+  &-single {
+    @extend %PageInner;
+
+    @include breakpoint('desktop') {
+      display: grid;
+      gap: $ds-spacings--medium;
+      grid-template-columns: 75% 25%;
+      grid-template-areas:
+          "article aside";
+    }
+
+    article {
+      grid-area: article;
+    }
+
+    aside {
+      grid-area: aside;
+    }
+  }
+}
+
+aside {
+  background-color: $ds-color-white;
+  margin-block-end: size(32);
+  padding: $ds-spacings--medium $ds-spacings--standard;
+
+  ul {
+    padding-left: 0;
+
+    li {
+      margin-block-end: size(16);
+      display: flex;
+      flex-flow: row wrap;
+      width: 100%;
+      align-items: center;
+      list-style: none;
+      padding-left: 0;
+
+      &:before {
+        display: none;
+      }
+
+      a {
+        @include transition;
+
+        text-decoration: none;
+        color: $ds-color-secondary;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+.ListPostBlog {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: size(16);
+}
+
+.posts-home {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  column-gap: size(16);
+}
+
+.default-img-posts {
+  min-height: size(260);
+  background-size: cover;
+  background-position: center;
+}
+
+.media-content {
+  position: relative;
+  height: size(260);
+
+  .image {
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+  }
+
+  .videoContainer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  iframe {
+    /* optional */
+    width: 100%;
+    height: 100%;
+  }
+}
+
+audio {
+  width: 100%;
+  border-radius: 0;
+  position: relative;
+  background: #f1f3f4;
+
+  &:before, &:after {
+    display: none;
+  }
+}

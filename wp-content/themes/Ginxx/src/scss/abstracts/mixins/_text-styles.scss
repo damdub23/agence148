@@ -1,0 +1,98 @@
+// Headings mobile
+$ds-style-heading-1-font-size--mobile: $ds-font-size-750;
+$ds-style-heading-2-font-size--mobile: $ds-font-size-730;
+$ds-style-heading-3-font-size--mobile: $ds-font-size-700;
+$ds-style-heading-4-font-size--mobile: $ds-font-size-500;
+$ds-style-heading-5-font-size--mobile: $ds-font-size-400;
+$ds-style-heading-6-font-size--mobile: $ds-font-size-300;
+$ds-style-body-0-font-size--mobile: $ds-font-size-400;
+
+// Headings tablet
+$ds-style-heading-1-font-size--tablet: $ds-font-size-850;
+$ds-style-heading-2-font-size--tablet: $ds-font-size-800;
+$ds-style-heading-3-font-size--tablet: $ds-font-size-730;
+$ds-style-heading-4-font-size--tablet: $ds-font-size-730;
+$ds-style-heading-5-font-size--tablet: $ds-font-size-500;
+$ds-style-heading-6-font-size--tablet: $ds-font-size-450;
+$ds-style-body-0-font-size--tablet: $ds-font-size-400;
+
+// Headings desktop
+$ds-style-heading-1-font-size--desktop: $ds-font-size-900;
+$ds-style-heading-2-font-size--desktop: $ds-font-size-850;
+$ds-style-heading-3-font-size--desktop: $ds-font-size-800;
+$ds-style-heading-4-font-size--desktop: $ds-font-size-750;
+$ds-style-heading-5-font-size--desktop: $ds-font-size-700;
+$ds-style-heading-6-font-size--desktop: $ds-font-size-600;
+$ds-style-body-0-font-size--desktop: $ds-font-size-400;
+
+:root {
+  --ds-style-heading-1--font-size: #{$ds-style-heading-1-font-size--mobile};
+  --ds-style-heading-2--font-size: #{$ds-style-heading-2-font-size--mobile};
+  --ds-style-heading-3--font-size: #{$ds-style-heading-3-font-size--mobile};
+  --ds-style-heading-4--font-size: #{$ds-style-heading-4-font-size--mobile};
+  --ds-style-heading-5--font-size: #{$ds-style-heading-5-font-size--mobile};
+  --ds-style-heading-6--font-size: #{$ds-style-heading-6-font-size--mobile};
+  --ds-style-body-0--font-size: #{$ds-style-body-0-font-size--mobile};
+
+  @include breakpoint('tablet') {
+    --ds-style-heading-1--font-size: #{$ds-style-heading-1-font-size--tablet};
+    --ds-style-heading-2--font-size: #{$ds-style-heading-2-font-size--tablet};
+    --ds-style-heading-3--font-size: #{$ds-style-heading-3-font-size--tablet};
+    --ds-style-heading-4--font-size: #{$ds-style-heading-4-font-size--tablet};
+    --ds-style-heading-5--font-size: #{$ds-style-heading-5-font-size--tablet};
+    --ds-style-heading-6--font-size: #{$ds-style-heading-6-font-size--tablet};
+    --ds-style-body-0--font-size: #{$ds-style-body-0-font-size--tablet};
+  }
+
+  @include breakpoint('desktop') {
+    --ds-style-heading-1--font-size: #{$ds-style-heading-1-font-size--desktop};
+    --ds-style-heading-2--font-size: #{$ds-style-heading-2-font-size--desktop};
+    --ds-style-heading-3--font-size: #{$ds-style-heading-3-font-size--desktop};
+    --ds-style-heading-4--font-size: #{$ds-style-heading-4-font-size--desktop};
+    --ds-style-heading-5--font-size: #{$ds-style-heading-5-font-size--desktop};
+    --ds-style-heading-6--font-size: #{$ds-style-heading-6-font-size--desktop};
+    --ds-style-body-0--font-size: #{$ds-style-body-0-font-size--desktop};
+  }
+}
+
+@mixin TextStyle-heading1 {
+  font-size: var(--ds-style-heading-1--font-size);
+  font-family: $title-font;
+  line-height: 1.1;
+}
+
+@mixin TextStyle-heading2 {
+  font-size: var(--ds-style-heading-2--font-size);
+  font-family: $title-font;
+  line-height: 1.1;
+}
+
+@mixin TextStyle-heading3 {
+  font-size: var(--ds-style-heading-3--font-size);
+  font-family: $title-font;
+  line-height: 1.1;
+}
+
+@mixin TextStyle-heading4 {
+  font-size: var(--ds-style-heading-4--font-size);
+  font-family: $title-font;
+  line-height: 1.1;
+}
+
+@mixin TextStyle-heading5 {
+  font-size: var(--ds-style-heading-5--font-size);
+  font-family: $title-font;
+  line-height: 1.1;
+}
+
+@mixin TextStyle-heading6 {
+  font-size: var(--ds-style-heading-6--font-size);
+  font-family: $title-font;
+  line-height: 1.1;
+}
+
+@mixin TextStyle-body0 {
+  font-family: $body-font;
+  font-size: var(--ds-style-body-0--font-size);
+  font-weight: 200;
+}

@@ -1,0 +1,59 @@
+{#
+Title: Testimony block
+Description: Permet d'insérer un bloc de témoignages.
+Category: Contenu du flexible
+Icon: image-flip-vertical
+Keywords: gosselink testimony block
+#}
+
+{% set flexi_special = function('get_field', 'testimonyBlock') %}
+{% set nbSlides = function('get_field', 'field_gk_testimonials_to_show') %}
+
+{% if nbSlides >= flexi_special|length %}
+    {% set nbSlides = flexi_special|length %}
+{% endif %}
+
+{% set options = {
+    "prevNextButtons": true,
+    "pageDots": true,
+    "wrapAround": false,
+    "lazyLoad": true,
+    "cellAlign": center,
+    "contain": true,
+    "freeScroll": true,
+    "groupCells": true,
+} %}
+
+<div class="TestimonyBlock -nbSlides-{{ nbSlides }}" id='{{ block['id'] }}'
+     data-flickity='{{ options|json_encode }}'>
+    {% for testimonials in Post(flexi_special) %}
+        <div {% if nbSlides >= 1 %} class="TestimonyBlock-slide" {% endif %}>
+            <div class="Card -testimonials">
+                <div class="Card-inner">
+                    {% if testimonials.thumbnail %}
+                        <div class="Card-picture">
+                            <img src="{{ testimonials.thumbnail.src }}"
+                                 alt="{{ testimonials.post_title }}">
+                        </div>
+                    {% endif %}
+                    <div class="Card-heading">
+                        {% if testimonials.notation %}
+                            <div class="rated-notation"
+                                 data-rating="{{ testimonials.notation }}"></div>
+                        {% endif %}
+                        <div class="Card-title">
+                            {{ testimonials.post_title }}
+                            <span>
+                             {{ testimonials.function }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="Card-content">
+                        {{ testimonials.testimonial_detail }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+

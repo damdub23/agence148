@@ -1,0 +1,32 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    {% include 'templates/partials/top-intro.twig' %}
+    <div class="singleReference">
+        <div class="singleReference-inner">
+            <div class="singleReference-aside">
+                <ul>
+                    <li>
+                        <span>Client :</span>
+                        <span>{{ post.client }}</span>
+                    </li>
+                    <li>
+                        <span>Date de conception :</span>
+                        <span>{{ post.date }}</span>
+                    </li>
+                    <li>
+                        <span>Catégorie :</span>
+                        {% set cats = post.terms( {query:{taxonomy:'cat-reference'}} ) %}
+
+                        {% for cat in cats %}
+                            <span>{{ cat.name }}</span>
+                        {% endfor %}
+                    </li>
+                </ul>
+            </div>
+            <div class="singleReference-content">
+                {{ post.content }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

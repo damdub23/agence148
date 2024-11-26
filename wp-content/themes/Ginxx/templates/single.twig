@@ -1,0 +1,34 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    {% include 'partials/blog-top-intro.twig' %}
+    <div class="Page-wrapper">
+        <div class="Blog-single">
+            {% include 'blog/post-' ~ (post.format == '' ? 'default' : post.format) ~ '.twig' %}
+
+            {% if not options.disable_comments %}
+                <div class="comment-box">
+                    <div class="comments">
+                        {% if post.comments %}
+                            <h3>Commentaires</h3>
+                            {% for cmt in post.comments %}
+                                {% include "blog/comment.twig" with {comment:cmt} %}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+
+                    {% if post.comment_status == "closed" %}
+                        <p> Les commentaires sont désactivés pour cet article </p>
+                    {% else %}
+                        {% include "blog/comment-form.twig" %}
+                    {% endif %}
+                </div>
+            {% endif %}
+            {% if sidebar %}
+                <aside>
+                    {{ sidebar }}
+                </aside>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

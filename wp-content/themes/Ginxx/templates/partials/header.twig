@@ -1,0 +1,39 @@
+<header id="header" class="SiteHeader">
+    <div class="SiteHeader-container">
+        <div class="SiteHeader-logo">
+            {% if is_home %}
+                <h1 class="logo" role="img">
+                    <a class="{{ options.is_one_page ? 'scrollto' }}" href="{{ site.url }}"
+                       rel="home">
+                        <img src="{{ assets }}images/logo-ginxx.svg" alt="{{ site.name }}"/>
+                    </a>
+                </h1>
+
+            {% else %}
+                <div class="logo" role="img">
+                    <a class="" href="{{ site.url }}" rel="home">
+                        <img src="{{ assets }}images/logo-ginxx.svg" alt="{{ site.name }}"/>
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+        <nav class="SiteHeader-nav" aria-label="Navigation principale">
+            {% include "partials/menu.twig" with {'menu': menu.get_items, 'location': menu.theme_location} %}
+            {# <div class="close-btn"><span></span></div> #}
+        </nav>
+        {# <div class="SiteHeader-topSearch">
+            Woocommerce : Display cart & account links #}
+        {# {{ display_cart() }}
+                    {{ display_account() }}
+
+            <div class="SiteHeader-popupSearch">
+                <a href="#">
+                    <i class="las la-search"></i>
+                </a>
+            </div> #}
+    </div>
+    {#            <div class="switcher"> #}
+    {#                {% do action('wpml_add_language_selector') %} #}
+    {#            </div> #}
+    <div class="SiteHeader-burger" id="burger"><span></span></div>
+</header>

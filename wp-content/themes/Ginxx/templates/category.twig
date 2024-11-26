@@ -1,0 +1,25 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    {% include 'partials/blog-top-intro.twig' %}
+
+    <div class="Page-wrapper">
+        <div class="Blog-grid">
+            <div class="BlogContent">
+                <div class="ListPostBlog">
+                    {% for post in posts %}
+                        {% include 'blog/list-post-' ~ (post.format == '' ? 'default' : post.format) ~ '.twig' %}
+                    {% endfor %}
+                </div>
+                <div class="pagination">
+                    {% include 'partials/pagination.twig' %}
+                </div>
+            </div>
+            {% if sidebar %}
+                <aside>
+                    {{ sidebar }}
+                </aside>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

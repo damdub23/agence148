@@ -1,0 +1,41 @@
+$base-size: 16;
+
+@function size($target, $context: $base-size) {
+  @return ($target / $context) * 1rem;
+}
+
+@mixin responsive-ratio($x,$y, $pseudo: false) {
+  $padding: unquote(( $y / $x ) * 100 + '%');
+  @if $pseudo {
+    &:before {
+      @include pseudo($pos: relative);
+      width: 100%;
+      padding-top: $padding;
+    }
+  } @else {
+    padding-top: $padding;
+  }
+}
+
+@mixin object-fit($fit: fill, $position: null){
+  -o-object-fit: $fit;
+  object-fit: $fit;
+  @if $position {
+    -o-object-position: $position;
+    object-position: $position;
+    font-family: 'object-fit: #{$fit}; object-position: #{$position}';
+  } @else {
+    font-family: 'object-fit: #{$fit}';
+  }
+}
+
+@mixin transition($for: all, $time-in: .3s, $type: ease-in-out, $time-out: 0s) {
+  transition: $for $time-in $type $time-out;
+}
+
+@mixin ImageCover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: var(--image-cover-aspect-ratio);
+}

@@ -1,0 +1,72 @@
+:root {
+  --clientblock-slider-margin-inline: #{$ds-spacings--small};
+}
+
+.ClientBlock {
+  @extend %PageWrapper;
+
+  position: relative;
+
+  &-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $ds-spacings--standard;
+
+    @include breakpoint('tablet') {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+  }
+
+  &-slide {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-inline: var(--clientblock-slider-margin-inline);
+    padding: 0;
+    min-height: 100%;
+    align-items: flex-start;
+    background-color: $ds-color-white;
+  }
+
+  &.-nbSlides-1 {
+    .ClientBlock-slide {
+      width: 100%;
+    }
+  }
+
+  &.-nbSlides-2 {
+    .ClientBlock-slide {
+      @include breakpoint('tablet') {
+        width: calc(50% - var(--clientblock-slider-margin-inline));
+      }
+    }
+  }
+
+  &.-nbSlides-3 {
+    .ClientBlock-slide {
+      @include breakpoint('tablet') {
+        width: calc(50% - var(--clientblock-slider-margin-inline));
+      }
+
+      @include breakpoint('desktop') {
+        width: calc(33% - var(--clientblock-slider-margin-inline));
+      }
+    }
+  }
+
+  &.-nbSlides-4 {
+    .ClientBlock-slide {
+      @include breakpoint('tablet') {
+        width: calc(50% - var(--clientblock-slider-margin-inline));
+      }
+
+      @include breakpoint('desktop') {
+        width: calc(33% - var(--clientblock-slider-margin-inline));
+      }
+
+      @include breakpoint('desktop-large') {
+        width: calc(25% - var(--clientblock-slider-margin-inline));
+      }
+    }
+  }
+}

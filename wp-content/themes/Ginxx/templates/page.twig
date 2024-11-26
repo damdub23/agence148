@@ -1,0 +1,18 @@
+{% extends one_page_section ? "one_page_section.twig" : "base.twig" %}
+
+{% block content %}
+    {% include 'partials/top-intro.twig' %}
+
+        {# {% if one_page_section %} #}
+        {# <span class="h1">{{post.post_title}}</span> #}
+        {# {% else %} #}
+        {# <h1 class="h1">{{post.post_title}}</h1> #}
+        {# {% endif %} #}
+
+        {{ post.content }}
+
+    {% include 'partials/bottom-blocks.twig' %}
+
+    <!-- Curseur personnalisé -->
+    <div class="custom-cursor"></div>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends one_page_section ? "one_page_section.twig" : "base.twig" %}
+
+{% block content %}
+
+    <div class="grid-container">
+        <div class="grid-x grid-padding-x content-wrapper offers-job">
+
+            <div class="cell small-12">
+                <h2>
+                    {{ __('Nos dernières offres d\'emploi', 'gosselink') }}
+                </h2>
+
+                {{ post.content }}
+
+                {% if jobs|length > 0 %}
+                    <div class="jobs-list">
+                        <ul class="grid-x grid-padding-x">
+                            {% for job in jobs %}
+                                <li class="small-12">
+                                    <div class="content">
+                                        <h3>{{ job.title }}</h3>
+
+                                        {% if job.contract %}
+                                            <div class="contract">
+                                                {{ job.contract }}
+                                            </div>
+                                        {% endif %}
+
+                                        {% if job.date_start %}
+                                            <div class="date">
+                                                <span>Poste à pourvoir le : </span>
+                                                {{ job.date_start|date('d.m.Y') }}
+                                            </div>
+                                        {% endif %}
+
+                                        <div class="description">
+                                            <a href="{{ job.link }}" class="button orange-button">Lire la suite</a>
+                                        </div>
+                                        {% if job.mention != "" %}
+                                            <div class="mention">
+                                                <span>{{ job.mention }}</span>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <div class="pagination">
+                        {% include 'partials/pagination.twig' with {'posts' : jobs} %}
+                    </div>
+
+                {% else %}
+
+                    <div class="no-offers">
+                        Aucune offre pour le moment
+                    </div>
+
+                {% endif %}
+
+
+            </div>
+        </div>
+    </div>
+    <div class="brown-bg">
+        <div class="grid-container">
+            <div class="grid-x grid-padding-x">
+                <div class="cell small-12">
+
+                    <h2>
+                        {{ __('Candidatures spontanées', 'gosselink') }}
+                    </h2>
+
+                    {{ function('do_shortcode', '[contact-form-7 id="596" title="Formulaire de candidatures spontanées"]') }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

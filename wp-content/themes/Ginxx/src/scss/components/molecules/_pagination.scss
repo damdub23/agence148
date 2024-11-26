@@ -1,0 +1,48 @@
+.ToolPagination {
+  &-wrapper {
+    @extend %PageWrapper;
+
+    margin-block: $ds-spacings--x-large;
+  }
+
+  &-inner {
+    @extend %PageInner;
+
+    display: inline-flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    gap: $ds-spacings--small;
+
+    .page-number, .prev, .next {
+      @include transition;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: $ds-spacings--medium;
+      border: 2px solid lighten($ds-color-secondary, 35%);
+      width: size(32);
+      height: size(32);
+      border-radius: $ds-radius-round;
+      margin: 0;
+      color: $ds-color-primary;
+      font-weight: 400;
+      text-decoration: none;
+
+      &:hover {
+        @include transition;
+
+        background: $ds-color-primary;
+        color: $ds-color-white;
+        border-color: $ds-color-primary;
+      }
+
+      &.current {
+        background: $ds-color-primary;
+        color: $ds-color-white;
+        border-color: $ds-color-primary;
+      }
+    }
+  }
+}
