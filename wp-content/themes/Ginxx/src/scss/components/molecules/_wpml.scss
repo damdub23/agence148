@@ -1,20 +1,13 @@
 .switcher {
+  font-family: $label-font;
+  font-size: size(12);
+  font-weight: 500;
   z-index: 10;
   text-align: left;
-  width: 120px;
-  margin-left: auto;
-  position: absolute;
-  background-color: transparent;
-  border-bottom: 1px solid $ds-color-black;
   display: none;
 
-  @media (min-width: 64em) {
-    margin-left: auto;
-    top: 0;
-    right: 1rem;
-    border-radius: 0;
-    padding: 0;
-    display: block;
+  @include breakpoint('desktop') {
+    display: flex;
   }
 
   .wpml-ls-legacy-dropdown {
@@ -62,7 +55,6 @@
         top: 100%;
         right: 0;
         left: 0;
-        border-top: 0px solid #cdcdcd;
         padding: 0;
         margin: 0;
         list-style-type: none;

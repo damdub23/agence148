@@ -1,132 +1,313 @@
 {% extends "base.twig" %}
 {% block content %}
-    <div class="HomePage">
-    {% include 'partials/homepage-slider.twig' %}
 
-    {% set intro = post.get_field('homepage_intro') %}
-    {% if intro.intro_title or intro.intro_subtitle or intro.intro_desc or intro.intro_button %}
-        <div class="HomePage-inner">
-            <div class="HomePage -intro">
-                {% if intro.intro_title %}
-                    <div class="HomePage-left">
-
-                        {% if intro.intro_subtitle %}
-                            <h3 class="HomePage-subtitle">{{ intro.intro_subtitle }}</h3>
-                        {% endif %}
-
-                        <h2>
-                            {{ intro.intro_title }}
-                        </h2>
-
-                        {% if intro.intro_desc %}
-                            <div class="HomePage-desc">
-                                {{ intro.intro_desc }}
-                            </div>
-                        {% endif %}
-
-                        {% if intro.intro_button %}
-                            <div class="HomePage-actions">
-                                <a href="{{ intro.intro_button['url'] }}"
-                                   target="{{ intro.intro_button['target'] }}" class="btn btn--secondary">
-                                    {% if intro.intro_button['title'] %}
-                                        {{ intro.intro_button['title'] }}
-                                    {% else %}
-                                        {{ __('En savoir +', 'gosselink') }}
-                                    {% endif %}
-                                </a>
-                            </div>
-                        {% endif %}
-                    </div>
-                {% endif %}
-
-                {% if intro.intro_subtitle or intro.intro_desc or intro.intro_button %}
-                    <div class="HomePage-right">
-                        {% if intro.intro_image %}
-                            <img src="{{ TimberImage(intro.intro_image).src }}"
-                                 alt="{{ intro.intro_image.alt }}">
-                        {% endif %}
-                    </div>
-                {% endif %}
-            </div>
+    <div class="HeroBanner">
+        <div class="HeroBanner-inner">
+            <p class="HeroBanner-title">
+                Au cœur d’une jungle luxuriante, se trouve la tribu 148, un <span>collectif unique</span> qui réinvente
+                votre
+                manière de faire de la communication.
+            </p>
         </div>
-    {% endif %}
+    </div>
 
-    {% if post.homepage_promote %}
-        <div class="HomePage-inner">
-            {% if post.promote_section_title %}
-                <h2 class="HomePage-title">
-                    {{ post.promote_section_title }}
-                </h2>
-                {% if post.promote_section_subtitle %}
-                    <h3 class="HomePage-subtitle">{{ post.promote_section_subtitle }}</h3>
-                {% endif %}
-            {% endif %}
+    <div class="Home">
+        <div class="Home-inner">
+            <h1>
+                Nous sommes doués<br>pour ça <span>(et bien plus)</span>
+            </h1>
+        </div>
+    </div>
 
-            {% if post.promote_section_description %}
-                <p>
-                    {{ post.promote_section_description }}
-                </p>
-            {% endif %}
-            <div class="HomePage -promote">
-                {% for item in post.get_field('homepage_promote') %}
-                    <div class="Card -promote">
-                        <div class="Card-inner">
-                            {% if item.title %}
-                                <h3 class="Card-title">
-                                    {{ item.title }}
-                                </h3>
-                            {% endif %}
+    <div class="HomeGallery">
+        <div class="HomeGallery-inner">
+            <div class="HomeGallery-clientOne">
+                <div class="Card -clientHome">
+                    <div class="Card-description">
+                        Nous sommes convaincus qu’une bonne stratégie de communication est transverse, multicanal et
+                        long-terme. C’est pourquoi nous accompagnons nos clients sur trois expertises complémentaires :
+                        branding, digital et événementiel.
+                    </div>
+                    <div class="Card-content">
 
-                            {% if item.image %}
-                                <div class="Card-picture">
-                                    <img src="{{ TimberImage(item.image).src }}" alt="{{ item.image.alt }}">
-                                </div>
-                            {% endif %}
-
-                            {% if item.desc %}
-                                <div class="Card-desc">
-                                    {{ item.desc }}
-                                </div>
-                            {% endif %}
-                            {% if item.link %}
-                                <div class="Card-actions">
-                                <span href="{{ item.link['url'] }}"
-                                      target="{{ item.link['target'] }}">
-                                    {% if item.link['title'] %}
-                                        {{ item.link['title'] }}
-                                    {% else %}
-                                        {{ __('En savoir +', 'gosselink') }}
-                                    {% endif %}
-                                </span>
-                                </div>
-                            {% endif %}
+                        <div class="Card-picture">
+                            <img src="{{ assets }}images/client1.jpg" alt="Nom du client 1">
+                        </div>
+                        <div class="Card-title">
+                            HI Capital
                         </div>
                     </div>
-                {% endfor %}
+                </div>
+            </div>
+            <div class="HomeGallery-clientTwo">
+                <div class="Card -clientHome">
+                    <div class="Card-content">
+                        <div class="Card-picture">
+                            <img src="{{ assets }}images/client2.jpg" alt="Nom du client 2">
+                        </div>
+                        <div class="Card-title">
+                            Commanderie de Ballan
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="HomeGallery-clientThree">
+                <div class="Card -clientHome">
+                    <div class="Card-content">
+                        <div class="Card-picture">
+                            <img src="{{ assets }}images/client3.jpg" alt="Nom du client 3">
+                        </div>
+                        <div class="Card-title">
+                            Devenir Paysanne Paysan
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="HomeGallery-clientFour">
+                <div class="Card -clientHome">
+                    <div class="Card-content">
+                        <div class="Card-picture">
+                            <img src="{{ assets }}images/client4.jpg" alt="Nom du client 4">
+                        </div>
+                        <div class="Card-title">
+                            The Sustainable Coconut Partnership
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="HomeGallery-clientFive">
+                <div class="Card -clientHome">
+                    <div class="Card-content">
+                        <div class="Card-picture">
+                            <img src="{{ assets }}images/client5.jpg" alt="Nom du client 5">
+                        </div>
+                        <div class="Card-title">La Guinguette Bosch</div>
+                    </div>
+                    <div class="Card-actions">
+                        <a href="" aria-label="Plus de projets en cliquant ici">Plus de projets, c'est par là</a>
+                    </div>
+                </div>
             </div>
         </div>
-    {% endif %}
+    </div>
 
-    {{ post.content }}
-    <div class="custom-cursor"></div>
-
-    {# Blog section #}
-{# <div class="HomePage -blog">
-        <div class="HomePage-inner">
-            {% if post.blog_section_title %}
-                <h2 class="HomePage-title">
-                    {{ post.blog_section_title }}
-                    <span>{{ post.blog_section_subtitle }}</span>
-                </h2>
-            {% endif %}
-            <div class="posts-home">
-                {% for post in posts %}
-                    {% include 'templates/blog/list-post-default.twig' %}
-                {% endfor %}
-            </div>
-            <div class="HomePage-actions">
-                <a href="{{ post_link("blog") }}">{{ __('Découvrir plus d\'infos', 'gosselink') }}</a>
+    <div class="GreenSection">
+        <div class="GreenSection-inner">
+            <div class="GreenSection-title">Agence <span>collective</span></div>
+            <div class="GreenSection-description">
+                L’agence collective, c’est ce que nous avons trouvé de mieux pour allier la robustesse d’une agence de
+                communication à l’agilité d’experts aux compétences complémentaires. Nous fonctionnons avec un noyau dur
+                auquel viennent s’associer des talents attirés par des projets engagés, le partage de compétences, la
+                liberté d’organisation. Pour nous, c’est un mode de travail qui favorise l’innovation, permet de mettre
+                en action nos valeurs et qui respecte les rythmes de chacun. Pour nos clients, c’est un accompagnement
+                360 et une garantie d’avoir les meilleures personnes pour réaliser leurs projets.
             </div>
         </div>
-    </div>#}
+    </div>
+
+    <div class="ParallaxWrapper">
+        <div class="ParallaxWrapper-section">
+            <div class="ParallaxWrapper-fixed">
+                <div class="ParallaxWrapper-content">
+                    <h2 class="ParallaxWrapper-title">Branding</h2>
+                    <div class="ParallaxWrapper-description">
+                        Le branding, c’est un chemin. Parfois clair et lumineux, souvent long et pentu. L’Agence 148 se
+                        targue d’être votre guide et vos sherpas, et de vous accompagner tout au long du processus de
+                        reconnaissance de votre marque, pour attirer de nouveaux prospects et fidéliser vos clients.
+                        Comment ? Il y a tant d’outils à disposition que vous devrez cliquer sur “En savoir plus“ pour
+                        le savoir !
+                    </div>
+                    <div class="ParallaxWrapper-actions">
+                        <a href="" class="Button -secondary">En savoir plus</a>
+                    </div>
+                </div>
+                <div class="ParallaxWrapper-sectionTags">
+                    <h3>
+                        Expertises
+                    </h3>
+
+                    <ul>
+                        <li>
+                            <span>
+                                Plateforme de marque
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                Graphisme & identité
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                Social media
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="ParallaxWrapper-section">
+            <div class="ParallaxWrapper-fixed">
+                <div class="ParallaxWrapper-content">
+                    <h2 class="ParallaxWrapper-title">Digital</h2>
+                    <div class="ParallaxWrapper-description">
+                        Concevoir et construire tout ce nous avons au bout des doigts : le monde digital. Un espace
+                        infini d’innovation, d’expression et d’inspiration... régi par des codes et des règles qui
+                        oscillent entre technicité, intuitivité relative et algorithmes. L’Agence 148 en a fait plus
+                        qu’un métier, presque une passion, et en maîtrise tous les aspects. Et ne se prive pas de le
+                        challenger en le réinventant éco-çoncu dès que c’est possible. Ca titille votre curiosité ?
+                        Cliquez donc !
+                    </div>
+                    <div class="ParallaxWrapper-actions">
+                        <a href="" class="Button -secondary">En savoir plus</a>
+                    </div>
+                </div>
+                <div class="ParallaxWrapper-sectionTags">
+                    <h3>
+                        Expertises
+                    </h3>
+
+                    <ul>
+                        <li>
+                            <span>
+                                Stratégie digitale
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                UX & UI
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                Développement web
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                Éco conception web
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="ParallaxWrapper-section">
+            <div class="ParallaxWrapper-fixed">
+                <div class="ParallaxWrapper-content">
+                    <h2 class="ParallaxWrapper-title">Événementiel</h2>
+                    <div class="ParallaxWrapper-description">
+                        Les études marketing biberonnés aux neurosciences le clament haut et fort : la qualité des
+                        relations est aussi importante dans le business que dans la vie. Et quoi de plus fort que
+                        l’expérience, la participation à un moment unique, le sentiment d’appartenir à un groupe ? Rien.
+                        Aucun univers de marque, aucune interface utilisateur ne pourra rivaliser avec un moment
+                        partagé. Et dire qu’on sait faire ça aussi. Si, il suffit de cliquer sur “En savoir plus” pour
+                        s’en convaincre.
+                    </div>
+                    <div class="ParallaxWrapper-actions">
+                        <a href="" class="Button -secondary">En savoir plus</a>
+                    </div>
+                </div>
+                <div class="ParallaxWrapper-sectionTags">
+                    <h3>
+                        Expertises
+                    </h3>
+
+                    <ul>
+                        <li>
+                            <a href="">
+                                Networking & corporate
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                Rencontres professionnelles
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                Marketing expérientiel
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="TextImageBlock">
+        <div class="TextImageBlock-inner">
+            <div class="TextImageBlock-content">
+                <div class="TextImageBlock-label">
+                    Au fond de nos cœurs
+                </div>
+
+                <div class="TextImageBlock-title">
+                    Nous y croyons<br>
+                    <span>
+                        très fort
+                    </span>
+                </div>
+
+                <div class="TextImageBlock-description">
+                    La jungle est l’expression de notre créativité et de l’environnement
+                    dans lequel nous voulons travailler :
+                    foisonnant, innovant, résilient, vivant. La jungle, c’est aussi tous ceux qui y croient avec nous,
+                    et
+                    qui challengent notre quotidien.
+                </div>
+
+                <div class="TextImageBlock-actions">
+                    <a href="" class="Button -primary">
+                        On vous dit tout !
+                    </a>
+                </div>
+            </div>
+
+            <div class="TextImageBlock-picture">
+                <img src="{{ assets }}images/img-cheetah.svg" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="AccordionSection">
+        <div class="AccordionBlock">
+            <div class="AccordionBlock-accordion">
+                <div class="AccordionBlock-title">
+                    <button aria-expanded="false">
+                        Plateforme de marque
+                    </button>
+                </div>
+                <div class="AccordionBlock-content" hidden>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium aperiam atque
+                    consequuntur, corporis debitis delectus doloribus dolorum hic magni maiores minus quae quam qui
+                    recusandae, soluta sunt tempora voluptas.
+                </div>
+            </div>
+            <div class="AccordionBlock-accordion">
+                <div class="AccordionBlock-title">
+                    <button aria-expanded="false">
+                        Graphisme & Identité
+                    </button>
+                </div>
+                <div class="AccordionBlock-content" hidden>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium aperiam atque
+                    consequuntur, corporis debitis delectus doloribus dolorum hic magni maiores minus quae quam qui
+                    recusandae, soluta sunt tempora voluptas.
+                </div>
+            </div>
+            <div class="AccordionBlock-accordion">
+                <div class="AccordionBlock-title">
+                    <button aria-expanded="false">
+                        Social media
+                    </button>
+                </div>
+                <div class="AccordionBlock-content" hidden>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium aperiam atque
+                    consequuntur, corporis debitis delectus doloribus dolorum hic magni maiores minus quae quam qui
+                    recusandae, soluta sunt tempora voluptas.
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -5,21 +5,19 @@
                 <h1 class="logo" role="img">
                     <a class="{{ options.is_one_page ? 'scrollto' }}" href="{{ site.url }}"
                        rel="home">
-                        <img src="{{ assets }}images/logo-ginxx.svg" alt="{{ site.name }}"/>
+                        <img src="{{ assets }}images/white-logo-148.svg" alt="{{ site.name }}"/>
                     </a>
                 </h1>
-
             {% else %}
                 <div class="logo" role="img">
                     <a class="" href="{{ site.url }}" rel="home">
-                        <img src="{{ assets }}images/logo-ginxx.svg" alt="{{ site.name }}"/>
+                        <img src="{{ assets }}images/black-logo-148.svg" alt="{{ site.name }}"/>
                     </a>
                 </div>
             {% endif %}
         </div>
         <nav class="SiteHeader-nav" aria-label="Navigation principale">
             {% include "partials/menu.twig" with {'menu': menu.get_items, 'location': menu.theme_location} %}
-            {# <div class="close-btn"><span></span></div> #}
         </nav>
         {# <div class="SiteHeader-topSearch">
             Woocommerce : Display cart & account links #}
@@ -31,9 +29,19 @@
                     <i class="las la-search"></i>
                 </a>
             </div> #}
+        <div class="switcher">
+         {#  {% do action('wpml_add_language_selector') %} #}
+            FR | EN
+        </div>
+
+        <div class="SiteHeader-mobileNav">
+            {% if post.post_type == 'page' %}
+                <div class="SiteHeader-currentPageTitle">{{ post.title }}</div>
+            {% endif %}
+
+            <div class="SiteHeader-burger" id="burger">
+                <span></span>
+            </div>
+        </div>
     </div>
-    {#            <div class="switcher"> #}
-    {#                {% do action('wpml_add_language_selector') %} #}
-    {#            </div> #}
-    <div class="SiteHeader-burger" id="burger"><span></span></div>
 </header>

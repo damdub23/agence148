@@ -745,7 +745,6 @@
 
           p {
             line-height: 1.4;
-            color: $ds-color-black-lighten;
             font-size: size(14);
             font-weight: 100;
           }
@@ -803,7 +802,6 @@
 
           p {
             line-height: 1.4;
-            color: $ds-color-black-lighten;
             font-size: size(14);
             font-weight: 100;
           }
@@ -1144,6 +1142,39 @@
         @extend %Teaser;
 
         color: var(--color-testimonial-card);
+      }
+    }
+  }
+
+  &.-clientHome {
+    height: 100%;
+    gap: $ds-spacings--large;
+
+    .Card-title {
+      @extend %TextStyle-heading3;
+
+      font-weight: 400;
+      margin-top: $ds-spacings--standard;
+    }
+
+    .Card-picture {
+      position: relative;
+      width: 100%;
+
+      img {
+        width: 100%;
+        border-radius: $ds-radius-width-semi;
+      }
+    }
+
+    .Card-actions {
+      display: flex;
+      flex: 1;
+      justify-content: flex-end;
+      align-items: flex-end;
+
+      a {
+        @extend %Button--primary;
       }
     }
   }

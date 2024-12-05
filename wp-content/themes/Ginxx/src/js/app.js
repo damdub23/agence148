@@ -8,6 +8,7 @@ import main from './lib/main';
 import navigation from './lib/navigation';
 import cookies from './lib/cookies';
 import contact from './lib/contact';
+import accordions from './lib/accordions';
 import forms from "./lib/forms";
 import blocks from "./lib/blocks";
 import show from "./lib/show-on-scroll";
@@ -22,6 +23,7 @@ const initJs = () => {
     main.load();
     forms.load();
     contact.load();
+    accordions.load();
     blocks.load();
     show.load();
     menu.load();

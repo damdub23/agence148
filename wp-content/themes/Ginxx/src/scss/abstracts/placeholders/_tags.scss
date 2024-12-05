@@ -1,0 +1,32 @@
+/* ==========================================================================
+   Tag Labels - Placeholders
+   ========================================================================== */
+
+%Tag {
+  @extend %TextStyle-label;
+
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--tag-bg-color);
+  color: var(--tag-text-color);
+  padding-block: $ds-spacings--x-small;
+  padding-inline: $ds-spacings--standard;
+  border-radius: $ds-radius-width-large;
+  text-align: center;
+  text-decoration: none;
+
+  &Wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: $ds-spacings--small;
+
+    &.-horizontal {
+      flex-flow: row wrap;
+    }
+  }
+
+  &:hover {
+    background-color: $ds-color-black;
+    color: $ds-color-white;
+  }
+}

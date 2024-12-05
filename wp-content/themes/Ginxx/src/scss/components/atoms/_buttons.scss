@@ -1,11 +1,17 @@
-.button {
+@use 'sass:math';
+
+.Button {
   @extend %Button;
 
-  &.-primary{
+  &.-primary {
     @extend %Button--primary;
   }
 
-  &.-secondary{
+  &.-secondary {
     @extend %Button--secondary;
+  }
+
+  &.-simpleLink {
+    @extend %Button--simpleLink;
   }
 }

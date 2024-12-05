@@ -1,23 +1,25 @@
 .SiteHeader {
-  background: $ds-color-white;
-  position: sticky;
+  @extend %PageWrapper;
+
+  position: fixed;
   top: 0;
   z-index: 20;
-  //height: $header-height-mobile;
-  padding-inline: $ds-spacings--standard;
-  margin-block: 0;
+  padding-block: size(60);
+  transition: top ease-in-out 0.3s;
 
   &-container {
+    @extend %PageInner;
+
     position: relative;
-    display: grid;
+    display: flex;
     justify-content: space-between;
     align-items: center;
-    grid-template-columns: size(120) 1fr;
-    font-size: size(15);
     margin: auto;
-    padding: $ds-spacings--standard;
-    max-width: $width-container;
-    height: 100%;
+    padding: 0;
+
+    @include breakpoint('desktop', max) {
+      height: size(50);
+    }
 
     .cart {
       display: none;
@@ -84,73 +86,88 @@
     justify-content: center;
   }
 
+  &-mobileNav {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: $ds-spacings--medium;
+    background-color: $ds-color-white;
+    border-radius: $ds-radius-width-large;
+    margin: 0;
+    padding: $ds-spacings--small $ds-spacings--semi;
+
+    @include breakpoint('desktop') {
+      display: none;
+    }
+  }
+
+  &-currentPageTitle {
+    background: $ds-color-primary;
+    text-align: center;
+    border-radius: $ds-radius-width-large;
+    font-size: size(14);
+    padding: $ds-spacings--standard;
+    line-height: 1;
+  }
+
   &-burger {
-    position: absolute;
+    position: relative;
     cursor: pointer;
     z-index: 105;
-    width: $header-height;
-    height: 100%;
-    background-color: $ds-color-secondary;
-    top: 0;
-    right: 0;
+    width: size(48);
+    height: size(48);
+    background-color: $ds-color-white;
+    border-radius: $ds-radius-width-large;
+
+    @include breakpoint('desktop') {
+      display: flex;
+    }
 
     span {
       position: absolute;
-      background: $ds-color-white;
+      background: $ds-color-black;
       z-index: 1;
-      width: size(32);
-      height: size(3);
+      width: size(15);
+      height: size(1.5);
       left: 50%;
-      top: 50%;
+      top: 60%;
       transform: translate(-50%, -50%);
       transition: all .3s ease-in-out;
 
-      &:before, &:after {
+      &:before {
         position: absolute;
         content: '';
-        background: $ds-color-white;
-        width: size(32);
-        height: size(3);
+        background: $ds-color-black;
+        width: size(15);
+        height: size(1.5);
         transition: all .3s ease-in-out;
       }
 
       &:before {
         top: -10px;
       }
-
-      &:after {
-        top: 10px;
-        right: 0;
-        width: 20px;
-      }
     }
 
     &.animate {
+      //padding-inline: $ds-spacings--large; // A remettre s'il faut être iso à la DA mais comportement étrange
+
       span {
-        background: $ds-color-white;
-        width: size(32);
-        height: size(3);
+        background: $ds-color-black;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%) rotate(45deg);
         transition: all .3s ease-in-out;
 
-        &:before, &:after {
+        &:before {
           position: absolute;
           content: '';
-          background: $ds-color-white;
-          width: size(32);
-          height: size(3);
+          background: $ds-color-black;
           transition: all .3s ease-in-out;
         }
 
         &:before {
           top: 0;
           transform: rotate(-90deg);
-        }
-
-        &:after {
-          display: none;
         }
       }
     }

@@ -1,0 +1,132 @@
+{% extends "base.twig" %}
+{% block content %}
+    <div class="HomePage">
+    {% include 'partials/homepage-slider.twig' %}
+
+    {% set intro = post.get_field('homepage_intro') %}
+    {% if intro.intro_title or intro.intro_subtitle or intro.intro_desc or intro.intro_button %}
+        <div class="HomePage-inner">
+            <div class="HomePage -intro">
+                {% if intro.intro_title %}
+                    <div class="HomePage-left">
+
+                        {% if intro.intro_subtitle %}
+                            <h3 class="HomePage-subtitle">{{ intro.intro_subtitle }}</h3>
+                        {% endif %}
+
+                        <h2>
+                            {{ intro.intro_title }}
+                        </h2>
+
+                        {% if intro.intro_desc %}
+                            <div class="HomePage-desc">
+                                {{ intro.intro_desc }}
+                            </div>
+                        {% endif %}
+
+                        {% if intro.intro_button %}
+                            <div class="HomePage-actions">
+                                <a href="{{ intro.intro_button['url'] }}"
+                                   target="{{ intro.intro_button['target'] }}" class="btn btn--secondary">
+                                    {% if intro.intro_button['title'] %}
+                                        {{ intro.intro_button['title'] }}
+                                    {% else %}
+                                        {{ __('En savoir +', 'gosselink') }}
+                                    {% endif %}
+                                </a>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+
+                {% if intro.intro_subtitle or intro.intro_desc or intro.intro_button %}
+                    <div class="HomePage-right">
+                        {% if intro.intro_image %}
+                            <img src="{{ TimberImage(intro.intro_image).src }}"
+                                 alt="{{ intro.intro_image.alt }}">
+                        {% endif %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+
+    {% if post.homepage_promote %}
+        <div class="HomePage-inner">
+            {% if post.promote_section_title %}
+                <h2 class="HomePage-title">
+                    {{ post.promote_section_title }}
+                </h2>
+                {% if post.promote_section_subtitle %}
+                    <h3 class="HomePage-subtitle">{{ post.promote_section_subtitle }}</h3>
+                {% endif %}
+            {% endif %}
+
+            {% if post.promote_section_description %}
+                <p>
+                    {{ post.promote_section_description }}
+                </p>
+            {% endif %}
+            <div class="HomePage -promote">
+                {% for item in post.get_field('homepage_promote') %}
+                    <div class="Card -promote">
+                        <div class="Card-inner">
+                            {% if item.title %}
+                                <h3 class="Card-title">
+                                    {{ item.title }}
+                                </h3>
+                            {% endif %}
+
+                            {% if item.image %}
+                                <div class="Card-picture">
+                                    <img src="{{ TimberImage(item.image).src }}" alt="{{ item.image.alt }}">
+                                </div>
+                            {% endif %}
+
+                            {% if item.desc %}
+                                <div class="Card-desc">
+                                    {{ item.desc }}
+                                </div>
+                            {% endif %}
+                            {% if item.link %}
+                                <div class="Card-actions">
+                                <span href="{{ item.link['url'] }}"
+                                      target="{{ item.link['target'] }}">
+                                    {% if item.link['title'] %}
+                                        {{ item.link['title'] }}
+                                    {% else %}
+                                        {{ __('En savoir +', 'gosselink') }}
+                                    {% endif %}
+                                </span>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+    {{ post.content }}
+    <div class="custom-cursor"></div>
+
+    {# Blog section #}
+{# <div class="HomePage -blog">
+        <div class="HomePage-inner">
+            {% if post.blog_section_title %}
+                <h2 class="HomePage-title">
+                    {{ post.blog_section_title }}
+                    <span>{{ post.blog_section_subtitle }}</span>
+                </h2>
+            {% endif %}
+            <div class="posts-home">
+                {% for post in posts %}
+                    {% include 'templates/blog/list-post-default.twig' %}
+                {% endfor %}
+            </div>
+            <div class="HomePage-actions">
+                <a href="{{ post_link("blog") }}">{{ __('Découvrir plus d\'infos', 'gosselink') }}</a>
+            </div>
+        </div>
+    </div>#}
+{% endblock %}
