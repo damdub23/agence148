@@ -1,0 +1,53 @@
+.TextImageBlock {
+  @extend %PageWrapper;
+
+  &-inner {
+    @extend %PageInner;
+
+    display: grid;
+    gap: $ds-spacings--large;
+    padding-block: $ds-spacings--xxx-wide;
+
+    @include breakpoint('tablet') {
+      grid-template-columns: .55fr .45fr;
+    }
+  }
+
+  &-content {
+
+  }
+
+  &-label {
+    @extend %TextStyle-label;
+
+    margin-bottom: $ds-spacings--standard;
+  }
+
+  &-title {
+    @extend %TextStyle-heading1;
+  }
+
+  &-description {
+    margin-top: $ds-spacings--large;
+
+    @include breakpoint('tablet') {
+      max-width: 65%;
+      margin-top: $ds-spacings--xxx-wide;
+    }
+  }
+
+  &-actions {
+    margin-top: $ds-spacings--large;
+  }
+
+  &-picture {
+    display: flex;
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      border-radius: $ds-radius-width-medium;
+    }
+  }
+}

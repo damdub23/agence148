@@ -14,63 +14,60 @@
 </div>
 
 {# Footer Menu if enabled #}
-<div class="SiteFooter -themeDark">
-    <div class="SiteFooter-inner -columns">
-        <div class="SiteFooter-logo">
-            <img src="{{ assets }}/images/logo-vaguelette.svg" alt="">
+<div class="SiteFooter">
+    <div class="SiteFooter-inner -themeDark">
+        <div class="SiteFooter-contactBlock">
+            <h3 class="SiteFooter-title">
+                Vous avez raison de<br>
+                vouloir <span>nous contacter !</span>
+            </h3>
+            <div class="SiteFooter-actions">
+                <a href="" class="Button -primary">J'ai un projet à vous proposer</a>
+            </div>
         </div>
-        <div class="SiteFooter-address">
-            {% if options.name %}
-                <h5>
-                    {{ options.name }}
-                </h5>
-            {% endif %}
+
+
+        <div class="SiteFooter-presentationBlock">
+            <div class="SiteFooter-description">
+                Nous sommes des animaux sociaux.<br>
+                C’est pour cela que l’Agence collective vous partage les meilleurs moments
+                de sa jungle life sur LinkedIn et Instagram.
+            </div>
+
+            <div class="SiteFooter-social">
+                <ul>
+                    <li>
+                        <a href="" class="Button -simpleLink">Linkedin</a>
+                    </li>
+                    <li>
+                        <a href="" class="Button -simpleLink">Instagram</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="SiteFooter-brandBlock">
+            <div class="SiteFooter-logo">
+                <img src="{{ assets }}images/white-logo-148.svg" alt="" class="">
+            </div>
+            <div class="SiteFooter-address">
+                2 Rue du Dahomey,<br>
+                75011 Paris
+            </div>
+        </div>
+
+
+        <div class="SiteFooter-menuBlock">
             <ul>
-                {% if options.client_address %}
-                    <li>
-                        {{ options.client_address|wpautop }}
-                    </li>
-                {% endif %}
-                {% if options.phone %}
-                    <li>
-                        {{ options.phone }}
-                    </li>
-                {% endif %}
-                {% if options.mail %}
-                    <li>
-                        <a href="mailto:{{ options.mail }}">
-                            Nous contacter par mail
-                        </a>
-                    </li>
-                {% endif %}
+                <li><a href="">Mentions légales</a></li>
+                <li><a href="">Politique de confidentialité</a></li>
             </ul>
         </div>
 
-        <div class="SiteFooter-social">
-            <h5>{{ __('Nous suivre', 'gosselink') }}</h5>
-            {% include 'partials/social-media.twig' %}
+        <div class="SiteFooter-certificationBlock">
+            <img src="{{ assets }}images/logo-bcorp.svg" class="SiteFooter-certificationBlock -desktop"
+                 alt="Agence 148 | Entreprise Bcorp">
+            {#            <img src="{{ assets }}images/logo-bcorp-mobile.svg" class="SiteFooter-certificationBlock -mobile" alt="Agence 148 | Entreprise Bcorp"> #}
         </div>
-        {#        <ul id="footer-menu-2" class="menu"> #}
-        {#            {% for item in footer_menu_2.items %} #}
-        {#                {% include "partials/menu-item.twig" with {'item': item} %} #}
-        {#            {% endfor %} #}
-        {#        </ul> #}
-    </div>
-
-    <div class="SiteFooter-inner -copyright">
-        <div class="SiteFooter-copyright">
-            Copyright {{ "now"|date('Y') }}
-        </div>
-
-        {% if options.footer_menu_enabled %}
-            <div class="SiteFooter-menus">
-                <ul id="footer-menu" class="menu">
-                    {% for item in footer_menu.items %}
-                        {% include "partials/menu-item.twig" with {'item': item} %}
-                    {% endfor %}
-                </ul>
-            </div>
-        {% endif %}
-
     </div>
 </div>

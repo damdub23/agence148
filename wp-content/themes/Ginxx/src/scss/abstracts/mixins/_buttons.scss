@@ -1,11 +1,14 @@
 @mixin Button {
   --bg-color-button: transparent;
-  --text-color-button: var(--ds-color-white);
+  --text-color-button: var(--ds-color-black);
   --border-color-button: var(--ds-color-black);
-  --border-radius-button: #{$ds-radius-width-small};
+  --border-radius-button: #{$ds-radius-width--x-large};
+  --icon-size-button: 10px;
+  --border-before-height-button: 1px;
 
   position: relative;
   display: flex;
+  align-items: center;
   flex-flow: row wrap;
   max-width: max-content;
   background-color: var(--bg-color-button);
@@ -13,8 +16,9 @@
   font-weight: 300;
   border-radius: var(--border-radius-button);
   text-decoration: none;
-  padding: $ds-spacings--semi $ds-spacings--standard;
+  padding: $ds-spacings--standard $ds-spacings--large;
   border: none;
+  transition: all ease-in .3s;
 }
 
 @mixin Button--primary {
@@ -22,16 +26,29 @@
 
   background-color: var(--ds-color-primary);
   color: var(--text-color-button);
+
+  &:hover {
+    background-color: var(--ds-color-black);
+    color: var(--ds-color-white);
+  }
+
+  .-themeDark & {
+    &:hover {
+      background-color: var(--ds-color-white);
+      color: var(--ds-color-black);
+    }
+  }
 }
 
 @mixin Button--secondary {
   @include Button;
 
-  --bg-color-button: var(--ds-color-secondary);
+  --bg-color-button: var(--ds-color-black);
+  color: var(--ds-color-white);
 
   &:hover {
-    --bg-color-button: var(--ds-color-primary);
-    --text-color-button: var(--ds-color-white);
+    --bg-color-button: var(--ds-color-white);
+    color: var(--ds-color-black);
   }
 
   .-themeDark & {
@@ -43,8 +60,28 @@
 @mixin Button--simpleLink {
   @include Button;
 
-  --text-color-button: var(--ds-color-primary);
-  padding: $ds-spacings--semi $ds-spacings--standard $ds-spacings--semi 0;
+  --text-color-button: var(--ds-color-white);
+  font-size: $ds-font-size-300;
+  padding: 0;
+  gap: $ds-spacings--x-small;
+
+  &:before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: var(--border-before-height-button);
+    background-color: var(--ds-color-white);
+    left: 0;
+    bottom: 0;
+  }
+
+  &:after {
+    position: relative;
+    content: url($path-icon + "icon-arrow-link.svg");
+    width: var(--icon-size-button);
+    height: var(--icon-size-button);
+    align-self: flex-start;
+  }
 }
 
 @mixin Button--arrow {

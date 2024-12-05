@@ -43,30 +43,54 @@ let navigation = {
             });
         });
 
-        $(document).ready(function () {
-            $(".SiteHeader-burger").click(function () {
-                $(this).toggleClass("animate");
-                $(".MenuTop").toggleClass("animate");
+        //Gestion du header au scroll + animation du menu burger
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const burger = document.querySelector('.SiteHeader-burger');
+            const menuTop = document.querySelector('.MenuTop');
+            const menuItems = document.querySelectorAll('.menu-item-has-children > a');
+            const header = document.querySelector('.SiteHeader');
+
+            let lastScrollTop = 0;
+
+            // Gestion du clic sur le burger
+            burger.addEventListener('click', () => {
+                burger.classList.toggle('animate');
+                menuTop.classList.toggle('animate');
             });
 
-            $('.menu-item-has-children').find('> a').click(function (e) {
-                e.preventDefault();
+            // Empêche le comportement par défaut sur les liens ayant des sous-menus
+            menuItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                });
             });
 
-            // window.addEventListener("scroll", function () {
-            //     let header = document.querySelector(".SiteHeader");
-            //     header.classList.toggle('sticky', window.scrollY > 0);
-            // });
+            // Gestion de l'événement de scroll
+            window.addEventListener('scroll', () => {
+                const isMenuOpen = burger.classList.contains('animate'); // Vérification si le menu est ouvert
 
-            // Shrinking Title Bar
-            // $(window).on('scroll resize load', function () {
-            //     if ($(this).scrollTop() > $('.SiteHeader').outerHeight()) {
-            //         $('.SiteHeader').addClass('shrink');
-            //     } else {
-            //         $('.SiteHeader').removeClass('shrink');
-            //     }
-            // });
+                // Si le menu est ouvert, on ne fait pas défiler le header
+                if (isMenuOpen) {
+                    return;
+                }
+
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                // Logique pour masquer ou afficher le header
+                if (scrollTop > lastScrollTop) {
+                    // Scroll vers le bas : Masque le header
+                    header.style.top = '-280px'; // Ajustez selon la hauteur du header
+                } else {
+                    // Scroll vers le haut : Affiche le header
+                    header.style.top = '0';
+                }
+
+                lastScrollTop = scrollTop; // Mise à jour de la position précédente
+            });
         });
+
+
     },
 };
 

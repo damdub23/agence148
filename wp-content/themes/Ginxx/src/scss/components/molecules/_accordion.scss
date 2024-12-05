@@ -1,0 +1,164 @@
+:root {
+  --bg-accordion-tabs-title: transparent;
+  --color-accordion-tabs-title: var(--ds-color-black);
+  --bg-color-icon-accordion-tabs-title: var(--ds-color-black);
+  --border-color-accordion-tabs: var(--ds-text-color-black);
+  --bg-accordion--tabs-content: transparent;
+  --color-accordion-tabs-content: var(--ds-color-primary);
+}
+
+.AccordionSection {
+  @extend %PageWrapper;
+
+  margin-bottom: $ds-spacings--xxx-wide;
+}
+
+.AccordionBlock {
+  &-title {
+    margin-bottom: 0;
+    background-color: var(--bg-accordion-tabs-title);
+    transition: all ease-in-out .3s;
+
+    &:before, &:after {
+      display: none;
+    }
+
+    button {
+      @extend %PageInner;
+      @extend %TextStyle-heading1;
+
+      position: relative;
+      display: flex;
+      text-align: left;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 300;
+      background: transparent;
+      color: var(--color-accordion-tabs-title);
+      border: none;
+      border-block-start: 1px solid var(--border-color-accordion-tabs);
+      padding: $ds-spacings--large $ds-spacings--xxx-large $ds-spacings--large 0;
+
+      &:after {
+        @include transition;
+
+        position: absolute;
+        content: '';
+        right: $ds-spacings--standard;
+        width: size(35);
+        height: size(34);
+        mask-image: url($path-icon +  "icon-arrow-accordion.svg");
+        mask-repeat: no-repeat;
+        mask-position: right;
+        background-color: var(--bg-color-icon-accordion-tabs-title);
+      }
+    }
+
+    &:hover, &:focus {
+      --bg-accordion-tabs-title: var(--ds-color-primary);
+      --color-accordion-tabs-title: var(--ds-text-color-black);
+
+      &:after {
+        @include transition;
+
+        --bg-color-icon-accordion-tabs-title: var(--ds-color-black);
+      }
+
+      button {
+        border-block-start: 1px solid var(--ds-color-primary);
+
+
+        &:after {
+          transform: rotate(45deg);
+        }
+      }
+    }
+
+    &.active {
+      --bg-accordion-tabs-title: var(--ds-color-primary);
+      --color-accordion-tabs-title: var(--ds-color-black);
+
+      &:after {
+        --bg-color-icon-accordion-tabs-title: var(--ds-color-black);
+      }
+
+      button {
+        &:after {
+          transform: rotate(90deg);
+        }
+      }
+    }
+  }
+
+  &-content {
+    @extend %PageInner;
+    background: var(--bg-accordion--tabs-content);
+    border: none;
+    padding-block: $ds-spacings--large;
+    display: none;
+
+    p {
+      color: var(--color-accordion-tabs-content);
+      font-size: size(15);
+    }
+
+    ul {
+      li {
+        position: relative;
+        list-style-type: none;
+
+        a {
+          position: relative;
+          border: none;
+          padding: $ds-spacings--small $ds-spacings--standard;
+        }
+      }
+    }
+  }
+
+  &-accordion {
+    &:has(.AccordionBlock-title:hover) {
+      + .AccordionBlock-accordion {
+        .AccordionBlock-title {
+          button {
+            border-block-start: 1px solid var(--ds-color-primary);
+          }
+        }
+      }
+    }
+
+    &:has(.AccordionBlock-title.active:hover) {
+      + .AccordionBlock-accordion {
+        .AccordionBlock-title {
+          button {
+            border-block-start: 1px solid $ds-color-black;
+          }
+        }
+      }
+    }
+
+    &:last-child {
+      .AccordionBlock {
+        &-title {
+          button {
+            border-block-end: 1px solid var(--border-color-accordion-tabs);
+          }
+
+          &:hover {
+            button {
+              border-block-end: 1px solid var(--ds-color-primary);
+            }
+          }
+
+          &.active {
+            button {
+              border-block-end: 1px solid var(--ds-color-primary);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+

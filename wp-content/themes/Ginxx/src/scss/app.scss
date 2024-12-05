@@ -21,19 +21,22 @@
 
 @import 'components/atoms/buttons';
 @import 'components/atoms/cursor';
+@import 'components/atoms/tags';
 @import 'components/molecules/bottom-block';
 @import 'components/molecules/card';
 @import 'components/molecules/carousel';
 @import 'components/molecules/meta';
 @import 'components/molecules/pagination';
 @import 'components/molecules/wpml';
+@import 'components/molecules/accordion';
 
 @import 'components/organisms/header';
+@import 'components/organisms/text-image-block';
 @import 'components/organisms/footer';
 @import 'components/organisms/form';
 @import 'components/organisms/media-modal';
 @import 'components/organisms/search';
-@import 'components/organisms/module_planyo';
+@import 'components/organisms/parallax';
 
 @import 'components/molecules/navigation';
 @import 'layout/intro';

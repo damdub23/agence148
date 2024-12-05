@@ -1,125 +1,145 @@
-.homepageSlider {
-  position: relative;
-  background-color: $ds-color-secondary;
-  width: 100%;
-  height: 100%;
-  margin: 0 auto size(75);
+.HeroBanner {
+  @extend %PageWrapper;
 
-  --image-cover-aspect-ratio: 343/714;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  background: url($path-img + 'hero-homepage.svg') center no-repeat;
+  background-size: cover;
+  min-height: size(900); // S'assure que la section occupe tout l'écran
+
+  &-inner {
+    @extend %PageInner;
+
+    position: relative;
+    display: flex;
+  }
 
   &-title {
     color: $ds-color-white;
-    margin-bottom: size(20);
-  }
+    font-family: $title-font;
+    font-size: size(45);
+    font-weight: 200;
+    max-width: size(880);
+    margin-bottom: $ds-spacings--xxx-wide;
 
-  &-subtitle {
-    color: $ds-color-white;
-    margin-bottom: size(20);
+    span {
+      font-family: $title-span;
+      font-style: italic;
+      font-weight: 400;
+    }
+  }
+}
+
+.Home {
+  @extend %PageWrapper;
+
+  &-inner {
+    @extend %PageInner;
+
+    h1 {
+      @extend %TextStyle-heading1;
+
+      text-align: center;
+      padding-block: size(146);
+
+      span {
+        font-family: $title-span;
+        font-style: italic;
+      }
+    }
+  }
+}
+
+.HomeGallery {
+  @extend %PageWrapper;
+
+  margin-block-end: $ds-spacings--x-large;
+
+  @include breakpoint('tablet') {
+    margin-block-end: $ds-spacings--xx-wide;
   }
 
   &-inner {
     @extend %PageInner;
+
     display: grid;
-    isolation: isolate;
-    grid-template-columns: repeat(12, 1fr);
-    gap: size(32);
-    max-width: $width-container;
-    position: relative;
-    margin-inline: auto;
-    min-height: 75vh;
-  }
+    gap: $ds-spacings--large;
 
-  &__bottom {
-    position: relative;
-    display: flex;
-    background-image: url($path-img + 'background.jpg');
-    background-position: bottom center;
-    background-size: cover;
-  }
-
-  &-left {
-    grid-column: 1/8;
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-  }
-
-  &-desc {
-    color: $ds-color-white;
-  }
-
-  &-leftContent {
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-  }
-
-  &-right {
-    grid-column: 8/13;
-    position: relative;
-
-    img {
-      @include object-fit(cover, center);
-      width: 100%;
-      height: 100%;
+    @include breakpoint('tablet') {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+      "clientOne clientTwo"
+      "clientThree clientThree"
+      "clientFour clientFive";
+      gap: $ds-spacings--standard;
     }
+  }
 
-    @include breakpoint('tablet', max) {
-      display: none;
+  div[class*="-client"] {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &-clientOne {
+    @include breakpoint('tablet') {
+      grid-area: clientOne;
+      grid-column: 1/2;
+    }
+  }
+
+  &-clientTwo {
+    @include breakpoint('tablet') {
+      grid-area: clientTwo;
+      grid-column: 2/3;
+    }
+  }
+
+  &-clientThree {
+    @include breakpoint('tablet') {
+      grid-area: clientThree;
+      grid-column: 1/-1;
+    }
+  }
+
+  &-clientFour {
+    @include breakpoint('tablet') {
+      grid-area: clientFour;
+      grid-column: 1/2;
+    }
+  }
+
+  &-clientFive {
+    @include breakpoint('tablet') {
+      grid-area: clientFive;
+      grid-column: 2/3;
     }
   }
 }
-/*
-.testimonials-slider {
-  padding-block-end: size(48);
 
-  .card {
+.GreenSection {
+  @extend %PageWrapper;
 
-    &--testimonials {
-      position: relative;
-      width: clamp(300px, 33%, 50%);
-      margin-inline-end: size(16);
+  background-color: $ds-color-secondary;
+  color: $ds-color-white;
+  padding-block: $ds-spacings--xxx-wide;
 
-      h3 {
-        span {
-          display: block;
-          font-weight: 200;
-          font-size: size(12);
-        }
-      }
-    }
+  &-inner {
+    @extend %PageInner;
 
-    &-img {
-      width: size(90);
-      height: size(90);
-      overflow: hidden;
-      position: relative;
+    display: flex;
+    gap: $ds-spacings--xxx-large;
+  }
 
-      &:before {
-        position: absolute;
-        content: '';
-        z-index: 1;
-        width: 100%;
-        height: 100%;
-        background: transparent;
-        border-width: 8px;
-        border-style: inset;
-        border-color: rgba(255, 255, 255, .15);
-        inset: 0;
-        border-radius: 50%;
-      }
+  &-title {
+    @extend %TextStyle-heading2;
 
-      img {
-        position: absolute;
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        filter: grayscale(50%);
-      }
-    }
+    flex: 1 1 33%;
+  }
+
+  &-description {
+    flex: 1 1 66%;
   }
 }
-*/
