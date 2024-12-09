@@ -1,0 +1,96 @@
+.ParallaxWrapper {
+  position: relative;
+
+  &-section {
+    position: sticky;
+    top: 0;
+    width: 100%;
+  }
+
+  &-fixed {
+    @extend %PageInner;
+
+    display: grid;
+    gap: $ds-spacings--large;
+    padding-block: $ds-spacings--xxx-wide;
+
+    @include breakpoint('tablet') {
+      grid-template-columns: 75% auto;
+    }
+  }
+
+  &-content {
+
+  }
+
+  &-title {
+    @extend %TextStyle-heading1;
+
+    margin-bottom: $ds-spacings--x-large;
+  }
+
+  &-description {
+    @include breakpoint('tablet') {
+      max-width: 65%;
+    }
+  }
+
+  &-actions {
+    margin-top: $ds-spacings--x-large;
+  }
+
+  &-sectionTags {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include breakpoint('tablet') {
+      padding-right: $ds-spacings--x-large;
+    }
+
+    h3 {
+      @extend %TextStyle-label;
+
+      margin-bottom: $ds-spacings--standard;
+    }
+
+    ul {
+      @extend %TagWrapper;
+
+      padding: unset;
+
+      li {
+        all: unset;
+      }
+
+    }
+
+    span,
+    a {
+      @extend %Tag;
+    }
+  }
+}
+
+@for $i from 1 through 3 {
+  .ParallaxWrapper {
+    &-section:nth-child(#{$i}) {
+      @if ($i==1) {
+        background-color: $ds-color-primary;
+        color: $ds-color-black;
+        z-index: 1;
+      } @else if ($i==3) {
+        background-color: $ds-color-tertiary-lighten;
+        color: $ds-color-black;
+        z-index: 2;
+        //top: (100vh * ($i - 1));
+      } @else {
+        background-color: $ds-colors-brand-primary-500;
+        color: $ds-color-black;
+        z-index: 3;
+        //top: (100vh * ($i - 1));
+      }
+      z-index: ($i);
+    }
+  }
+}

@@ -1,9 +1,11 @@
 @mixin Theme--dark {
-  background-color: var(--ds-color-secondary);
+  background-color: var(--ds-color-black);
+  color: var(--ds-color-white);
 }
 
 @mixin Theme--light {
   background-color: var(--ds-color-white);
+  color: var(--ds-color-black);
 }
 
 @mixin Teaser {

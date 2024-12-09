@@ -4,9 +4,10 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: $ds-spacings--medium;
   color: var(--text-theme-color);
   line-height: 90%;
+  font-weight: 400;
 
   span {
-    font-family: $body-font;
+    font-family: $title-span;
   }
 
   .-themeDark & {
@@ -73,15 +74,15 @@ ul {
     list-style-type: none;
     margin-bottom: $ds-spacings--x-small;
 
-    &:before {
-      position: absolute;
-      content: '';
-      background-color: $ds-color-primary;
-      width: size(5);
-      height: size(5);
-      left: #{-$ds-spacings--semi};
-      top: $ds-spacings--small;
-    }
+    //&:before {
+    //  position: absolute;
+    //  content: '';
+    //  background-color: $ds-color-primary;
+    //  width: size(5);
+    //  height: size(5);
+    //  left: #{-$ds-spacings--semi};
+    //  top: $ds-spacings--small;
+    //}
 
     ul {
       padding-left: $ds-spacings--standard;

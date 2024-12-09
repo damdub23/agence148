@@ -1,7 +1,5 @@
-//@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700&display=swap');
 @import url('https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 //@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@700&display=swap');
 
@@ -11,18 +9,21 @@ $path-icon: $path-img + 'icons/';
 //  propriety: url($path-img + 'imgName/');
 
 //FONTS
-$body-font: "Poppins", sans-serif;
-$title-font: "DM Sans", sans-serif;
-//$body-font: "Manrope", sans-serif;
-//$title-font: "Manrope", sans-serif;
+$body-font: "DM Sans", sans-serif;
+$title-font: "Bricolage Grotesque", sans-serif;
+$label-font: "DM Mono", serif;
+$title-span: "Playfair Display", serif;
 
 $font-icons: 'Line Awesome Free'; // or Brands instead of Free
 $font-icons-brands: 'Line Awesome Brands'; // or Brands instead of Free
 
 //RADIUS
 $ds-radius-width-small: .25rem; // 4px
+$ds-radius-width-semi: .5rem; // 8px
 $ds-radius-width-medium: .75rem; // 12px
-$ds-radius-width-large: 1.5rem; // 24px
+$ds-radius-width--x-medium: 1rem; // 16px
+$ds-radius-width-large: 2rem; // 24px
+$ds-radius-width--x-large: 4rem; // 24px
 $ds-radius-round: 50%;
 
 //FONT-SIZE
@@ -60,28 +61,41 @@ $ds-breakpoints: (
         "desktop-large": 1200px,
         "desktop-x-large": 1440px,
 );
-
-/// General colors
 // $ds-color-primary-darken: scale-color($ds-color-primary, $lightness: -10%);
-$ds-color-primary: #000000;
-$ds-color-secondary: #FA544D;
-$ds-color-tertiary: #4D4D4D;
-$ds-color-tertiary-lighten: #E6E6E6;
+// PRIMARY COLORS
+$ds-color-primary: #FFC33C; // Jaune
+$ds-color-secondary: #162D1A; // Vert
+$ds-color-tertiary: #F06018; // Orange
+$ds-color-tertiary-lighten: #FFAA80; // Rose
+$ds-color-beige-dark: #CFC5B7; // Beige foncé
+$ds-color-beige: #F2ECE4; // Beige
+$ds-color-beige-30: rgba(242, 236, 228, 0.3); // Beige à 30% d'opacité
+$ds-color-white: #FFFFFF; // Blanc
+$ds-color-black: #000000; // Noir
+
+// SECONDARY COLORS
+$ds-colors-brand-primary-900: #396140; // Vert #1
+$ds-colors-brand-primary-800: #66946E; // Vert #2
+$ds-colors-brand-primary-700: #9DC7A4; // Vert #3
+$ds-colors-brand-primary-600: #CAE3CE; // Vert #4
+$ds-colors-brand-primary-500: #B8D5FF; // Bleu
+
+// GRIS
+$ds-colors-grey-900: #757575; // Gris foncé
+$ds-colors-grey-800: #979797; // Gris moyen
+$ds-colors-grey-700: #E5DFD8; // Gris clair
+
 $ds-color-success: #54d52b;
 $ds-color-warning: #EA7204;
 $ds-color-error: #F00036;
 $ds-color-info: #2E2E2E;
-
-$ds-color-white: #fff;
-$ds-color-black: #000000;
-$ds-color-black-lighten: #2E2E2E;
 
 //// Height & width theme
 $header-height-mobile: 80px;
 $header-height: 80px;
 $height-top-intro: 500px;
 $width-container-header: 100%;
-$width-container: 1320px;
+$width-container: 1280px;
 
 //// Global spacings
 $ds-spacings--max-wide: 10rem; // 160px
@@ -103,4 +117,4 @@ $ds-spacings--xxx-small: .125rem; // 2px
 
 //// Layout
 $ds-max-width-page-wrapper: 1920px;
-$ds-max-width-page-inner: 1200px;
+$ds-max-width-page-inner: 1280px;

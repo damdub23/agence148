@@ -1,253 +1,253 @@
-:root {
-  --bg-accordion-tabs-title: var(--ds-color-white);
-  --color-accordion-tabs-title: var(--ds-color-black);
-  --bg-color-icon-accordion-tabs-title: var(--ds-color-black);
-  --border-color-accordion-tabs: var(--ds-color-gray);
-  --bg-accordion--tabs-content: var(--ds-color-white);
-  --color-accordion-tabs-content: var(--ds-color-primary);
-}
-
-.AccordionBlock {
-
-  &-accordion {
-    border-bottom: 1px solid var(--border-color-accordion-tabs);
-
-    &:last-child {
-      border-bottom: none;
-    }
-  }
-
-  &-title {
-    position: relative;
-    display: flex;
-    align-items: center;
-    margin-bottom: 0;
-    padding: $ds-spacings--standard $ds-spacings--wide $ds-spacings--standard $ds-spacings--standard;
-    background-color: var(--bg-accordion-tabs-title);
-    color: var(--color-accordion-tabs-title);
-    cursor: pointer;
-    font-weight: 400;
-
-    &:after {
-      @include transition;
-
-      position: absolute;
-      content: '';
-      right: $ds-spacings--standard;
-      width: size(12);
-      height: size(8);
-      mask-image: url($path-icon + "arrow.svg");
-      background-color: var(--bg-color-icon-accordion-tabs-title);
-      background-repeat: no-repeat;
-    }
-
-    &:before {
-      display: none;
-    }
-
-    &:hover, &:focus {
-      --bg-accordion-tabs-title: var(--ds-color-secondary);
-      --color-accordion-tabs-title: var(--ds-color-white);
-
-      &:after {
-        @include transition;
-
-        --bg-color-icon-accordion-tabs-title: var(--ds-color-white);
-      }
-    }
-
-    &.active {
-      --bg-accordion-tabs-title: var(--ds-color-secondary);
-      --color-accordion-tabs-title: var(--ds-color-white);
-
-      &:after {
-        --bg-color-icon-accordion-tabs-title: var(--ds-color-white);
-        transform: rotate(180deg);
-      }
-    }
-  }
-
-  &-content {
-    background: var(--bg-accordion--tabs-content);
-    border: none;
-    padding: $ds-spacings--standard;
-    display: none;
-
-    p {
-      color: var(--color-accordion-tabs-content);
-      font-size: size(15);
-    }
-
-    ul {
-      li {
-        position: relative;
-        list-style-type: none;
-
-        a {
-          position: relative;
-          border: none;
-          padding: $ds-spacings--small $ds-spacings--standard;
-        }
-      }
-    }
-  }
-}
-
-.TabsBlock {
-  &.-vertical {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-areas:
-          "left"
-          "right";
-
-    @include breakpoint('desktop') {
-      grid-template-columns: .6fr 1.4fr;
-      grid-template-areas:
-          "left right";
-    }
-  }
-
-  &.-left {
-    grid-area: left;
-  }
-
-  &.-right {
-    grid-area: right;
-    display: flex;
-    height: 100%;
-  }
-
-  &-tabs {
-    &.-horizontal {
-      border: 0;
-      list-style-type: none;
-      display: flex;
-      margin: 0;
-      padding: 0;
-      border-bottom: 1px solid var(--border-color-accordion-tabs);
-
-      @include breakpoint('tablet', max) {
-        flex-direction: column;
-      }
-
-      li {
-        flex: 1 1 100%;
-      }
-    }
-
-    &.-vertical {
-      margin: 0;
-      padding: 0;
-      list-style-type: none;
-
-      li {
-        border-bottom: 1px solid var(--border-color-accordion-tabs);
-
-        > a {
-          border-right: 0;
-        }
-
-        &:last-child {
-          border-bottom: 0;
-        }
-      }
-    }
-  }
-
-  &-title {
-    margin: 0;
-
-    &:before {
-      display: none;
-    }
-
-    > a {
-      @include transition;
-
-      text-decoration: none;
-      display: block;
-      padding: $ds-spacings--standard $ds-spacings--medium;
-      height: 100%;
-      font-size: size(15);
-      font-weight: 400;
-      background: var(--bg-accordion-tabs-title);
-      color: var(--color-accordion-tabs-title);
-
-      &:hover, &:focus {
-        --bg-accordion-tabs-title: var(--ds-color-secondary);
-        --color-accordion-tabs-title: var(--ds-color-white);
-      }
-
-      @include breakpoint("desktop") {
-        border-right: 1px solid var(--border-color-accordion-tabs);
-      }
-    }
-
-    &:last-child {
-      a {
-        border-right: 0;
-      }
-    }
-
-    &[aria-expanded="true"] > a {
-      background: var(--bg-accordion-tabs-title);
-    }
-  }
-
-  &-panel {
-    @include transition;
-
-    background: var(--bg-accordion--tabs-content);
-    border: none;
-    height: 100%;
-    border: 0;
-    margin: 0;
-    padding: $ds-spacings--standard;
-
-    p {
-      color: var(--color-accordion-tabs-content);
-      font-weight: 100;
-      font-size: size(15);
-    }
-  }
-}
-
-.-themeDark {
-  .AccordionBlock {
-    &-title {
-      --bg-accordion-tabs-title: var(--ds-color-white);
-      --color-accordion-tabs-title: var(--ds-color-black);
-
-      &:hover, &:focus {
-        --bg-accordion-tabs-title: var(--ds-color-light-gray);
-        --color-accordion-tabs-title: var(--ds-color-black);
-
-        &:after {
-          --bg-color-icon-accordion-tabs-title: var(--ds-color-black);
-        }
-      }
-
-      &.active {
-        --bg-accordion-tabs-title: var(--ds-color-white);
-        --color-accordion-tabs-title: var(--ds-color-secondary);
-
-        &:after {
-          --bg-color-icon-accordion-tabs-title: var(--ds-color-secondary);
-          transform: rotate(180deg);
-        }
-      }
-    }
-  }
-
-  .TabsBlock {
-    &-title {
-      > a {
-        &:hover, &:focus {
-          --bg-accordion-tabs-title: var(--ds-text-color-white);
-          --color-accordion-tabs-title: var(--ds-color-black);
-        }
-      }
-    }
-  }
-}
+//:root {
+//  --bg-accordion-tabs-title: var(--ds-color-white);
+//  --color-accordion-tabs-title: var(--ds-color-black);
+//  --bg-color-icon-accordion-tabs-title: var(--ds-color-black);
+//  --border-color-accordion-tabs: var(--ds-color-gray);
+//  --bg-accordion--tabs-content: var(--ds-color-white);
+//  --color-accordion-tabs-content: var(--ds-color-primary);
+//}
+//
+//.AccordionBlock {
+//
+//  &-accordion {
+//    border-bottom: 1px solid var(--border-color-accordion-tabs);
+//
+//    &:last-child {
+//      border-bottom: none;
+//    }
+//  }
+//
+//  &-title {
+//    position: relative;
+//    display: flex;
+//    align-items: center;
+//    margin-bottom: 0;
+//    padding: $ds-spacings--standard $ds-spacings--wide $ds-spacings--standard $ds-spacings--standard;
+//    background-color: var(--bg-accordion-tabs-title);
+//    color: var(--color-accordion-tabs-title);
+//    cursor: pointer;
+//    font-weight: 400;
+//
+//    &:after {
+//      @include transition;
+//
+//      position: absolute;
+//      content: '';
+//      right: $ds-spacings--standard;
+//      width: size(12);
+//      height: size(8);
+//      mask-image: url($path-icon + "arrow.svg");
+//      background-color: var(--bg-color-icon-accordion-tabs-title);
+//      background-repeat: no-repeat;
+//    }
+//
+//    &:before {
+//      display: none;
+//    }
+//
+//    &:hover, &:focus {
+//      --bg-accordion-tabs-title: var(--ds-color-secondary);
+//      --color-accordion-tabs-title: var(--ds-color-white);
+//
+//      &:after {
+//        @include transition;
+//
+//        --bg-color-icon-accordion-tabs-title: var(--ds-color-white);
+//      }
+//    }
+//
+//    &.active {
+//      --bg-accordion-tabs-title: var(--ds-color-secondary);
+//      --color-accordion-tabs-title: var(--ds-color-white);
+//
+//      &:after {
+//        --bg-color-icon-accordion-tabs-title: var(--ds-color-white);
+//        transform: rotate(180deg);
+//      }
+//    }
+//  }
+//
+//  &-content {
+//    background: var(--bg-accordion--tabs-content);
+//    border: none;
+//    padding: $ds-spacings--standard;
+//    display: none;
+//
+//    p {
+//      color: var(--color-accordion-tabs-content);
+//      font-size: size(15);
+//    }
+//
+//    ul {
+//      li {
+//        position: relative;
+//        list-style-type: none;
+//
+//        a {
+//          position: relative;
+//          border: none;
+//          padding: $ds-spacings--small $ds-spacings--standard;
+//        }
+//      }
+//    }
+//  }
+//}
+//
+//.TabsBlock {
+//  &.-vertical {
+//    display: grid;
+//    grid-template-columns: 1fr;
+//    grid-template-areas:
+//          "left"
+//          "right";
+//
+//    @include breakpoint('desktop') {
+//      grid-template-columns: .6fr 1.4fr;
+//      grid-template-areas:
+//          "left right";
+//    }
+//  }
+//
+//  &.-left {
+//    grid-area: left;
+//  }
+//
+//  &.-right {
+//    grid-area: right;
+//    display: flex;
+//    height: 100%;
+//  }
+//
+//  &-tabs {
+//    &.-horizontal {
+//      border: 0;
+//      list-style-type: none;
+//      display: flex;
+//      margin: 0;
+//      padding: 0;
+//      border-bottom: 1px solid var(--border-color-accordion-tabs);
+//
+//      @include breakpoint('tablet', max) {
+//        flex-direction: column;
+//      }
+//
+//      li {
+//        flex: 1 1 100%;
+//      }
+//    }
+//
+//    &.-vertical {
+//      margin: 0;
+//      padding: 0;
+//      list-style-type: none;
+//
+//      li {
+//        border-bottom: 1px solid var(--border-color-accordion-tabs);
+//
+//        > a {
+//          border-right: 0;
+//        }
+//
+//        &:last-child {
+//          border-bottom: 0;
+//        }
+//      }
+//    }
+//  }
+//
+//  &-title {
+//    margin: 0;
+//
+//    &:before {
+//      display: none;
+//    }
+//
+//    > a {
+//      @include transition;
+//
+//      text-decoration: none;
+//      display: block;
+//      padding: $ds-spacings--standard $ds-spacings--medium;
+//      height: 100%;
+//      font-size: size(15);
+//      font-weight: 400;
+//      background: var(--bg-accordion-tabs-title);
+//      color: var(--color-accordion-tabs-title);
+//
+//      &:hover, &:focus {
+//        --bg-accordion-tabs-title: var(--ds-color-secondary);
+//        --color-accordion-tabs-title: var(--ds-color-white);
+//      }
+//
+//      @include breakpoint("desktop") {
+//        border-right: 1px solid var(--border-color-accordion-tabs);
+//      }
+//    }
+//
+//    &:last-child {
+//      a {
+//        border-right: 0;
+//      }
+//    }
+//
+//    &[aria-expanded="true"] > a {
+//      background: var(--bg-accordion-tabs-title);
+//    }
+//  }
+//
+//  &-panel {
+//    @include transition;
+//
+//    background: var(--bg-accordion--tabs-content);
+//    border: none;
+//    height: 100%;
+//    border: 0;
+//    margin: 0;
+//    padding: $ds-spacings--standard;
+//
+//    p {
+//      color: var(--color-accordion-tabs-content);
+//      font-weight: 100;
+//      font-size: size(15);
+//    }
+//  }
+//}
+//
+//.-themeDark {
+//  .AccordionBlock {
+//    &-title {
+//      --bg-accordion-tabs-title: var(--ds-color-white);
+//      --color-accordion-tabs-title: var(--ds-color-black);
+//
+//      &:hover, &:focus {
+//        --bg-accordion-tabs-title: var(--ds-color-light-gray);
+//        --color-accordion-tabs-title: var(--ds-color-black);
+//
+//        &:after {
+//          --bg-color-icon-accordion-tabs-title: var(--ds-color-black);
+//        }
+//      }
+//
+//      &.active {
+//        --bg-accordion-tabs-title: var(--ds-color-white);
+//        --color-accordion-tabs-title: var(--ds-color-secondary);
+//
+//        &:after {
+//          --bg-color-icon-accordion-tabs-title: var(--ds-color-secondary);
+//          transform: rotate(180deg);
+//        }
+//      }
+//    }
+//  }
+//
+//  .TabsBlock {
+//    &-title {
+//      > a {
+//        &:hover, &:focus {
+//          --bg-accordion-tabs-title: var(--ds-text-color-white);
+//          --color-accordion-tabs-title: var(--ds-color-black);
+//        }
+//      }
+//    }
+//  }
+//}

@@ -1,7 +1,7 @@
 @use "sass:math";
 
 :root {
-  --page-inner-padding-inline: #{$ds-spacings--medium};
+  --page-inner-padding-inline: #{$ds-spacings--standard};
 
   @include breakpoint('desktop') {
     --page-inner-padding-inline: #{$ds-spacings--large};

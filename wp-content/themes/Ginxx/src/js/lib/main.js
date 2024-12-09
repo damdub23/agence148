@@ -1,6 +1,5 @@
 import LazyLoad from 'vanilla-lazyload';
 import polyfill from "./polyfill";
-import Flickity from 'flickity';
 import 'star-rating-svg/src/jquery.star-rating-svg.js';
 import 'flatpickr/dist/flatpickr';
 
@@ -10,8 +9,7 @@ let main = {
         $(document).ready(function () {
 
             flatpickr(".dates", {
-                enableTime: true,
-                dateFormat: "d-m-Y",
+                enableTime: true, dateFormat: "d-m-Y",
             });
 
             $(".grid-references--metro div img").each(function (i, el) {
@@ -27,31 +25,6 @@ let main = {
             $('.SearchContentModal-close').on('click', function () {
                 $('.SearchContentModal').removeClass('active');
             });
-
-            //uncomment this if you want to close the popup on click on whole popup screen 
-            // $('#popup').on('click', function () {
-            //     if($('#popup').hasClass('open')) {
-            //            $('#popup').removeClass('open');
-            //            $('html').removeClass('no-scroll');
-            //        }
-            // });
-
-            if ($('.HomeSlider').length > 0) {
-                new Flickity('.HomeSlider', {
-                    prevNextButtons: true,
-                    pageDots: false,
-                    wrapAround: true,
-                });
-            }
-
-            // if ($('.partners-slider').length > 0) {
-            //     new Flickity('.partners-slider', {
-            //         prevNextButtons: false,
-            //         pageDots: false,
-            //         wrapAround: true,
-            //         autoPlay: 4500,
-            //     });
-            // }
 
             $('.js-btn-modal').on('click', function () {
                 var id = $(this).data('id');
@@ -71,13 +44,11 @@ let main = {
                 }
             });
 
-
-
             // Cursor changer on slider
             // Fonction de throttle
             const throttle = (func, limit) => {
                 let inThrottle;
-                return function() {
+                return function () {
                     const args = arguments;
                     const context = this;
                     if (!inThrottle) {
@@ -132,7 +103,6 @@ let main = {
                 });
             });
 
-
             main.loaded();
         });
     },
@@ -148,20 +118,15 @@ let main = {
             e.stopPropagation();
 
             $.ajax({
-                method: "POST",
-                url: wp_data.ajax_url,
-                data: {
-                    method: "POST",
-                    action: 'post_content',
-                    ID: $(this).data('post-id'),
-                    security: wp_data.security
+                method: "POST", url: wp_data.ajax_url, data: {
+                    method: "POST", action: 'post_content', ID: $(this).data('post-id'), security: wp_data.security
                 }
             })
                 .done(function (response) {
                     $popup.addClass('open');
                     $('html').addClass('no-scroll');
                     $popup.find('.popup-content').html(response);
-                    //close popup  
+                    //close popup
                     $('.close-button').on('click', function () {
                         if ($('#popup').hasClass('open')) {
                             $('#popup').removeClass('open');
