@@ -9,7 +9,8 @@ const globImporter = require('node-sass-glob-importer');
 const autoprefixer = require("autoprefixer");
 
 /* Change it according to your development web server */
-let PROXY = 'http://127.0.0.1:8090/';
+//let PROXY = 'http://127.0.0.1:8090/';
+let PROXY = 'http://localhost:8888/';
 
 const extractFront = new ExtractTextWebpackPlugin('./dist/app.min.css');
 const extractAdmin = new ExtractTextWebpackPlugin('./dist/admin.min.css');
