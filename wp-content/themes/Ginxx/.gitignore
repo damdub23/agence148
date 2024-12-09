@@ -9,4 +9,84 @@ wp-config.php
 /vendor
 vendor
 /
+.DS_Store
+*.log
+.idea/
+node_modules/
+# Ignorer les fichiers et répertoires spécifiques
+.DS_Store
+.htaccess
+.idea/
+index.php
+license.txt
+package-lock.json
+readme.html
+wp-activate.php
+wp-admin/
+wp-blog-header.php
+wp-comments-post.php
+wp-config-sample.php
+wp-config.php
+wp-cron.php
+wp-includes/
+wp-links-opml.php
+wp-load.php
+wp-login.php
+wp-mail.php
+wp-settings.php
+wp-signup.php
+wp-trackback.php
+xmlrpc.php
+
+# Ignorer les fichiers et répertoires au niveau supérieur
+../../.DS_Store
+../../index.php
+../../languages/
+../../plugins/
+../../uploads/
 .env
+
+
+# Ignore DS_Store files
+.DS_Store
+
+# Ignore .htaccess
+.htaccess
+
+# Ignore .idea directory (used by IDEs like PhpStorm)
+.idea/
+
+# Ignore PHP and config files (communs aux environnements)
+index.php
+license.txt
+package-lock.json
+readme.html
+wp-activate.php
+wp-admin/
+wp-blog-header.php
+wp-comments-post.php
+wp-config-sample.php
+wp-config.php
+
+# Ignore uploads folder
+uploads/
+
+# Ignore some WordPress core files
+wp-cron.php
+wp-includes/
+wp-links-opml.php
+wp-load.php
+wp-login.php
+wp-mail.php
+wp-settings.php
+wp-signup.php
+wp-trackback.php
+xmlrpc.php
+
+# Ignore languages folder (often used for translations)
+languages/
+
+# Ignore other DS_Store in parent directories
+../.DS_Store
+../../.DS_Store
+../../../.DS_Store
